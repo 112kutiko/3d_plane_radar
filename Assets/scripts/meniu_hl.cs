@@ -44,6 +44,4 @@ public class meniu_hl : MonoBehaviour
 
 
     }
-   
-    //jsonUrl = "http://127.0.0.1/VirtualRadar/AircraftList.json";
 }
