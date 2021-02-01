@@ -255,12 +255,11 @@ public class radar : MonoBehaviour
 				pl_List.Add(x);
 				tmp_ac = tmp_ac + " Icao " + x.Icao + " call " + x.Call + " \n";
 				string option = " Icao " + x.Icao;
-				tmpi++;
-				options.Add(option);
-				m_Dropdown.AddOptions(options);
-				text_box_update(tmp_ac);
+				tmpi++; 
+			
 			}
-		}
+		}	select_box_down_update(options);
+				text_box_update(tmp_ac);
 	}
 
 	public void check_or_exsist()
@@ -295,13 +294,15 @@ public class radar : MonoBehaviour
 						}
 						
 					}
+				select_box_down_update(options);
 				text_box_update(tmp_ac);
 			}
 				}
 		}
 
 	public void text_box_update(string a)
-    {
+	{
+		list_ac.text = "";
 		list_ac.text = a;
 	}
 
@@ -310,5 +311,6 @@ public class radar : MonoBehaviour
 		m_Dropdown.ClearOptions();
 		m_Dropdown.AddOptions(a);
 	}
+
 
 	}
