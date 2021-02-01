@@ -9,16 +9,15 @@ using Mapbox.Unity.Utilities;
 
 public class plane_info : MonoBehaviour
 {
+    [Header("map info")]
     [SerializeField]
     AbstractMap _map;
-
     [SerializeField]
     [Geocode]
     string _locationStrings;
     Mapbox.Utils.Vector2d _locations;
 
-   // public GameObject textObject;
-
+    [Header("plane info")]
     public string Id;
     public string Reg;
     public string Icao;
@@ -33,12 +32,15 @@ public class plane_info : MonoBehaviour
     public float Lat; //cor
     public float Long;//cor
     public float Trak; //direction
+
+
         void Start()
     {
         AbstractMap[] tmp = FindObjectsOfType<AbstractMap>();
         _map = tmp[0];
       
     }
+
     void Update()
     {
         convertor();

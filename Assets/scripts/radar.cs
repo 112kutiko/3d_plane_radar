@@ -33,29 +33,14 @@ public class radar : MonoBehaviour
 	[Header("lektuvai")]
 	public List<IdList> pl_List, tempory_plane,junk_p;
 
-
- 
-	//gameobject ir kiti kintamieji
-
-
-
-
-
-
-
-	// Start is called before the first frame update
 	void Start()
     {
 		instance = this;
-		if (PlayerPrefs.HasKey("url_1"))
-		{
-			jsonUrl=PlayerPrefs.GetString("url_1");
-		}
-		else
-		{
-			jsonUrl = "http://127.0.0.1/VirtualRadar/AircraftList.json";
-		}
-		Debug.Log("url: "+ jsonUrl);
+		if (PlayerPrefs.HasKey("url_1")){jsonUrl=PlayerPrefs.GetString("url_1");}
+		else{jsonUrl = "http://127.0.0.1/VirtualRadar/AircraftList.json";}
+
+		Debug.Log("using url: "+ jsonUrl);
+
 		StartCoroutine(getDate());
     }
     // Update is called once per frame
