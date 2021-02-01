@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
- 
 
 public class radar : MonoBehaviour
 {
@@ -17,6 +16,7 @@ public class radar : MonoBehaviour
 	public Text list_ac;
 	public Dropdown m_Dropdown;
 	[Header("-----main cam-----")]
+	public int now_use_cam_id=-1;
 	public bool ipy = false; // main off/on
 	public Camera main_cam;
 	[Header("-----plane cam-----")]
@@ -25,9 +25,9 @@ public class radar : MonoBehaviour
     private jsonDataclass jsnData;
 	private Coroutine s_host = null;
 	private string tmp_ac;
-	private int tmp_1=0;//-1
-	int tmpi = 0;
+	int tmpi = -1;
 	bool first_time_b = false;
+	private List<string> options = new List<string>();
 
 	[Header("privati info")]
 	[SerializeField] private Vector3 spawn_position;
@@ -125,26 +125,27 @@ public class radar : MonoBehaviour
 
 	public void change_cam(int y)
     {
-		if (tmp_1 != y)
-		{
-			main_cam.enabled = false;
-			main_cam_gb.SetActive(ipy);
-			ipy = !ipy;
-			Debug.Log("cam  id: " +y+ " act: "+ipy);
-
+		if(main_cam.enabled == false) {
+			pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
+			y = now_use_cam_id;
 			pl_List[y].plane.GetComponent<plane_cam_hold>().cam_play();
-            if (tmp_1 != -1)
-            {
-				pl_List[tmp_1].plane.GetComponent<plane_cam_hold>().cam_play();
-			}
-			tmp_1 = y;
-
+		} else {
+		if (tmpi != -1)
+		{
+		  main_cam.enabled = ipy;
+		  Debug.Log("cam  id: " + y + " act: " + ipy);
+		  ipy = !ipy; 
+		  pl_List[y].plane.GetComponent<plane_cam_hold>().cam_play();
+          now_use_cam_id = y;
 		}
+		
+		}
+		
 	}
 
 	public void first_time()
     {
-		List<string> options = new List<string>();
+		options = null;
 		junk_p = tempory_plane;
 		if (pl_List.Count == 0)
 		{
@@ -170,7 +171,7 @@ public class radar : MonoBehaviour
 				se.GetComponent<plane_info>().Long = x.Long;
 				se.GetComponent<plane_info>().Trak = x.Trak;
 				x.plane = se;
-				
+
 				if (tmp_ac == "")
 				{
 					tmp_ac = " Icao " + x.Icao + " call " + x.Call + " \n";
@@ -196,8 +197,7 @@ public class radar : MonoBehaviour
 
 	public void data_update()
     {
-		List<string> options = new List<string>();
-		m_Dropdown.ClearOptions();
+		options = null;
 		Debug.Log("start data update");
 		for (int a = 0; a < tempory_plane.Count; a++)
 		{
@@ -222,6 +222,7 @@ public class radar : MonoBehaviour
 					break;
 				}
 			}
+
 		}
 		Debug.Log("add new data");
 		if (tempory_plane.Count != 0)
@@ -254,7 +255,8 @@ public class radar : MonoBehaviour
 				tmpi++; 
 			
 			}
-		}	select_box_down_update(options);
+		}
+		select_box_down_update(options);
 				text_box_update(tmp_ac);
 	}
 
@@ -292,6 +294,7 @@ public class radar : MonoBehaviour
 					}
 				select_box_down_update(options);
 				text_box_update(tmp_ac);
+				//tempory_plane.Clear();
 			}
 				}
 		}
