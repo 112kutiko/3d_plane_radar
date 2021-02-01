@@ -6,14 +6,21 @@ using UnityEngine.UI;
 
 public class radar : MonoBehaviour
 {
-
+	public static radar  instance;
+	
 	[Header("vieða info")]
 	public string jsonUrl="http://127.0.0.1/VirtualRadar/AircraftList.json";
+
+
 	public GameObject plane_pl,main_cam_gb;
 	public Transform parent;
 	public Text list_ac;
 	public Dropdown m_Dropdown;
+
+
+	public bool ipy = false; // main off/on
 	public Camera main_cam;
+
 	[Header("privati info")]
 	[SerializeField] private Vector3 spawn_position;
     [SerializeField] private int lektuvu_zonoje;
@@ -26,7 +33,7 @@ public class radar : MonoBehaviour
 	private string tmp_ac;
 	private int tmp_1=0;//-1
 
-	private bool ipy = false;
+	 
 	int tmpi = 0;
  
 	//gameobject ir kiti kintamieji
@@ -40,6 +47,7 @@ public class radar : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
+		instance = this;
 		if (PlayerPrefs.HasKey("url_1"))
 		{
 			jsonUrl=PlayerPrefs.GetString("url_1");
