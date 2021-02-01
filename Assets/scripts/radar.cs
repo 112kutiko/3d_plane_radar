@@ -65,7 +65,6 @@ public class radar : MonoBehaviour
 		Debug.Log("stop Data gain");
 	}
 
-
 	private void ProcessJsonDate(string _url){
 		tmp_ac = "";
 		bool fg = false;
@@ -144,8 +143,6 @@ public class radar : MonoBehaviour
 	public void first_time()
     {
 		List<string> options = new List<string>();
-		m_Dropdown.ClearOptions();
-		tmpi = 0;
 		junk_p = tempory_plane;
 		if (pl_List.Count == 0)
 		{
@@ -187,8 +184,7 @@ public class radar : MonoBehaviour
 				options.Add(option);
 				tmpi++;
 			}
-			m_Dropdown.ClearOptions();
-			m_Dropdown.AddOptions(options);
+			select_box_down_update(options);
 			text_box_update(tmp_ac);
 
 			pl_List = tempory_plane;
@@ -303,10 +299,16 @@ public class radar : MonoBehaviour
 			}
 				}
 		}
+
 	public void text_box_update(string a)
     {
 		list_ac.text = a;
 	}
 
+	public void select_box_down_update(List<string> a)
+    {
+		m_Dropdown.ClearOptions();
+		m_Dropdown.AddOptions(a);
+	}
 
 	}
