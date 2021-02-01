@@ -43,12 +43,13 @@ public class radar : MonoBehaviour
 
 		StartCoroutine(getDate());
     }
-    // Update is called once per frame
+
     void Update()
     {
 		if (s_host == null)
 		{ s_host = StartCoroutine(update_plane()); }
 	}
+
 	IEnumerator getDate()
     {
 		Debug.Log("start Data gain");
@@ -63,6 +64,7 @@ public class radar : MonoBehaviour
 		}
 		Debug.Log("stop Data gain");
 	}
+
 
 	private void ProcessJsonDate(string _url){
 		tmp_ac = "";
@@ -172,7 +174,7 @@ public class radar : MonoBehaviour
 				se.GetComponent<plane_info>().Lat = x.Lat;
 				se.GetComponent<plane_info>().Long = x.Long;
 				se.GetComponent<plane_info>().Trak = x.Trak;
-				x.plane = se;//pl_List[tmpi]
+				x.plane = se; 
 				if (tmp_ac == "")
 				{
 					tmp_ac = " Icao " + x.Icao + " call " + x.Call + " \n";
@@ -187,7 +189,8 @@ public class radar : MonoBehaviour
 			}
 			m_Dropdown.ClearOptions();
 			m_Dropdown.AddOptions(options);
-			list_ac.text = tmp_ac;
+			text_box_update(tmp_ac);
+
 			pl_List = tempory_plane;
 			Debug.Log("end data update");
 
@@ -259,7 +262,7 @@ public class radar : MonoBehaviour
 				tmpi++;
 				options.Add(option);
 				m_Dropdown.AddOptions(options);
-				list_ac.text = tmp_ac;
+				text_box_update(tmp_ac);
 			}
 		}
 	}
@@ -296,10 +299,14 @@ public class radar : MonoBehaviour
 						}
 						
 					}
-					list_ac.text = tmp_ac;
-				}
+				text_box_update(tmp_ac);
+			}
 				}
 		}
+	public void text_box_update(string a)
+    {
+		list_ac.text = a;
+	}
 
 
 	}
