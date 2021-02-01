@@ -58,3 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+*.meta
+
+Assets/geo_map_test_1/
+Assets/Mapbox/README.txt
+Assets/Mapbox/Examples/
