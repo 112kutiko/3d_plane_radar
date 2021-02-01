@@ -14,6 +14,9 @@ public class radar : MonoBehaviour
 	public Text list_ac;
 	public Dropdown m_Dropdown;
 	public Camera main_cam;
+	[Header("privati info")]
+	[SerializeField] private Vector3 spawn_position;
+    [SerializeField] private int lektuvu_zonoje;
 	[Header("lektuvai")]
 	public List<IdList> pl_List, tempory_plane,junk_p;
 
@@ -22,8 +25,7 @@ public class radar : MonoBehaviour
 	private Coroutine s_host = null;
 	private string tmp_ac;
 	private int tmp_1=0;//-1
-	[SerializeField] private Vector3 spawn_position;
-    [SerializeField] private int lektuvu_zonoje;
+
 	private bool ipy = false;
 	int tmpi = 0;
  
