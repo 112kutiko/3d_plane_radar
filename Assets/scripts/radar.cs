@@ -20,6 +20,12 @@ public class radar : MonoBehaviour
 	public bool ipy = false; // main off/on
 	public Camera main_cam;
 	[Header("----------------")]
+	private jsonDataclass jsnData;
+	private Coroutine s_host = null;
+	private string tmp_ac;
+	private int tmp_1=0;//-1
+	int tmpi = 0;
+	bool first_time_b = false;
 
 	[Header("privati info")]
 	[SerializeField] private Vector3 spawn_position;
@@ -28,18 +34,11 @@ public class radar : MonoBehaviour
 	public List<IdList> pl_List, tempory_plane,junk_p;
 
 
-	private jsonDataclass jsnData;
-	private Coroutine s_host = null;
-	private string tmp_ac;
-	private int tmp_1=0;//-1
-
-	 
-	int tmpi = 0;
  
 	//gameobject ir kiti kintamieji
 
 
-	bool first_time_b = false;
+
 
 
 
