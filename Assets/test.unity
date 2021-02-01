@@ -382,17 +382,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jsonUrl: http://127.0.0.1/VirtualRadar/AircraftList.json
-  spawn_position: {x: 0, y: 0, z: 0}
-  lektuvu_zonoje: 0
   plane_pl: {fileID: 877645737764214303, guid: e9859fd2e7e0a574cbbe08199997db2f, type: 3}
   main_cam_gb: {fileID: 698534334}
   parent: {fileID: 322249478}
   list_ac: {fileID: 1358736719}
+  m_Dropdown: {fileID: 58124364}
+  ipy: 0
+  main_cam: {fileID: 698534336}
+  plane_cams: []
+  spawn_position: {x: 0, y: 0, z: 0}
+  lektuvu_zonoje: 0
   pl_List: []
   tempory_plane: []
   junk_p: []
-  m_Dropdown: {fileID: 58124364}
-  main_cam: {fileID: 698534336}
 --- !u!4 &170352807
 Transform:
   m_ObjectHideFlags: 0

@@ -19,8 +19,10 @@ public class radar : MonoBehaviour
 	[Header("-----main cam-----")]
 	public bool ipy = false; // main off/on
 	public Camera main_cam;
+	[Header("-----plane cam-----")]
+	public List<Camera> plane_cams;
 	[Header("----------------")]
-	private jsonDataclass jsnData;
+    private jsonDataclass jsnData;
 	private Coroutine s_host = null;
 	private string tmp_ac;
 	private int tmp_1=0;//-1
