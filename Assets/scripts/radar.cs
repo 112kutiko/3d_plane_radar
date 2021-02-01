@@ -16,10 +16,10 @@ public class radar : MonoBehaviour
 	public Transform parent;
 	public Text list_ac;
 	public Dropdown m_Dropdown;
-
-
+	[Header("-----main cam-----")]
 	public bool ipy = false; // main off/on
 	public Camera main_cam;
+	[Header("----------------")]
 
 	[Header("privati info")]
 	[SerializeField] private Vector3 spawn_position;
