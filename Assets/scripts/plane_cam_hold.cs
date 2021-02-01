@@ -11,7 +11,6 @@ public class plane_cam_hold : MonoBehaviour
     void Start()
     {
         plane_cam.enabled=false;
-       
     }
 
     // Update is called once per frame

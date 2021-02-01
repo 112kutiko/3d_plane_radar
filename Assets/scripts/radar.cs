@@ -6,9 +6,18 @@ using UnityEngine.UI;
 
 public class radar : MonoBehaviour
 {
-	//public kintamieji	
+
+	[Header("vieða info")]
 	public string jsonUrl="http://127.0.0.1/VirtualRadar/AircraftList.json";
-	//private kintamieji
+	public GameObject plane_pl,main_cam_gb;
+	public Transform parent;
+	public Text list_ac;
+	public Dropdown m_Dropdown;
+	public Camera main_cam;
+	[Header("lektuvai")]
+	public List<IdList> pl_List, tempory_plane,junk_p;
+
+
 	private jsonDataclass jsnData;
 	private Coroutine s_host = null;
 	private string tmp_ac;
@@ -19,12 +28,7 @@ public class radar : MonoBehaviour
 	int tmpi = 0;
  
 	//gameobject ir kiti kintamieji
-	public GameObject plane_pl,main_cam_gb;
-	public Transform parent;
-	public Text list_ac;
-	public List<IdList> pl_List, tempory_plane,junk_p;
-	public Dropdown m_Dropdown;
-	public Camera main_cam;
+
 
 	bool first_time_b = false;
 
