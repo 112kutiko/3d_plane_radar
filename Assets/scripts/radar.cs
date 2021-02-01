@@ -149,12 +149,8 @@ public class radar : MonoBehaviour
 		if (pl_List.Count == 0)
 		{
 			Debug.Log("start first data create");
-			Debug.Log("create plane data " + pl_List.Count);
-
 			foreach (IdList x in tempory_plane)
 			{
-
-				Debug.Log("plane id: " + x.Id + "reg: " + x.Reg + "plane: " + x);
 				spawn_position.z = x.Long;
 				spawn_position.x = x.Lat;
 				spawn_position.y = (x.Alt * 0.0003048f);
@@ -173,7 +169,8 @@ public class radar : MonoBehaviour
 				se.GetComponent<plane_info>().Lat = x.Lat;
 				se.GetComponent<plane_info>().Long = x.Long;
 				se.GetComponent<plane_info>().Trak = x.Trak;
-				x.plane = se; 
+				x.plane = se;
+				
 				if (tmp_ac == "")
 				{
 					tmp_ac = " Icao " + x.Icao + " call " + x.Call + " \n";
@@ -188,11 +185,8 @@ public class radar : MonoBehaviour
 			}
 			select_box_down_update(options);
 			text_box_update(tmp_ac);
-
 			pl_List = tempory_plane;
-			Debug.Log("end data update");
-
-
+			tempory_plane.Clear();
 		}
         else
         {
