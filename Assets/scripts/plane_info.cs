@@ -47,7 +47,6 @@ public class plane_info : MonoBehaviour
     }
     void convertor()
     {
-        
         _locations = new Mapbox.Utils.Vector2d(Lat, Long);
        gameObject.transform.localPosition = _map.GeoToWorldPosition(_locations, true);
         float a=transform.position.y +  Alt;
