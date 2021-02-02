@@ -270,7 +270,6 @@ public class radar : MonoBehaviour
     {
 		Debug.Log("dell old data");
         options.Clear();
-		m_Dropdown.ClearOptions(); 
 		for (int u=0; u < pl_List.Count; u++)
             { 
 				if (!tempory_plane.Contains(pl_List[u]))
@@ -280,8 +279,7 @@ public class radar : MonoBehaviour
 					{
 						if (options[i] == " Icao " + pl_List[u].Icao) { options.RemoveAt(i);}
 					}
-
-					m_Dropdown.AddOptions(options);
+			      	select_box_down_update(options);
 					Destroy(pl_List[u].plane);
 					pl_List.Remove(pl_List[u]);
 					
