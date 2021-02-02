@@ -92,7 +92,7 @@ public class radar : MonoBehaviour
                 }
                 else
                 {
-				tempory_plane = jsnData.acList;
+				//tempory_plane = jsnData.acList;
 				data_update();
 				tempory_plane = jsnData.acList;
 				check_or_exsist();
@@ -308,7 +308,6 @@ public class radar : MonoBehaviour
 
 	public void text_box_update(string a)
 	{
-	//	list_ac.text = "";
 		list_ac.text = a;
 	}
 
