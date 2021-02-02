@@ -308,7 +308,7 @@ public class radar : MonoBehaviour
 
 	public void text_box_update(string a)
 	{
-		list_ac.text = "";
+	//	list_ac.text = "";
 		list_ac.text = a;
 	}
 
