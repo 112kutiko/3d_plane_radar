@@ -92,6 +92,7 @@ public class radar : MonoBehaviour
                 }
                 else
                 {
+				tempory_plane = jsnData.acList;
 				data_update();
 				tempory_plane = jsnData.acList;
 				check_or_exsist();
