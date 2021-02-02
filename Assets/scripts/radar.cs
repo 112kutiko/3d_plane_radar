@@ -145,7 +145,6 @@ public class radar : MonoBehaviour
 
 	public void first_time()
     {
-		options = null;
 		junk_p = tempory_plane;
 		if (pl_List.Count == 0)
 		{
