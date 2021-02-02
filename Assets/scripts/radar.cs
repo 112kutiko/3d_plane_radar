@@ -93,6 +93,7 @@ public class radar : MonoBehaviour
                 else
                 {
 				data_update();
+				tempory_plane = jsnData.acList;
 				check_or_exsist();
 				}
 
@@ -267,7 +268,7 @@ public class radar : MonoBehaviour
 	public void check_or_exsist()
     {
 		Debug.Log("dell old data");
-		List<string> options = new List<string>();
+        options.Clear();
 		m_Dropdown.ClearOptions(); 
 		for (int u=0; u < pl_List.Count; u++)
             { 
@@ -301,7 +302,7 @@ public class radar : MonoBehaviour
 					select_box_down_update(options);
 					text_box_update(tmp_ac);
 				}
-				//tempory_plane.Clear();
+				tempory_plane.Clear();
 			}
 				}
 		}
