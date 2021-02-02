@@ -183,9 +183,12 @@ public class radar : MonoBehaviour
 				options.Add(option);
 				tmpi++;
 			}
+			pl_List = tempory_plane;
+            if (pl_List.Count!=0)
+			{
 			select_box_down_update(options);
 			text_box_update(tmp_ac);
-			pl_List = tempory_plane;
+            }
 			tempory_plane.Clear();
 		}
         else
@@ -196,7 +199,7 @@ public class radar : MonoBehaviour
 
 	public void data_update()
     {
-		options = null;
+		options.Clear();
 		Debug.Log("start data update");
 		for (int a = 0; a < tempory_plane.Count; a++)
 		{
@@ -221,7 +224,6 @@ public class radar : MonoBehaviour
 					break;
 				}
 			}
-
 		}
 		Debug.Log("add new data");
 		if (tempory_plane.Count != 0)
@@ -255,8 +257,11 @@ public class radar : MonoBehaviour
 			
 			}
 		}
-		select_box_down_update(options);
-				text_box_update(tmp_ac);
+		if (pl_List.Count != 0)
+		{
+			select_box_down_update(options);
+			text_box_update(tmp_ac);
+		}
 	}
 
 	public void check_or_exsist()
@@ -291,8 +296,11 @@ public class radar : MonoBehaviour
 						}
 						
 					}
-				select_box_down_update(options);
-				text_box_update(tmp_ac);
+				if (pl_List.Count != 0)
+				{
+					select_box_down_update(options);
+					text_box_update(tmp_ac);
+				}
 				//tempory_plane.Clear();
 			}
 				}
