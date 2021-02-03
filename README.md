@@ -16,8 +16,8 @@
 
 ## devices you need
 
-1. rtl sdr and atenna
-2. latop or pc
+1. rtl sdr and atenna.
+2. latop or pc.
 
 ## required programs
 
