@@ -37,7 +37,7 @@
 
 - unity api - [api link](https://docs.unity3d.com/ScriptReference/)
 - rtl sdr  - [site](https://www.rtl-sdr.com/)
-- dump1090 - [github] (github.com/antirez/dump1090)
+- dump1090 - [github](github.com/antirez/dump1090)
 
 ## author info
 
