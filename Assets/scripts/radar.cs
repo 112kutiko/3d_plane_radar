@@ -196,7 +196,7 @@ public class radar : MonoBehaviour
 
 	public void data_update()
     {
-		options.Clear();
+		//options.Clear();
 		Debug.Log("start data update");
 		for (int a = 0; a < tempory_plane.Count; a++)
 		{
@@ -320,7 +320,7 @@ public class radar : MonoBehaviour
 	}
 	public void dell_checked_plane(List<IdList> a)
     {
-		for(int i=0;i<dell_nr.Count;i++)
+		for(int i= dell_nr.Count; i>0;i--)
         {
 			a.Remove(a[dell_nr[i]]);
 		}
