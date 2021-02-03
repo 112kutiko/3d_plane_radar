@@ -89,7 +89,7 @@ public class radar : MonoBehaviour
                 }
                 else
                 {
-                    if (tempory_plane != 0)
+                    if (tempory_plane.Count != 0)
                     {
 					data_update();
 					tempory_plane = jsnData.acList;
