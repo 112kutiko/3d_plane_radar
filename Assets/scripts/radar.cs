@@ -80,8 +80,7 @@ public class radar : MonoBehaviour
 			}
             else
             {
-				Debug.Log("load");
-				Debug.Log(jsnData.acList.Count);
+				Debug.Log("load"); 
 
                if (first_time_b == false)
                {
@@ -89,8 +88,7 @@ public class radar : MonoBehaviour
 				first_time_b = !first_time_b;
                 }
                 else
-                {
-				//tempory_plane = jsnData.acList;
+                { 
 				data_update();
 				tempory_plane = jsnData.acList;
 				check_or_exsist();
@@ -104,8 +102,7 @@ public class radar : MonoBehaviour
 
 	IEnumerator update_plane()
 	{
-		yield return new WaitForSeconds(5f);
-		Debug.Log("update");
+		yield return new WaitForSeconds(5f); 
 		StartCoroutine(getDate());
 		s_host = null;
 	}
