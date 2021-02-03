@@ -26,3 +26,20 @@
 3. unity (tempory)
 
 ## How To Use
+
+1.on dump1090 
+2.on virtual radar
+3.open virtual radar add dump1090 source 
+4.open unity project play and paste virtual radar link with AircraftList.json file
+5. enter
+
+## references
+
+- unity api - [api link](https://docs.unity3d.com/ScriptReference/)
+- rtl sdr  - [site](https://www.rtl-sdr.com/)
+- dump1090 - [github] (https://github.com/antirez/dump1090)
+
+## author info
+
+- Twitter - [@cll_112kutiko](https://twitter.com/cll_112kutiko)
+- youtube - [112kutiko](https://www.youtube.com/channel/UCmU-gov-jZi2XkXw1qMko7g)
