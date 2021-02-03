@@ -40,10 +40,7 @@ public class radar : MonoBehaviour
 		instance = this;
 		if (PlayerPrefs.HasKey("url_1")){jsonUrl=PlayerPrefs.GetString("url_1");}
 		else{jsonUrl = "http://127.0.0.1/VirtualRadar/AircraftList.json";}
-
-		Debug.Log("using url: "+ jsonUrl);
-
-		StartCoroutine(getDate());
+		 StartCoroutine(getDate());
     }
 
     void Update()
@@ -54,6 +51,7 @@ public class radar : MonoBehaviour
 
 	IEnumerator getDate()
     {
+		Debug.Log("_______________");
 		Debug.Log("start Data gain");
 		WWW _www = new WWW(jsonUrl);
 		yield return _www;
@@ -65,12 +63,15 @@ public class radar : MonoBehaviour
 			Debug.Log("some error");
 		}
 		Debug.Log("stop Data gain");
+		Debug.Log("_______________");
 	}
 
 	private void ProcessJsonDate(string _url){
 		bool fg = false;
 		jsonDataclass jsnData = JsonUtility.FromJson<jsonDataclass>(_url);
+		Debug.Log("____________________________");
 		Debug.Log("ðaltinis: " + jsnData.src +" lektuvu zonoje: "+ jsnData.acList.Count);
+		Debug.Log("____________________________");
 		lektuvu_zonoje = jsnData.acList.Count;
 		if(jsnData.acList.Count!=0 && jsnData.acList.Count != null)
         {
@@ -80,18 +81,19 @@ public class radar : MonoBehaviour
 				Debug.Log("data get fail");
 			}
             else
-            {
-				Debug.Log("load"); 
-
+            { 
                if (first_time_b == false)
                {
 			    first_time();
 				first_time_b = !first_time_b;
                 }
                 else
-                { 
-				data_update();
-				tempory_plane = jsnData.acList;
+                {
+                    if (tempory_plane != 0)
+                    {
+					data_update();
+					tempory_plane = jsnData.acList;
+                    }
 				check_or_exsist();
 				}
 
@@ -318,14 +320,14 @@ public class radar : MonoBehaviour
 		m_Dropdown.ClearOptions();
 		m_Dropdown.AddOptions(a);
 	}
+
 	public void dell_checked_plane(List<IdList> a)
     {
+		Debug.Log("trinamu skaièius: "+dell_nr.Count)
 		for(int i= dell_nr.Count; i>0;i--)
         {
 			a.Remove(a[dell_nr[i]]);
 		}
 		dell_nr.Clear();
     }
-
-
 	}
