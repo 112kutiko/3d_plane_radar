@@ -323,7 +323,7 @@ public class radar : MonoBehaviour
 
 	public void dell_checked_plane(List<IdList> a)
     {
-		Debug.Log("trinamu skaièius: "+dell_nr.Count)
+		Debug.Log("trinamu skaièius: " + dell_nr.Count);
 		for(int i= dell_nr.Count; i>0;i--)
         {
 			a.Remove(a[dell_nr[i]]);
