@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+
 
 public class radar : MonoBehaviour
 {
@@ -31,7 +33,7 @@ public class radar : MonoBehaviour
 	[SerializeField] private Vector3 spawn_position;
     [SerializeField] private int lektuvu_zonoje;
 	[Header("lektuvai")]
-	public List<IdList> pl_List, tempory_plane,junk_p;
+	public List<IdList> pl_List, tempory_plane,junk_p, third_plane;
 
 	void Start()
     {
@@ -250,8 +252,8 @@ public class radar : MonoBehaviour
 				pl_List.Add(x);
 				tmp_ac = tmp_ac + " Icao " + x.Icao + " call " + x.Call + " \n";
 				string option = " Icao " + x.Icao;
-				tmpi++; 
-			
+				tmpi++;
+				options.Add(option);
 			}
 		}
 		if (pl_List.Count != 0)
@@ -264,24 +266,30 @@ public class radar : MonoBehaviour
 	public void check_or_exsist()
     {
 		Debug.Log("dell old data");
-        options.Clear();
-		for (int u=0; u < pl_List.Count; u++)
-            { 
-				if (!tempory_plane.Contains(pl_List[u]))
-                {
 
-					for (int i = 0; i< options.Count; i++)
-					{
-						if (options[i] == " Icao " + pl_List[u].Icao) { options.RemoveAt(i);}
-					}
-			      	select_box_down_update(options);
-					Destroy(pl_List[u].plane);
-					pl_List.Remove(pl_List[u]);
-					
-					tmp_ac = "";
-					for (int y=0;y< pl_List.Count; y++)
+		List<string> options_tmp = new List<string>();
+
+		for (int u = 0; u < tempory_plane.Count; u++)
+		{
+			for (int a = 0; a < pl_List.Count; a++)
+			{
+				if (tempory_plane[u].Id == pl_List[a].Id)
+				{
+					third_plane.Add(pl_List[a]);
+					string option = " Icao " + pl_List[a].Icao;
+					options_tmp.Add(option);
+				}
+			}
+		}
+		for (int a = 0; a < pl_List.Count; a++)
+		{
+            if (third_plane.Contains(pl_List[a]) == false) { Destroy(pl_List[a].plane);pl_List.Remove(pl_List[a]);}
+		}
+		options = options_tmp;
+		select_box_down_update(options);
+		for (int y=0;y< pl_List.Count; y++)
                     {
-						if (tmp_ac == "")
+						if (tmp_ac == string.Empty)
 						{
 							tmp_ac = " Icao " + pl_List[y].Icao + " call " + pl_List[y].Call + " \n";
 						}
@@ -293,17 +301,16 @@ public class radar : MonoBehaviour
 					}
 				if (pl_List.Count != 0)
 				{
-					select_box_down_update(options);
 					text_box_update(tmp_ac);
 				}
 				tempory_plane.Clear();
-			}
-				}
+		        options.Clear();
 		}
 
 	public void text_box_update(string a)
 	{
 		list_ac.text = a;
+	tmp_ac = string.Empty;
 	}
 
 	public void select_box_down_update(List<string> a)
