@@ -22,7 +22,7 @@ public class radar : MonoBehaviour
 	[Header("------------------")]
     private jsonDataclass jsnData;
 	private Coroutine s_host = null;
-	private string tmp_ac;
+	private string tmp_ac= string.Empty;
 	int tmpi = -1;
 	bool first_time_b = false;
 	private List<string> options = new List<string>();
@@ -66,7 +66,6 @@ public class radar : MonoBehaviour
 	}
 
 	private void ProcessJsonDate(string _url){
-		tmp_ac = "";
 		bool fg = false;
 		jsonDataclass jsnData = JsonUtility.FromJson<jsonDataclass>(_url);
 		Debug.Log("ðaltinis: " + jsnData.src +" lektuvu zonoje: "+ jsnData.acList.Count);
@@ -119,7 +118,6 @@ public class radar : MonoBehaviour
         }
 		
 	}
-
 	public void change_cam(int y)
     {
 		if(main_cam.enabled == false) {
@@ -168,7 +166,7 @@ public class radar : MonoBehaviour
 				se.GetComponent<plane_info>().Trak = x.Trak;
 				x.plane = se;
 
-				if (tmp_ac == "")
+				if (tmp_ac == string.Empty)
 				{
 					tmp_ac = " Icao " + x.Icao + " call " + x.Call + " \n";
 				}
