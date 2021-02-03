@@ -26,7 +26,7 @@ public class radar : MonoBehaviour
 	int tmpi = -1;
 	bool first_time_b = false;
 	private List<string> options = new List<string>();
-
+	private List<int> dell_nr = new List<int>();
 	[Header("privati info")]
 	[SerializeField] private Vector3 spawn_position;
     [SerializeField] private int lektuvu_zonoje;
@@ -215,11 +215,13 @@ public class radar : MonoBehaviour
 					pl_List[u].Lat = tempory_plane[a].Lat;
 					pl_List[u].Long = tempory_plane[a].Long;
 					pl_List[u].Trak = tempory_plane[a].Trak;
-					tempory_plane.Remove(tempory_plane[a]);
+					dell_nr.Add(a);
 					break;
 				}
 			}
 		}
+		dell_checked_plane();
+
 		Debug.Log("add new data");
 		if (tempory_plane.Count != 0)
 		{
@@ -309,6 +311,14 @@ public class radar : MonoBehaviour
 		m_Dropdown.ClearOptions();
 		m_Dropdown.AddOptions(a);
 	}
+	public void dell_checked_plane()
+    {
+		for(int i=0;i<dell_nr.Count;i++)
+        {
+			tempory_plane.Remove(tempory_plane[dell_nr[i]]);
+		}
+		dell_nr.Clear();
+    }
 
 
 	}
