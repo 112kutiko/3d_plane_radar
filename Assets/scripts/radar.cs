@@ -222,7 +222,7 @@ public class radar : MonoBehaviour
 				}
 			}
 		}
-		dell_checked_plane();
+		dell_checked_plane(tempory_plane);
 
 		Debug.Log("add new data");
 		if (tempory_plane.Count != 0)
@@ -318,11 +318,11 @@ public class radar : MonoBehaviour
 		m_Dropdown.ClearOptions();
 		m_Dropdown.AddOptions(a);
 	}
-	public void dell_checked_plane()
+	public void dell_checked_plane(List<IdList> a)
     {
 		for(int i=0;i<dell_nr.Count;i++)
         {
-			tempory_plane.Remove(tempory_plane[dell_nr[i]]);
+			a.Remove(a[dell_nr[i]]);
 		}
 		dell_nr.Clear();
     }
