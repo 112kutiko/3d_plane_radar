@@ -18,3 +18,11 @@
 
 1. rtl sdr and atenna
 2. latop or pc
+
+## required programs
+
+1. dump1090
+2. virtual radar
+3. unity (tempory)
+
+## How To Use
