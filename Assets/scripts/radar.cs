@@ -119,22 +119,38 @@ public class radar : MonoBehaviour
         }
 		
 	}
-	public void change_cam(int y)
+	
+	public void change_cam(string _id)
     {
 		if(main_cam.enabled == false) {
-			pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-			y = now_use_cam_id;
-			pl_List[y].plane.GetComponent<plane_cam_hold>().cam_play();
+			for(int s=0;s< pl_List.Count; s++)
+            {
+                if (pl_List[s].Icao == _id) {
+                    if (now_use_cam_id != -1)
+                    {
+						pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
+                    }
+				    now_use_cam_id=s;
+					pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
+					Debug.Log("cam  id: " + y + "main cam: " + ipy);
+				}
+            }
 		} else {
-		if (tmpi != -1)
-		{
 		  main_cam.enabled = ipy;
-		  Debug.Log("cam  id: " + y + " act: " + ipy);
-		  ipy = !ipy; 
-		  pl_List[y].plane.GetComponent<plane_cam_hold>().cam_play();
-          now_use_cam_id = y;
-		}
-		
+			for (int s = 0; s < pl_List.Count; s++)
+			{
+				if (pl_List[s].Icao == _id)
+				{
+					if (now_use_cam_id != -1)
+					{
+						pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
+					}
+					now_use_cam_id = s;
+					pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
+					Debug.Log("cam  id: " + y + "main cam: " + ipy);
+				}
+			}
+			ipy = !ipy; 
 		}
 		
 	}
@@ -172,7 +188,7 @@ public class radar : MonoBehaviour
 	public void check_or_exsist()
     {
 		List<string> _on = new List<string>(),_off = new List<string>();
-		Debug.Log("dell old data");
+	
 		for (int u = 0; u < tempory_plane.Count; u++)
 		{
 			for (int a = 0; a < pl_List.Count; a++)
