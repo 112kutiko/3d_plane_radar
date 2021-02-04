@@ -84,12 +84,11 @@ public class radar : MonoBehaviour
                {
 					Debug.Log("first time");
 					first_time(jsnData.acList);
-				first_time_b = true;
+			     	first_time_b = true;
                 }
                 else
                 {
-                    if (tempory_plane.Count != 0)
-                    {
+                    
 					data_update();
 					tempory_plane = jsnData.acList;
                     }
@@ -171,10 +170,10 @@ public class radar : MonoBehaviour
                 {
 					plane_spawner(x, "secon time");
 				}
-				
-				
 			}
 		}
+
+
 		if (pl_List.Count != 0)
 		{ 
 			text_box_update(tmp_ac);
