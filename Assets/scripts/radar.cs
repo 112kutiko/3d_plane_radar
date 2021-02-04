@@ -148,7 +148,7 @@ public class radar : MonoBehaviour
 				plane_spawner(x, "first time");
 
 			}
-		pl_List = a;
+		
 	}
 
 	public void data_update()
@@ -185,12 +185,25 @@ public class radar : MonoBehaviour
 		}
 		for (int a = 0; a < pl_List.Count; a++)
 		{
-            if (third_plane.Contains(pl_List[a]) == false) { Debug.Log("veikia"); Destroy(pl_List[a].plane);pl_List.Remove(pl_List[a]);}
+			for (int s = 0; s < third_plane.Count; s++)
+			{
+				if (third_plane[s].Id == pl_List[a].Id)
+                {
+				 Debug.Log("veikia"); 
+				 Destroy(pl_List[a].plane);
+				 pl_List.Remove(pl_List[a]);
+				 third_plane.Remove(third_plane[s]);
+				}
+			}		
 		}
+
+        if (pl_List.Count != 0)
+        {
 		 text_reload();
+        }
 
-
-				tempory_plane.Clear();
+		third_plane.Clear();
+		tempory_plane.Clear();
 		}
 
 	public void text_box_update(string a)
@@ -248,6 +261,7 @@ public class radar : MonoBehaviour
 			se.GetComponent<plane_info>()._by = then;
 			a.plane = se;
 	    	tmpi++;
+		pl_List.Add(a);
 		if (pl_List.Count != 0)
 		{
 			text_reload();
@@ -270,6 +284,7 @@ public class radar : MonoBehaviour
 		p_tmp.Op = a.Op; 
 		p_tmp.Spd = a.Spd;
 		p_tmp.Trak = a.Trak;
+
 		if (pl_List.Count != 0)
 		{
 			text_reload();
@@ -277,7 +292,7 @@ public class radar : MonoBehaviour
 	}
 	public void text_reload()
     {
-		tmp_ac == "";
+		tmp_ac = "";
         if (pl_List.Count != 0)
         {
 		for (int i= 0;i<pl_List.Count;i++)
