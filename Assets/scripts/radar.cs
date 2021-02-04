@@ -71,7 +71,7 @@ public class radar : MonoBehaviour
 		if(jsnData.acList.Count!=0 && jsnData.acList.Count != null)
         {
 			tempory_plane=jsnData.acList;
-            if (tempory_plane.Count == 0)
+            if (jsnData.acList.Count == 0)
             {
 				Debug.Log("data get fail");
 			}
@@ -83,7 +83,7 @@ public class radar : MonoBehaviour
 				if (first_time_b == false)
                {
 					Debug.Log("first time");
-					first_time();
+					first_time(jsnData.acList);
 				first_time_b = true;
                 }
                 else
@@ -145,15 +145,16 @@ public class radar : MonoBehaviour
 		
 	}
 
-	public void first_time()
+	public void first_time(List<IdList> a)
     {
 		
 			Debug.Log("start first data create");
-			foreach (IdList x in tempory_plane)
+			foreach (IdList x in a)
 			{
 				plane_spawner(x, "first time");
+
 			}
-			
+		pl_List = a;
 	}
 
 	public void data_update()
@@ -251,7 +252,7 @@ public class radar : MonoBehaviour
 			Debug.Log("plane id: "+a.Icao);
 			spawn_position.z = a.Long;
 			spawn_position.x = a.Lat;
-			spawn_position.y = (a.Alt * 0.0003048f);
+			spawn_position.y = (int)(a.Alt * 0.0003048f);
 			GameObject se = Instantiate(plane_pl, spawn_position, Quaternion.identity, parent);
 			se.GetComponent<plane_info>().Id = a.Id;
 			se.GetComponent<plane_info>().Reg = a.Reg;
@@ -279,13 +280,11 @@ public class radar : MonoBehaviour
 			{
 				tmp_ac = tmp_ac + " Icao " + a.Icao + " call " + a.Call + " \n";
 			}
-	//	tmpi++;
-		pl_List = tempory_plane;
+	    	tmpi++;
 		if (pl_List.Count != 0)
 		{
 			text_box_update(tmp_ac);
 		}
-		tempory_plane.Clear(); 
 	}
 
 	public void plane_update(IdList a)
