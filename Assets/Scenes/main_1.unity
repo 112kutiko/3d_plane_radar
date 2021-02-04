@@ -1403,6 +1403,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Username_field: {fileID: 103116180}
   url_link: 
+  _long: {fileID: 398623545}
+  _lat: {fileID: 552947048}
+  _c_long: 0
+  _c_lat: 0
 --- !u!4 &798826940
 Transform:
   m_ObjectHideFlags: 0
