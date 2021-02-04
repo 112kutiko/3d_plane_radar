@@ -163,64 +163,20 @@ public class radar : MonoBehaviour
 
 	public void data_update()
     { 
-		Debug.Log("start data update");
-		for (int a = 0; a < tempory_plane.Count; a++)
-		{
-			for (int u = 0; u < pl_List.Count; u++)
-			{
-				if (pl_List[u].Id == tempory_plane[a].Id)
-				{
-					pl_List[u].Reg = tempory_plane[a].Reg;
-					pl_List[u].Icao = tempory_plane[a].Icao;
-					pl_List[u].Call = tempory_plane[a].Call;
-					pl_List[u].Type = tempory_plane[a].Type;
-					pl_List[u].Mdl = tempory_plane[a].Mdl;
-					pl_List[u].From = tempory_plane[a].From;
-					pl_List[u].To = tempory_plane[a].To;
-					pl_List[u].Op = tempory_plane[a].Op;
-					pl_List[u].Alt = (int)(tempory_plane[a].Alt * 0.0003048f);
-					pl_List[u].Spd = tempory_plane[a].Spd;
-					pl_List[u].Lat = tempory_plane[a].Lat;
-					pl_List[u].Long = tempory_plane[a].Long;
-					pl_List[u].Trak = tempory_plane[a].Trak;
-					dell_nr.Add(a);
-					break;
-				}
-			}
-		}
-		dell_checked_plane(tempory_plane); 
-
-		Debug.Log("add new data");
 		if (tempory_plane.Count != 0)
 		{
 			foreach (IdList x in tempory_plane)
 			{
-                if (!pl_List.Contains(x)) { //test
-				spawn_position.z = x.Long;
-				spawn_position.x = x.Lat;
-				spawn_position.y = (x.Alt * 0.0003048f);
-				GameObject se = Instantiate(plane_pl, spawn_position, Quaternion.identity, parent);
-				se.GetComponent<plane_info>().Id = x.Id;
-				se.GetComponent<plane_info>().Reg = x.Reg;
-				se.GetComponent<plane_info>().Icao = x.Icao;
-				se.GetComponent<plane_info>().Call = x.Call;
-				se.GetComponent<plane_info>().Type = x.Type;
-				se.GetComponent<plane_info>().Mdl = x.Mdl;
-				se.GetComponent<plane_info>().From = x.From;
-				se.GetComponent<plane_info>().To = x.To;
-				se.GetComponent<plane_info>().Op = x.Op;
-				se.GetComponent<plane_info>().Alt = (int)(x.Alt * 0.0003048f);
-				se.GetComponent<plane_info>().Spd = x.Spd;
-				se.GetComponent<plane_info>().Lat = x.Lat;
-				se.GetComponent<plane_info>().Long = x.Long;
-				se.GetComponent<plane_info>().Trak = x.Trak;
-				se.name = x.Icao;
-				se.GetComponent<plane_info>()._by = "second time";
-				x.plane = se;
-				pl_List.Add(x);
-				tmp_ac = tmp_ac + " Icao " + x.Icao + " call " + x.Call + " \n";
-				tmpi++; 
+				if (GameObject.Find(x.Icao) != null)
+				{
+					plane_update(x);
 				}
+                else
+                {
+					plane_spawner(x, "secon time");
+				}
+				
+				
 			}
 		}
 		if (pl_List.Count != 0)
@@ -336,6 +292,26 @@ public class radar : MonoBehaviour
 		}
 		tempory_plane.Clear(); 
 	}
+
+	public void plane_update(IdList a)
+    {
+		GameObject _tmp = GameObject.Find(a.Icao);
+	    plane_info p_tmp = _tmp.GetComponent<plane_info>();
+		p_tmp.Long = a.Long;
+		p_tmp.Lat = a.Lat;
+		p_tmp.Alt = (int)(a.Alt * 0.0003048f);
+	    p_tmp.Id = a.Id;
+		p_tmp.Reg = a.Reg;
+		p_tmp.Call = a.Call;
+		p_tmp.Type = a.Type;
+		p_tmp.Mdl = a.Mdl;
+		p_tmp.From = a.From;
+		p_tmp.To = a.To;
+		p_tmp.Op = a.Op; 
+		p_tmp.Spd = a.Spd;
+		p_tmp.Trak = a.Trak;  
+	}
+
 
 
 	}
