@@ -121,9 +121,10 @@ public class radar : MonoBehaviour
 		now_use_cam_id = -1;
 	}
 	
-	public void change_cam(string _id)
+	public void change_cam()
     {
-		if(main_cam.enabled == false) {
+		string _id = searc_plane.text;
+		if (main_cam.enabled == false) {
 			for(int s=0;s< pl_List.Count; s++)
             {
                 if (pl_List[s].Icao == _id) {
