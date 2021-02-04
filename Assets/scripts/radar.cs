@@ -11,23 +11,20 @@ public class radar : MonoBehaviour
 	
 	[Header("vieða info")]
 	public string jsonUrl="http://127.0.0.1/VirtualRadar/AircraftList.json";
-
-
 	public GameObject plane_pl,main_cam_gb;
 	public Transform parent;
 	public Text list_ac;
-	public Dropdown m_Dropdown;
-	[Header("-----main cam-----")]
+	[Header("-----change cam-----")]
 	public int now_use_cam_id=-1;
 	public bool ipy = false; // main off/on
 	public Camera main_cam;
+	public InputField searc_plane;
 	[Header("------------------")]
     private jsonDataclass jsnData;
 	private Coroutine s_host = null;
 	private string tmp_ac= string.Empty;
 	int tmpi = -1;
 	bool first_time_b = false;
-	private List<string> options = new List<string>();
 	private List<int> dell_nr = new List<int>();
 	[Header("privati info")]
 	[SerializeField] private Vector3 spawn_position;
@@ -94,7 +91,11 @@ public class radar : MonoBehaviour
 					data_update();
 					tempory_plane = jsnData.acList;
                     }
-				check_or_exsist();
+                    if (pl_List.Count != 0)
+                    {
+					check_or_exsist();
+                    }
+
 				}
 
 				
@@ -178,14 +179,11 @@ public class radar : MonoBehaviour
 				{
 					tmp_ac = tmp_ac + " Icao " + x.Icao + " call " + x.Call + " \n";
 				}
-				string option = " Icao " + x.Icao;
-				options.Add(option);
 				tmpi++;
 			}
 			pl_List = tempory_plane;
             if (pl_List.Count!=0)
 			{
-			select_box_down_update(options);
 			text_box_update(tmp_ac);
             }
 			tempory_plane.Clear();
@@ -197,8 +195,7 @@ public class radar : MonoBehaviour
 	}
 
 	public void data_update()
-    {
-		//options.Clear();
+    { 
 		Debug.Log("start data update");
 		for (int a = 0; a < tempory_plane.Count; a++)
 		{
@@ -253,14 +250,11 @@ public class radar : MonoBehaviour
 				x.plane = se;
 				pl_List.Add(x);
 				tmp_ac = tmp_ac + " Icao " + x.Icao + " call " + x.Call + " \n";
-				string option = " Icao " + x.Icao;
-				tmpi++;
-				options.Add(option);
+				tmpi++; 
 			}
 		}
 		if (pl_List.Count != 0)
-		{
-			select_box_down_update(options);
+		{ 
 			text_box_update(tmp_ac);
 		}
 	}
@@ -268,8 +262,7 @@ public class radar : MonoBehaviour
 	public void check_or_exsist()
     {
 		Debug.Log("dell old data");
-
-		List<string> options_tmp = new List<string>();
+		 
 
 		for (int u = 0; u < tempory_plane.Count; u++)
 		{
@@ -278,8 +271,6 @@ public class radar : MonoBehaviour
 				if (tempory_plane[u].Id == pl_List[a].Id)
 				{
 					third_plane.Add(pl_List[a]);
-					string option = " Icao " + pl_List[a].Icao;
-					options_tmp.Add(option);
 				}
 			}
 		}
@@ -287,8 +278,6 @@ public class radar : MonoBehaviour
 		{
             if (third_plane.Contains(pl_List[a]) == false) { Destroy(pl_List[a].plane);pl_List.Remove(pl_List[a]);}
 		}
-		options = options_tmp;
-		select_box_down_update(options);
 		for (int y=0;y< pl_List.Count; y++)
                     {
 						if (tmp_ac == string.Empty)
@@ -306,7 +295,6 @@ public class radar : MonoBehaviour
 					text_box_update(tmp_ac);
 				}
 				tempory_plane.Clear();
-		        options.Clear();
 		}
 
 	public void text_box_update(string a)
@@ -315,16 +303,12 @@ public class radar : MonoBehaviour
 	tmp_ac = string.Empty;
 	}
 
-	public void select_box_down_update(List<string> a)
-    {
-		m_Dropdown.ClearOptions();
-		m_Dropdown.AddOptions(a);
-	}
 
 	public void dell_checked_plane(List<IdList> a)
     {
 		Debug.Log("trinamu skaièius: " + dell_nr.Count);
-		for(int i= dell_nr.Count; i>0;i--)
+		int tmp_c = dell_nr.Count;
+		for (int i= 0; i<tmp_c;i++)
         {
 			a.Remove(a[dell_nr[i]]);
 		}
