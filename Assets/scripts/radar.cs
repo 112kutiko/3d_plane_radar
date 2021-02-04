@@ -19,6 +19,7 @@ public class radar : MonoBehaviour
 	public bool ipy = false; // main off/on
 	public Camera main_cam;
 	public InputField searc_plane;
+	public string _now_plane="";
 	[Header("------------------")]
     private jsonDataclass jsnData;
 	private Coroutine s_host = null;
@@ -117,7 +118,7 @@ public class radar : MonoBehaviour
 
 		}
         }
-		
+		now_use_cam_id = -1;
 	}
 	
 	public void change_cam(string _id)
@@ -126,13 +127,15 @@ public class radar : MonoBehaviour
 			for(int s=0;s< pl_List.Count; s++)
             {
                 if (pl_List[s].Icao == _id) {
-                    if (now_use_cam_id != -1)
+					_now_plane = _id;
+
+					if (now_use_cam_id != -1)
                     {
 						pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
                     }
 				    now_use_cam_id=s;
 					pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-					Debug.Log("cam  id: " + y + "main cam: " + ipy);
+					Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
 				}
             }
 		} else {
@@ -147,6 +150,7 @@ public class radar : MonoBehaviour
 					}
 					now_use_cam_id = s;
 					pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
+					_now_plane = _id;
 					Debug.Log("cam  id: " + y + "main cam: " + ipy);
 				}
 			}
