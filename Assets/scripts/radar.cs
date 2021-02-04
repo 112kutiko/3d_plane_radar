@@ -24,13 +24,12 @@ public class radar : MonoBehaviour
 	private Coroutine s_host = null;
 	private string tmp_ac= string.Empty;
 	int tmpi = -1;
-	public bool first_time_b = false;
-	private List<int> dell_nr = new List<int>();
+	public bool first_time_b = false; 
 	[Header("privati info")]
 	[SerializeField] private Vector3 spawn_position;
     [SerializeField] private int lektuvu_zonoje;
 	[Header("lektuvai")]
-	public List<IdList> pl_List, tempory_plane, third_plane;
+	public List<IdList> pl_List, tempory_plane;
 
 	void Start()
     {
@@ -93,6 +92,7 @@ public class radar : MonoBehaviour
                  }
                  if (pl_List.Count != 0)
                     {
+					tempory_plane = jsnData.acList;
 					check_or_exsist();
                     }
 
@@ -171,7 +171,7 @@ public class radar : MonoBehaviour
 
 	public void check_or_exsist()
     {
-
+		List<string> _on,_off,_d;
 		Debug.Log("dell old data");
 		for (int u = 0; u < tempory_plane.Count; u++)
 		{
@@ -179,30 +179,28 @@ public class radar : MonoBehaviour
 			{
 				if (tempory_plane[u].Id == pl_List[a].Id)
 				{
-					third_plane.Add(pl_List[a]);
+					_on.Add(pl_List[a].Id);
 				}
 			}
 		}
 		for (int a = 0; a < pl_List.Count; a++)
 		{
-			for (int s = 0; s < third_plane.Count; s++)
-			{
-				if (third_plane[s].Id == pl_List[a].Id)
-                {
-				 Debug.Log("veikia"); 
-				 Destroy(pl_List[a].plane);
-				 pl_List.Remove(pl_List[a]);
-				 third_plane.Remove(third_plane[s]);
-				}
-			}		
+			_off.Add(pl_List[a].Id);
 		}
+		_d = _off.Except(_on);
 
-        if (pl_List.Count != 0)
-        {
-		 text_reload();
-        }
-
-		third_plane.Clear();
+			for (int s = 0; s < pl_List.Count; s++)
+			{
+				for(int y = 0; y < _d.Count; y++)
+            {
+                if (pl_List[s].Id == _d[y])
+                {
+					dell_checked_plane(pl_List, pl_List[s]);
+				}
+            }
+	
+			
+			}		
 		tempory_plane.Clear();
 		}
 
@@ -214,27 +212,15 @@ public class radar : MonoBehaviour
 	}
 
 
-	public void dell_checked_plane(List<IdList> a)
+	public void dell_checked_plane(List<IdList> s, IdList a)
     {
-		if (dell_nr.Count != 0)
-		{
-			if (a.Count != 0)
-			{
-				Debug.Log("plane skaièius: " + a.Count);
-				Debug.Log("trinamu skaièius: " + dell_nr.Count);
-				int tmp_c = dell_nr.Count;
-				for (int i = 0; i < tmp_c; i++)
-				{
-					Destroy(a[dell_nr[i]].plane);
-					a.Remove(a[dell_nr[i]]);
-				}
+		Debug.Log("trinama ");
+		Destroy(a.plane);
+		s.Remove(a);
+		text_reload();
+	}
 
-			}
-			dell_nr = new List<int>();
-			Debug.Log("dell skaièius: " + dell_nr.Count);
-		}
-
-    }
+    
 
 	public void plane_spawner(IdList a,string then)
 	{
