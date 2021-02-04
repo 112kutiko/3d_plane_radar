@@ -172,6 +172,7 @@ public class radar : MonoBehaviour
 				se.GetComponent<plane_info>().Long = x.Long;
 				se.GetComponent<plane_info>().Trak = x.Trak;
 				se.name = x.Icao;
+				se.GetComponent<plane_info>()._by = "first time";
 				x.plane = se;
 
 				if (tmp_ac == string.Empty)

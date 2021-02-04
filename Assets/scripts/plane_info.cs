@@ -32,9 +32,10 @@ public class plane_info : MonoBehaviour
     public float Lat; //cor
     public float Long;//cor
     public float Trak; //direction
+    [Header("create by info")]
+    public string _by;
 
-
-        void Start()
+    void Start()
     {
         AbstractMap[] tmp = FindObjectsOfType<AbstractMap>();
         _map = tmp[0];
