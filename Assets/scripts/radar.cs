@@ -221,7 +221,7 @@ public class radar : MonoBehaviour
 				}
 			}
 		}
-		dell_checked_plane(tempory_plane);
+		if (dell_nr.Count != 0) { dell_checked_plane(tempory_plane); }
 
 		Debug.Log("add new data");
 		if (tempory_plane.Count != 0)
