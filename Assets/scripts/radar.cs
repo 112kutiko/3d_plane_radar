@@ -150,8 +150,10 @@ public class radar : MonoBehaviour
 		if (pl_List.Count == 0)
 		{
 			Debug.Log("start first data create");
-			plane_spawner(tempory_plane,"first time");
-
+			foreach (IdList x in tempory_plane)
+			{
+				plane_spawner(x, "first time");
+			}
 				}
 		else
 		{
@@ -289,51 +291,50 @@ public class radar : MonoBehaviour
 
 			}
 			dell_nr = new List<int>();
+			Debug.Log("dell skaièius: " + dell_nr.Count);
 		}
 
     }
-	public void plane_spawner(List<IdList> a,string then)
+	public void plane_spawner(IdList a,string then)
 	{
-		foreach (IdList x in a)
-		{
-			spawn_position.z = x.Long;
-			spawn_position.x = x.Lat;
-			spawn_position.y = (x.Alt * 0.0003048f);
+		
+			spawn_position.z = a.Long;
+			spawn_position.x = a.Lat;
+			spawn_position.y = (a.Alt * 0.0003048f);
 			GameObject se = Instantiate(plane_pl, spawn_position, Quaternion.identity, parent);
-			se.GetComponent<plane_info>().Id = x.Id;
-			se.GetComponent<plane_info>().Reg = x.Reg;
-			se.GetComponent<plane_info>().Icao = x.Icao;
-			se.GetComponent<plane_info>().Call = x.Call;
-			se.GetComponent<plane_info>().Type = x.Type;
-			se.GetComponent<plane_info>().Mdl = x.Mdl;
-			se.GetComponent<plane_info>().From = x.From;
-			se.GetComponent<plane_info>().To = x.To;
-			se.GetComponent<plane_info>().Op = x.Op;
-			se.GetComponent<plane_info>().Alt = (int)(x.Alt * 0.0003048f);
-			se.GetComponent<plane_info>().Spd = x.Spd;
-			se.GetComponent<plane_info>().Lat = x.Lat;
-			se.GetComponent<plane_info>().Long = x.Long;
-			se.GetComponent<plane_info>().Trak = x.Trak;
-			se.name = x.Icao;
+			se.GetComponent<plane_info>().Id = a.Id;
+			se.GetComponent<plane_info>().Reg = a.Reg;
+			se.GetComponent<plane_info>().Icao = a.Icao;
+			se.GetComponent<plane_info>().Call = a.Call;
+			se.GetComponent<plane_info>().Type = a.Type;
+			se.GetComponent<plane_info>().Mdl = a.Mdl;
+			se.GetComponent<plane_info>().From = a.From;
+			se.GetComponent<plane_info>().To = a.To;
+			se.GetComponent<plane_info>().Op = a.Op;
+			se.GetComponent<plane_info>().Alt = (int)(a.Alt * 0.0003048f);
+			se.GetComponent<plane_info>().Spd = a.Spd;
+			se.GetComponent<plane_info>().Lat = a.Lat;
+			se.GetComponent<plane_info>().Long = a.Long;
+			se.GetComponent<plane_info>().Trak = a.Trak;
+			se.name = a.Icao;
 			se.GetComponent<plane_info>()._by = then;
-			x.plane = se;
+			a.plane = se;
 
 			if (tmp_ac == string.Empty)
 			{
-				tmp_ac = " Icao " + x.Icao + " call " + x.Call + " \n";
+				tmp_ac = " Icao " + a.Icao + " call " + a.Call + " \n";
 			}
 			else
 			{
-				tmp_ac = tmp_ac + " Icao " + x.Icao + " call " + x.Call + " \n";
+				tmp_ac = tmp_ac + " Icao " + a.Icao + " call " + a.Call + " \n";
 			}
-			tmpi++;
-		}
+		tmpi++;
 		pl_List = tempory_plane;
 		if (pl_List.Count != 0)
 		{
 			text_box_update(tmp_ac);
 		}
-		tempory_plane.Clear();
+		tempory_plane.Clear(); 
 	}
 
 
