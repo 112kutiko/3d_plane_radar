@@ -24,7 +24,7 @@ public class radar : MonoBehaviour
 	private Coroutine s_host = null;
 	private string tmp_ac= string.Empty;
 	int tmpi = -1;
-	bool first_time_b = false;
+	public bool first_time_b = false;
 	private List<int> dell_nr = new List<int>();
 	[Header("privati info")]
 	[SerializeField] private Vector3 spawn_position;
@@ -66,9 +66,7 @@ public class radar : MonoBehaviour
 	private void ProcessJsonDate(string _url){
 		bool fg = false;
 		jsonDataclass jsnData = JsonUtility.FromJson<jsonDataclass>(_url);
-		Debug.Log("____________________________");
-		Debug.Log("ðaltinis: " + jsnData.src +" lektuvu zonoje: "+ jsnData.acList.Count);
-		Debug.Log("____________________________");
+
 		lektuvu_zonoje = jsnData.acList.Count;
 		if(jsnData.acList.Count!=0 && jsnData.acList.Count != null)
         {
@@ -78,10 +76,14 @@ public class radar : MonoBehaviour
 				Debug.Log("data get fail");
 			}
             else
-            { 
-               if (first_time_b == false)
+            {
+				Debug.Log("____________________________");
+				Debug.Log("ðaltinis: " + jsnData.src + " lektuvu zonoje: " + jsnData.acList.Count);
+				Debug.Log("____________________________");
+				if (first_time_b == false)
                {
-			    first_time();
+					Debug.Log("first time");
+					first_time();
 				first_time_b = !first_time_b;
                 }
                 else
@@ -169,6 +171,7 @@ public class radar : MonoBehaviour
 				se.GetComponent<plane_info>().Lat = x.Lat;
 				se.GetComponent<plane_info>().Long = x.Long;
 				se.GetComponent<plane_info>().Trak = x.Trak;
+				se.name = x.Icao;
 				x.plane = se;
 
 				if (tmp_ac == string.Empty)
@@ -221,14 +224,14 @@ public class radar : MonoBehaviour
 				}
 			}
 		}
-		if (dell_nr.Count != 0) { dell_checked_plane(tempory_plane); }
+		dell_checked_plane(tempory_plane); 
 
 		Debug.Log("add new data");
 		if (tempory_plane.Count != 0)
 		{
 			foreach (IdList x in tempory_plane)
 			{
-
+                if (!pl_List.Contains(x)) { //test
 				spawn_position.z = x.Long;
 				spawn_position.x = x.Lat;
 				spawn_position.y = (x.Alt * 0.0003048f);
@@ -247,10 +250,12 @@ public class radar : MonoBehaviour
 				se.GetComponent<plane_info>().Lat = x.Lat;
 				se.GetComponent<plane_info>().Long = x.Long;
 				se.GetComponent<plane_info>().Trak = x.Trak;
+				se.name = x.Icao;
 				x.plane = se;
 				pl_List.Add(x);
 				tmp_ac = tmp_ac + " Icao " + x.Icao + " call " + x.Call + " \n";
 				tmpi++; 
+				}
 			}
 		}
 		if (pl_List.Count != 0)
@@ -306,16 +311,25 @@ public class radar : MonoBehaviour
 
 	public void dell_checked_plane(List<IdList> a)
     {
-        if (a.Count != 0)
-        {
-		Debug.Log("trinamu skaièius: " + dell_nr.Count);
-		int tmp_c = dell_nr.Count;
-		for (int i= 0; i<tmp_c;i++)
-        {
-			a.Remove(a[dell_nr[i]]);
+		if (dell_nr.Count != 0)
+		{
+			if (a.Count != 0)
+			{
+				Debug.Log("plane skaièius: " + a.Count);
+				Debug.Log("trinamu skaièius: " + dell_nr.Count);
+				int tmp_c = dell_nr.Count;
+				for (int i = 0; i < tmp_c; i++)
+				{
+					Destroy(a[dell_nr[i]].plane);
+					a.Remove(a[dell_nr[i]]);
+				}
+
+			}
+			dell_nr = new List<int>();
 		}
-		
-        }
-		dell_nr.Clear();
+
     }
+
+
+
 	}
