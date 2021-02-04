@@ -71,7 +71,7 @@ public class radar : MonoBehaviour
 		if(jsnData.acList.Count!=0 && jsnData.acList.Count != null)
         {
 			tempory_plane=jsnData.acList;
-            if (jsnData.acList.Count == 0)
+            if (tempory_plane.Count == 0)
             {
 				Debug.Log("data get fail");
 			}
@@ -147,18 +147,13 @@ public class radar : MonoBehaviour
 
 	public void first_time()
     {
-		if (pl_List.Count == 0)
-		{
+		
 			Debug.Log("start first data create");
 			foreach (IdList x in tempory_plane)
 			{
 				plane_spawner(x, "first time");
 			}
-				}
-		else
-		{
-			Debug.Log("no plane in radar");
-		}
+			
 	}
 
 	public void data_update()
