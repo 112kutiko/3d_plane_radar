@@ -87,22 +87,17 @@ public class radar : MonoBehaviour
 			     	first_time_b = true;
                 }
                 else
-                {
-                    
+				{ 
 					data_update();
 					tempory_plane = jsnData.acList;
-                    }
-                    if (pl_List.Count != 0)
+                 }
+                 if (pl_List.Count != 0)
                     {
 					check_or_exsist();
                     }
 
 				}
-
-				
-            }
-        }
-        else{ list_ac.text = ""; }
+        }else{  }
 	}
 
 	IEnumerator update_plane()
@@ -172,19 +167,12 @@ public class radar : MonoBehaviour
 				}
 			}
 		}
-
-
-		if (pl_List.Count != 0)
-		{ 
-			text_box_update(tmp_ac);
-		}
 	}
 
 	public void check_or_exsist()
     {
-		Debug.Log("dell old data");
-		 
 
+		Debug.Log("dell old data");
 		for (int u = 0; u < tempory_plane.Count; u++)
 		{
 			for (int a = 0; a < pl_List.Count; a++)
@@ -197,29 +185,17 @@ public class radar : MonoBehaviour
 		}
 		for (int a = 0; a < pl_List.Count; a++)
 		{
-            if (third_plane.Contains(pl_List[a]) == false) { Destroy(pl_List[a].plane);pl_List.Remove(pl_List[a]);}
+            if (third_plane.Contains(pl_List[a]) == false) { Debug.Log("veikia"); Destroy(pl_List[a].plane);pl_List.Remove(pl_List[a]);}
 		}
-		for (int y=0;y< pl_List.Count; y++)
-                    {
-						if (tmp_ac == string.Empty)
-						{
-							tmp_ac = " Icao " + pl_List[y].Icao + " call " + pl_List[y].Call + " \n";
-						}
-						else
-						{
-							tmp_ac = tmp_ac + " Icao " + pl_List[y].Icao + " call " + pl_List[y].Call + " \n";
-						}
-						
-					}
-				if (pl_List.Count != 0)
-				{
-					text_box_update(tmp_ac);
-				}
+		 text_reload();
+
+
 				tempory_plane.Clear();
 		}
 
 	public void text_box_update(string a)
 	{
+		list_ac.text = "";
 		list_ac.text = a;
 	tmp_ac = string.Empty;
 	}
@@ -246,6 +222,7 @@ public class radar : MonoBehaviour
 		}
 
     }
+
 	public void plane_spawner(IdList a,string then)
 	{
 			Debug.Log("plane id: "+a.Icao);
@@ -270,22 +247,12 @@ public class radar : MonoBehaviour
 			se.name = a.Icao;
 			se.GetComponent<plane_info>()._by = then;
 			a.plane = se;
-
-			if (tmp_ac == string.Empty)
-			{
-				tmp_ac = " Icao " + a.Icao + " call " + a.Call + " \n";
-			}
-			else
-			{
-				tmp_ac = tmp_ac + " Icao " + a.Icao + " call " + a.Call + " \n";
-			}
 	    	tmpi++;
 		if (pl_List.Count != 0)
 		{
-			text_box_update(tmp_ac);
+			text_reload();
 		}
 	}
-
 	public void plane_update(IdList a)
     {
 		GameObject _tmp = GameObject.Find(a.Icao);
@@ -302,9 +269,30 @@ public class radar : MonoBehaviour
 		p_tmp.To = a.To;
 		p_tmp.Op = a.Op; 
 		p_tmp.Spd = a.Spd;
-		p_tmp.Trak = a.Trak;  
+		p_tmp.Trak = a.Trak;
+		if (pl_List.Count != 0)
+		{
+			text_reload();
+		}
 	}
-
-
+	public void text_reload()
+    {
+		tmp_ac == "";
+        if (pl_List.Count != 0)
+        {
+		for (int i= 0;i<pl_List.Count;i++)
+        {
+			if (tmp_ac =="")
+			{
+				tmp_ac = " Icao " + pl_List[i].Icao + " call " + pl_List[i].Call + " \n";
+			}
+			else
+			{
+				tmp_ac = tmp_ac + " Icao " + pl_List[i].Icao + " call " + pl_List[i].Call + " \n";
+			}
+		}
+		text_box_update(tmp_ac);
+        }
+	}
 
 	}
