@@ -171,7 +171,7 @@ public class radar : MonoBehaviour
 
 	public void check_or_exsist()
     {
-		List<string> _on,_off,_d;
+		List<string> _on = new List<string>(),_off = new List<string>();
 		Debug.Log("dell old data");
 		for (int u = 0; u < tempory_plane.Count; u++)
 		{
@@ -187,7 +187,7 @@ public class radar : MonoBehaviour
 		{
 			_off.Add(pl_List[a].Id);
 		}
-		_d = _off.Except(_on);
+		List<string> _d = _off.Except(_on).ToList();
 
 			for (int s = 0; s < pl_List.Count; s++)
 			{
