@@ -720,7 +720,7 @@ namespace Mapbox.Unity.Map
 			//add loca m
 			//
 			float p_lat= PlayerPrefs.GetFloat("_lat_c"), p_long = PlayerPrefs.GetFloat("_long_c");
-			tp_locations = new Mapbox.Utils.Vector2d(p_lat, p_long);
+			Mapbox.Utils.Vector2d tp_locations = new Mapbox.Utils.Vector2d(p_lat, p_long);
 
 			//
 			_centerLatitudeLongitude = Conversions.StringToLatLon(options.locationOptions.latitudeLongitude);
