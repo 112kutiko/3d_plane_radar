@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class meniu_hl : MonoBehaviour
 {
-    public Text Username_field;
+    public Text Username_field, _long, _lat;
     public string url_link;
-    public InputField _long,_lat;
     public float _c_long=0f, _c_lat = 0f;
 
 
