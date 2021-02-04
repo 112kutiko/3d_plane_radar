@@ -851,13 +851,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 398623546}
   m_TextComponent: {fileID: 1779625612}
   m_Placeholder: {fileID: 159264132}
-  m_ContentType: 3
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 2
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 2
+  m_CharacterValidation: 0
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -994,13 +994,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 552947049}
   m_TextComponent: {fileID: 713700904}
   m_Placeholder: {fileID: 152682351}
-  m_ContentType: 3
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 2
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 2
+  m_CharacterValidation: 0
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -1402,9 +1402,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Username_field: {fileID: 103116180}
+  _long: {fileID: 1779625612}
+  _lat: {fileID: 713700904}
   url_link: 
-  _long: {fileID: 398623545}
-  _lat: {fileID: 552947048}
   _c_long: 0
   _c_lat: 0
 --- !u!4 &798826940
