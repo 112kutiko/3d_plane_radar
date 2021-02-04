@@ -84,7 +84,7 @@ public class radar : MonoBehaviour
                {
 					Debug.Log("first time");
 					first_time();
-				first_time_b = !first_time_b;
+				first_time_b = true;
                 }
                 else
                 {
@@ -248,7 +248,7 @@ public class radar : MonoBehaviour
     }
 	public void plane_spawner(IdList a,string then)
 	{
-		
+			Debug.Log("plane id: "+a.Icao);
 			spawn_position.z = a.Long;
 			spawn_position.x = a.Lat;
 			spawn_position.y = (a.Alt * 0.0003048f);
@@ -279,7 +279,7 @@ public class radar : MonoBehaviour
 			{
 				tmp_ac = tmp_ac + " Icao " + a.Icao + " call " + a.Call + " \n";
 			}
-		tmpi++;
+	//	tmpi++;
 		pl_List = tempory_plane;
 		if (pl_List.Count != 0)
 		{
