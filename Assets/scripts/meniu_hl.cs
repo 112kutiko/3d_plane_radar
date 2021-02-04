@@ -25,8 +25,8 @@ public class meniu_hl : MonoBehaviour
         {
         url_link = Username_field.text.ToString();
         PlayerPrefs.SetString("url_1", url_link);
-            _c_lat = _lat.text;
-            _c_long = _long.text;
+            _c_lat = float.Parse(_lat.text);
+            _c_long = float.Parse(_long.text);
             PlayerPrefs.SetFloat("_lat_c",_c_lat);
             PlayerPrefs.SetFloat("_long_c", _c_long);
         }
