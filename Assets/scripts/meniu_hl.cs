@@ -29,7 +29,7 @@ public class meniu_hl : MonoBehaviour
             float tmp_c_m;
                     if (float.TryParse(_lat.text, out tmp_c_m))
                     {
-                        Debug.Log(tmp_c_m);
+                        Debug.Log("lat: "+tmp_c_m);
                         _c_lat = tmp_c_m;
                     }
                     else
@@ -38,11 +38,11 @@ public class meniu_hl : MonoBehaviour
                     }
                       if (float.TryParse(_long.text, out _c_long))
                     {
-                        Debug.Log(_c_long);
+                        Debug.Log("long: " + _c_long);
                     }
                     else
                      {
-                        Debug.Log("lat fail: " + _long.text);
+                        Debug.Log("long fail: " + _long.text);
 
                      }
              PlayerPrefs.SetFloat("_lat_c",_c_lat);
