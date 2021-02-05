@@ -107,9 +107,9 @@ public class radar : MonoBehaviour
 		StartCoroutine(getDate());
 		s_host = null;
 	}
-	public void main_cam_activator(bool isu=true)
+	public void main_cam_activator()
     {
-		main_cam.enabled = isu;
+		main_cam.enabled = true;
         if (pl_List.Count != 0)
         {for(int i = 0; i < pl_List.Count; i++)
 		{

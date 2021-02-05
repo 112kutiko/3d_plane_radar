@@ -27,7 +27,7 @@ public class plane_cam_hold : MonoBehaviour
     {
         if (plane_cam.enabled)
         {
-            radar.instance.main_cam_activator(true);
+            radar.instance.main_cam_activator();
         }
     }
 }
