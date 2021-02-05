@@ -28,6 +28,7 @@ MonoBehaviour:
   Lat: 0
   Long: 0
   Trak: 0
+  _by: 
 --- !u!114 &5046672943820763454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,7 +42,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plane_cam: {fileID: 2909770666791570505}
-  cam_p: {fileID: 892834436927088716}
+  main_plane: {fileID: 877645737764214303}
 --- !u!1 &892834436927088716
 GameObject:
   m_ObjectHideFlags: 0

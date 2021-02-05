@@ -5,6 +5,7 @@ using UnityEngine;
 public class plane_cam_hold : MonoBehaviour
 {
     public Camera plane_cam;
+    public GameObject main_plane;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,8 @@ public class plane_cam_hold : MonoBehaviour
     {
         if (true != radar.instance.main_cam.enabled)
         {
-            plane_cam.enabled = !plane_cam.enabled;
+            radar.instance._now_plane = main_plane.GetComponent<plane_info>().Icao;
+              plane_cam.enabled = !plane_cam.enabled;
         }
     }
     void OnDestroy()
