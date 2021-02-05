@@ -58,10 +58,5 @@ public class plane_info : MonoBehaviour
             transform.position = new Vector3(transform.position.x, -100, transform.position.z);
         }
     }
-    void OnDestroy()
-    {
-        if (Icao==radar.instance._now_plane) {
-            radar.instance.main_cam_activator(true);
-        }
-    }
+   
 }
