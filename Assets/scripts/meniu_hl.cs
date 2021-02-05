@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Globalization;
+
 
 public class meniu_hl : MonoBehaviour
 {
     public Text Username_field, _long, _lat;
     public string url_link;
     public float _c_long=0f, _c_lat = 0f;
-
 
     private int cop = 0;
     // Start is called before the first frame update
@@ -20,18 +21,34 @@ public class meniu_hl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
         if (cop == 0)
         {
-        url_link = Username_field.text.ToString();
-        PlayerPrefs.SetString("url_1", url_link);
-            string t1 = _lat.text.ToString();
-            string t2 = _long.text.ToString();
-            _c_lat =  float.Parse(t1);
-            _c_long = float.Parse(t2);
+            url_link = Username_field.text.ToString();
+            PlayerPrefs.SetString("url_1", url_link);  
+            float tmp_c_m;
+                    if (float.TryParse(_lat.text, out tmp_c_m))
+                    {
+                        Debug.Log(tmp_c_m);
+                        _c_lat = tmp_c_m;
+                    }
+                    else
+                    {
+                        Debug.Log("lat fail: "+ _lat.text);
+                    }
+                      if (float.TryParse(_long.text, out _c_long))
+                    {
+                        Debug.Log(_c_long);
+                    }
+                    else
+                     {
+                        Debug.Log("lat fail: " + _long.text);
 
-            PlayerPrefs.SetFloat("_lat_c",_c_lat);
-            PlayerPrefs.SetFloat("_long_c", _c_long);
+                     }
+             PlayerPrefs.SetFloat("_lat_c",_c_lat);
+             PlayerPrefs.SetFloat("_long_c", _c_long); 
         }
+        
 
     }
 
