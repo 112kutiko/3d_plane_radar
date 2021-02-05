@@ -83,19 +83,19 @@ public class radar : MonoBehaviour
 					Debug.Log("first time");
 					first_time(jsnData.acList);
 			     	first_time_b = true;
-					tmpi=plane_pl.Count;
+					tmpi=pl_List.Count;
 				}
                 else
 				{ 
 					data_update();
 					tempory_plane = jsnData.acList;
-					tmpi = plane_pl.Count;
+					tmpi = pl_List.Count;
 				}
                  if (pl_List.Count != 0)
                     {
 					tempory_plane = jsnData.acList;
 					check_or_exsist();
-					tmpi = plane_pl.Count;
+					tmpi = pl_List.Count;
 				}
 
 				}
