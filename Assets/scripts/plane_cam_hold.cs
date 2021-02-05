@@ -20,7 +20,9 @@ public class plane_cam_hold : MonoBehaviour
     }
     public void cam_play()
     {
-        plane_cam.enabled = !plane_cam.enabled;
- 
+        if (true == radar.instance.main_cam.enabled)
+        {
+            plane_cam.enabled = !plane_cam.enabled;
+        }
     }
 }
