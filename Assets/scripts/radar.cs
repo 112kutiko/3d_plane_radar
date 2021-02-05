@@ -32,6 +32,7 @@ public class radar : MonoBehaviour
 	[Header("lektuvai")]
 	public List<IdList> pl_List, tempory_plane;
 
+
 	void Start()
     {
 		instance = this;
@@ -39,13 +40,11 @@ public class radar : MonoBehaviour
 		else{jsonUrl = "http://127.0.0.1/VirtualRadar/AircraftList.json";}
 		 StartCoroutine(getDate());
     }
-
     void Update()
     {
 		if (s_host == null)
 		{ s_host = StartCoroutine(update_plane()); }
 	}
-
 	IEnumerator getDate()
     {
 		Debug.Log("_______________");
@@ -62,7 +61,6 @@ public class radar : MonoBehaviour
 		Debug.Log("stop Data gain");
 		Debug.Log("_______________");
 	}
-
 	private void ProcessJsonDate(string _url){
 		bool fg = false;
 		jsonDataclass jsnData = JsonUtility.FromJson<jsonDataclass>(_url);
@@ -85,81 +83,83 @@ public class radar : MonoBehaviour
 					Debug.Log("first time");
 					first_time(jsnData.acList);
 			     	first_time_b = true;
-                }
+					tmpi=plane_pl.Count;
+				}
                 else
 				{ 
 					data_update();
 					tempory_plane = jsnData.acList;
-                 }
+					tmpi = plane_pl.Count;
+				}
                  if (pl_List.Count != 0)
                     {
 					tempory_plane = jsnData.acList;
 					check_or_exsist();
-                    }
+					tmpi = plane_pl.Count;
+				}
 
 				}
         }else{  }
 	}
-
 	IEnumerator update_plane()
 	{
 		yield return new WaitForSeconds(5f); 
 		StartCoroutine(getDate());
 		s_host = null;
 	}
-
 	public void main_cam_activator(bool isu=true)
     {
 		main_cam.enabled = isu;
         if (pl_List.Count != 0)
         {for(int i = 0; i < pl_List.Count; i++)
 		{
-			pl_List[i].plane.GetComponent<plane_cam_hold>().cam_play();
-
+		pl_List[i].plane.GetComponent<plane_cam_hold>().cam_play();
 		}
         }
 		now_use_cam_id = -1;
 	}
-	
 	public void change_cam()
     {
 		string _id = searc_plane.text;
+
+        if (_id != string.Empty && _id != null && _id != "")
+        {
 		if (main_cam.enabled == false) {
-			for(int s=0;s< pl_List.Count; s++)
-            {
-                if (pl_List[s].Icao == _id) {
-					_now_plane = _id;
-
-					if (now_use_cam_id != -1)
-                    {
-						pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-                    }
-				    now_use_cam_id=s;
-					pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-					Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
-				}
-            }
-		} else {
-		  main_cam.enabled = ipy;
-			for (int s = 0; s < pl_List.Count; s++)
-			{
-				if (pl_List[s].Icao == _id)
-				{
-					if (now_use_cam_id != -1)
+					for(int s=0;s< pl_List.Count; s++)
 					{
-						pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-					}
-					now_use_cam_id = s;
-					pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-					_now_plane = _id;
-					Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
-				}
-			}
-			ipy = !ipy; 
-		}
-		
-	}
+						if (pl_List[s].Icao == _id) {
+							_now_plane = _id;
 
+							if (now_use_cam_id != -1)
+							{
+								pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
+							}
+							now_use_cam_id=s;
+							pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
+							Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
+						}
+					}
+				} 
+				else {
+				  main_cam.enabled = ipy;
+					for (int s = 0; s < pl_List.Count; s++)
+					{
+						if (pl_List[s].Icao == _id)
+						{
+							if (now_use_cam_id != -1)
+							{
+								pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
+							}
+							now_use_cam_id = s;
+							pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
+							_now_plane = _id;
+							Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
+						}
+					}
+					ipy = !ipy; 
+				}
+        }
+	}
 	public void first_time(List<IdList> a)
     {
 		
@@ -167,11 +167,8 @@ public class radar : MonoBehaviour
 			foreach (IdList x in a)
 			{
 				plane_spawner(x, "first time");
-
-			}
-		
+			}	
 	}
-
 	public void data_update()
     { 
 		if (tempory_plane.Count != 0)
@@ -189,7 +186,6 @@ public class radar : MonoBehaviour
 			}
 		}
 	}
-
 	public void check_or_exsist()
     {
 		List<string> _on = new List<string>(),_off = new List<string>();
@@ -224,25 +220,18 @@ public class radar : MonoBehaviour
 			}		
 		tempory_plane.Clear();
 		}
-
 	public void text_box_update(string a)
 	{
 		list_ac.text = "";
 		list_ac.text = a;
-	tmp_ac = string.Empty;
+		tmp_ac = string.Empty;
 	}
-
-
 	public void dell_checked_plane(List<IdList> s, IdList a)
     {
-		Debug.Log("trinama ");
 		Destroy(a.plane);
 		s.Remove(a);
 		text_reload();
 	}
-
-    
-
 	public void plane_spawner(IdList a,string then)
 	{
 			Debug.Log("plane id: "+a.Icao);
@@ -267,12 +256,9 @@ public class radar : MonoBehaviour
 			se.name = a.Icao;
 			se.GetComponent<plane_info>()._by = then;
 			a.plane = se;
-	    	tmpi++;
-		pl_List.Add(a);
-		if (pl_List.Count != 0)
-		{
+			pl_List.Add(a);
 			text_reload();
-		}
+		
 	}
 	public void plane_update(IdList a)
     {
@@ -291,11 +277,8 @@ public class radar : MonoBehaviour
 		p_tmp.Op = a.Op; 
 		p_tmp.Spd = a.Spd;
 		p_tmp.Trak = a.Trak;
-
-		if (pl_List.Count != 0)
-		{
-			text_reload();
-		}
+		text_reload();
+		
 	}
 	public void text_reload()
     {
