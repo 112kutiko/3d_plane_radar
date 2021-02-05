@@ -56,7 +56,7 @@ public class meniu_hl : MonoBehaviour
     {
          if (url_link.Contains("AircraftList.json"))
         {
-            if(_c_lat==0f && _c_long == 0f)
+            if(_c_lat!=0f && _c_long != 0f)
             {
              Debug.Log("1");
              SceneManager.LoadScene(1);
@@ -70,7 +70,7 @@ public class meniu_hl : MonoBehaviour
         }
         else
         {
-            if (_c_lat == 0f && _c_long == 0f)
+            if (_c_lat != 0f && _c_long != 0f)
             {
                 cop = 1;
                 Debug.Log("2");
