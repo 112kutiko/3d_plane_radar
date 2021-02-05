@@ -174,8 +174,9 @@ public class radar : MonoBehaviour
 				}
 				break;
 			}
+            if (c== pl_List.Count) {Debug.Log("cam  not exsit ");  }
         }
-		Debug.Log("cam  not exsit "); 
+
 	}
 	public void first_time(List<IdList> a)
     {
