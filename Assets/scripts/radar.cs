@@ -110,10 +110,17 @@ public class radar : MonoBehaviour
 	public void main_cam_activator()
     {
 		main_cam.enabled = true;
-        if (pl_List.Count != 0)
-        {for(int i = 0; i < pl_List.Count; i++)
+		Debug.Log("main cam: " + main_cam.enabled);
+		if (pl_List.Count != 0)
+			Debug.Log("off cam");
 		{
-		pl_List[i].plane.GetComponent<plane_cam_hold>().cam_play();
+			for(int i = 0; i < pl_List.Count; i++)
+            {
+                if (pl_List[i].Icao==_now_plane)
+                {
+					pl_List[i].plane.GetComponent<plane_cam_hold>().cam_play();
+					break;
+                }
 		}
         }
 		now_use_cam_id = -1;
