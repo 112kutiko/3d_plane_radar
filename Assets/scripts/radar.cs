@@ -118,7 +118,8 @@ public class radar : MonoBehaviour
             {
                 if (pl_List[i].Icao==_now_plane)
                 {Debug.Log("off cam");
-					pl_List[i].plane.GetComponent<plane_cam_hold>().cam_play();
+					pl_List[i].plane.GetComponent<plane_cam_hold>().plane_cam.enabled = false;
+					_now_plane = string.Empty;
 					break;
                 }
 		}
