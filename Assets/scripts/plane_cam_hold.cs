@@ -21,8 +21,11 @@ public class plane_cam_hold : MonoBehaviour
     {
         if (true != radar.instance.main_cam.enabled)
         {
+            if (plane_cam.enabled == false)
+            {
             radar.instance._now_plane = main_plane.GetComponent<plane_info>().Icao;
-              plane_cam.enabled = !plane_cam.enabled;
+            }
+            plane_cam.enabled = !plane_cam.enabled;
         }
     }
     void OnDestroy()

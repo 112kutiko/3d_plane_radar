@@ -128,7 +128,7 @@ public class radar : MonoBehaviour
 					for(int s=0;s< pl_List.Count; s++)
 					{
 						if (pl_List[s].Icao == _id) {
-							_now_plane = _id;
+					 
 
 							if (now_use_cam_id != -1)
 							{
@@ -152,7 +152,7 @@ public class radar : MonoBehaviour
 							}
 							now_use_cam_id = s;
 							pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-							_now_plane = _id;
+						 
 							Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
 						}
 					}
