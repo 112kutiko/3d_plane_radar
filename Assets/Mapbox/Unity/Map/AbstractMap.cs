@@ -721,7 +721,7 @@ namespace Mapbox.Unity.Map
 			//
 			float p_lat= PlayerPrefs.GetFloat("_lat_c"), p_long = PlayerPrefs.GetFloat("_long_c");
 			Mapbox.Utils.Vector2d tp_locations = new Mapbox.Utils.Vector2d(p_lat, p_long);
-
+			Debug.Log("set cord: " + tp_locations);
 			//
 			_centerLatitudeLongitude = Conversions.StringToLatLon(options.locationOptions.latitudeLongitude);
 			_initialZoom = (int)options.locationOptions.zoom;
