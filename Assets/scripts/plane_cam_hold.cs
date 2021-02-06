@@ -30,9 +30,10 @@ public class plane_cam_hold : MonoBehaviour
     }
     void OnDestroy()
     {
-        if (plane_cam.enabled)
+        if (plane_cam.enabled==true)
         {
             radar.instance.main_cam_activator();
+            radar.instance._now_plane = "";
         }
     }
 }
