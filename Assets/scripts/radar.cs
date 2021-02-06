@@ -129,53 +129,61 @@ public class radar : MonoBehaviour
 	public void change_cam()
     {
 		string _id = searc_plane.text;
-		for(int c = 0; c < pl_List.Count; c++)
+        if (pl_List.Count == 0)
         {
-			if (pl_List[c].Icao == _id)
-			{
-				if (main_cam.enabled == false)
-				{
-					for (int s = 0; s < pl_List.Count; s++)
-					{
-						if (pl_List[s].Icao == _id)
-						{
 
-
-							if (now_use_cam_id != -1)
-							{
-								pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-							}
-							now_use_cam_id = s;
-							pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-							Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
-							break;
-						}
-					}
-
-				}
-				else
-				{
-					main_cam.enabled = ipy;
-					for (int s = 0; s < pl_List.Count; s++)
-					{
-						if (pl_List[s].Icao == _id)
-						{
-							if (now_use_cam_id != -1)
-							{
-								pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-							}
-							now_use_cam_id = s;
-							pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-
-							Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
-						}
-					}
-					ipy = !ipy;
-				}
-				break;
-			}
-            if (c== pl_List.Count) {Debug.Log("cam  not exsit ");  }
         }
+        else
+        {
+		for(int c = 0; c < pl_List.Count; c++)
+				{
+					if (pl_List[c].Icao == _id)
+					{
+						if (main_cam.enabled == false)
+						{
+							for (int s = 0; s < pl_List.Count; s++)
+							{
+								if (pl_List[s].Icao == _id)
+								{
+
+
+									if (now_use_cam_id != -1)
+									{
+										pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
+									}
+									now_use_cam_id = s;
+									pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
+									Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
+									break;
+								}
+							}
+
+						}
+						else
+						{
+							main_cam.enabled = ipy;
+							for (int s = 0; s < pl_List.Count; s++)
+							{
+								if (pl_List[s].Icao == _id)
+								{
+									if (now_use_cam_id != -1)
+									{
+										pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
+									}
+									now_use_cam_id = s;
+									pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
+
+									Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
+								}
+							}
+							ipy = !ipy;
+						}
+						break;
+					}
+					if (c== pl_List.Count) {Debug.Log("cam  not exsit ");  }
+				}
+        }
+		
 
 	}
 	public void first_time(List<IdList> a)
@@ -276,7 +284,6 @@ public class radar : MonoBehaviour
 			a.plane = se;
 			pl_List.Add(a);
 			text_reload();
-		
 	}
 	public void plane_update(IdList a)
     {
@@ -317,5 +324,4 @@ public class radar : MonoBehaviour
 	
         }	text_box_update(tmp_ac);
 	}
-
 	}
