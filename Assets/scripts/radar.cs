@@ -314,8 +314,8 @@ public class radar : MonoBehaviour
 				tmp_ac = tmp_ac + " Icao " + pl_List[i].Icao + " call " + pl_List[i].Call + " \n";
 			}
 		}
-		text_box_update(tmp_ac);
-        }
+	
+        }	text_box_update(tmp_ac);
 	}
 
 	}
