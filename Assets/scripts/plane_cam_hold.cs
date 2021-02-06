@@ -32,6 +32,7 @@ public class plane_cam_hold : MonoBehaviour
     {
         if (plane_cam.enabled==true)
         {
+            Debug.Log(plane_cam.enabled);
             radar.instance.main_cam_activator();
             radar.instance._now_plane = "";
         }
