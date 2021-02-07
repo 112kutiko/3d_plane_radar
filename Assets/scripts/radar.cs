@@ -120,6 +120,7 @@ public class radar : MonoBehaviour
                 {Debug.Log("off cam");
 					pl_List[i].plane.GetComponent<plane_cam_hold>().plane_cam.enabled = false;
 					_now_plane = string.Empty;
+					now_use_cam_id = -1;
 					break;
                 }
 		}
