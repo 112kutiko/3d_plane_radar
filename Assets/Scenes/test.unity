@@ -944,6 +944,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f436514834c5cb4bb9c8700a6791403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panel: {fileID: 953642600}
+  plane_id: {fileID: 1675832931}
+  plane_reg: {fileID: 1133052781}
+  plane_Icao: {fileID: 185184723}
+  plane_call: {fileID: 720949836}
+  plane_type: {fileID: 1282295929}
+  plane_mdl: {fileID: 289537202}
+  plane_from: {fileID: 1057084494}
+  plane_to: {fileID: 994388281}
+  plane_op: {fileID: 1073107494}
+  plane_alt: {fileID: 809509458}
+  plane_spd: {fileID: 1242460684}
+  plane_lat: {fileID: 175447659}
+  plane_long: {fileID: 1824157802}
+  plane_track: {fileID: 1923623519}
 --- !u!4 &350450368
 Transform:
   m_ObjectHideFlags: 0
