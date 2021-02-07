@@ -254,6 +254,11 @@ public class radar : MonoBehaviour
 	}
 	public void dell_checked_plane(List<IdList> s, IdList a)
     {
+        if (_now_plane==a.Icao)
+        {
+			a.plane.GetComponent<plane_cam_hold>().cam_back();
+
+		}
 		Destroy(a.plane);
 		s.Remove(a);
 		text_reload();

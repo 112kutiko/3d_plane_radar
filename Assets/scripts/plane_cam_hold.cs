@@ -28,7 +28,7 @@ public class plane_cam_hold : MonoBehaviour
             plane_cam.enabled = !plane_cam.enabled;
         }
     }
-    void OnDestroy()
+    public void cam_back()
     {
         if (plane_cam.enabled==true)
         {
@@ -36,5 +36,10 @@ public class plane_cam_hold : MonoBehaviour
             radar.instance.main_cam_activator();
             radar.instance._now_plane = "";
         }
+    }
+
+    void OnDestroy()
+    {
+
     }
 }
