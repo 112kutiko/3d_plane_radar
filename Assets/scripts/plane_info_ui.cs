@@ -20,6 +20,10 @@ public class plane_info_ui : MonoBehaviour
     void Update()
     {
         if(radar.instance._now_plane!=""&& radar.instance._now_plane != string.Empty && radar.instance.now_use_cam_id != -1) { on_off = true; on_info(on_off); _tmp_plane = radar.instance._now_plane; set_info(); } else { on_off = false; on_info(on_off); }
+        if (on_off)
+        {
+            set_info();
+        }
     }
     public void on_info(bool i) { panel.SetActive(i); }
 
