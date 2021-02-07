@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class plane_info_ui : MonoBehaviour
 {
-    public static radar instance;
+    public static plane_info_ui instance;
     // Start is called before the first frame update
     void Start()
     {
