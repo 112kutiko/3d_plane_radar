@@ -33,6 +33,12 @@ public class plane_info_ui : MonoBehaviour
                 plane_reg.text = "registration: " + radar.instance.pl_List[i].Reg;
                 plane_Icao.text = "ICao: " + radar.instance.pl_List[i].Icao;
                 plane_call.text = "Call: " + radar.instance.pl_List[i].Call;
+                plane_type.text = "plane type: " + radar.instance.pl_List[i].Type;
+
+
+
+
+
 
                 break;
             }
