@@ -27,7 +27,7 @@ public class plane_info : MonoBehaviour
     public string From; //ið
     public string To; //i
     public string Op;//operatorius
-    public int Alt; // nepilnos konvertacijos
+    public int Alt; //km
     public float Spd; //km/h
     public float Lat; //cor
     public float Long;//cor

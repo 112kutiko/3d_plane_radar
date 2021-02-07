@@ -34,12 +34,15 @@ public class plane_info_ui : MonoBehaviour
                 plane_Icao.text = "ICao: " + radar.instance.pl_List[i].Icao;
                 plane_call.text = "Call: " + radar.instance.pl_List[i].Call;
                 plane_type.text = "plane type: " + radar.instance.pl_List[i].Type;
-
-
-
-
-
-
+                plane_mdl.text="plane full model name: "+ radar.instance.pl_List[i].Mdl;
+                plane_from.text="from: "+ radar.instance.pl_List[i].From;
+                plane_to.text="To: "+ radar.instance.pl_List[i].To;
+                plane_op.text="Operator: " + radar.instance.pl_List[i].Op;
+                plane_alt.text= "Alt (km): "+ radar.instance.pl_List[i].Alt;
+                plane_spd.text = "speed: " + radar.instance.pl_List[i].Spd;
+                plane_lat.text="Lat: "+ radar.instance.pl_List[i].Lat;
+                plane_long.text="Long: " + radar.instance.pl_List[i].Long;
+                plane_long.text = "Direction: " + radar.instance.pl_List[i].Trak;
                 break;
             }
         }
