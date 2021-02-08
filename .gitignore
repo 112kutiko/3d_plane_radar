@@ -59,6 +59,12 @@ sysinfo.txt
 crashlytics-build.properties
 
 *.meta
+# Packed Addressables
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+
+# Temporary auto-generated Android Assets
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
 
 Assets/geo_map_test_1/
 Assets/Mapbox/README.txt
