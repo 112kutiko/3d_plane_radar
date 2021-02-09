@@ -129,11 +129,15 @@ public class radar : MonoBehaviour
 	}
 	public void change_cam()
     {
+		//searc_plane.text = searc_plane.text.toUpper();
 		string _id = searc_plane.text;
-        if (pl_List.Count == 0)
-        {
+	 
 
-        }
+		if (pl_List.Count == 0)
+        {
+			Debug.Log("bug plane:"+_id+ "now "+now_use_cam_id);
+
+		}
         else
         {
 		for(int c = 0; c < pl_List.Count; c++)

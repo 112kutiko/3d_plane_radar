@@ -46,7 +46,7 @@ public class plane_info_ui : MonoBehaviour
                 plane_spd.text = "speed: " + radar.instance.pl_List[i].Spd;
                 plane_lat.text="Lat: "+ radar.instance.pl_List[i].Lat;
                 plane_long.text="Long: " + radar.instance.pl_List[i].Long;
-                plane_long.text = "Direction: " + radar.instance.pl_List[i].Trak;
+                plane_track.text = "Direction: " + radar.instance.pl_List[i].Trak;
                 break;
             }
         }
