@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class free_cam_control : MonoBehaviour
 {
-    public float speed = 6.0F;
-    private Vector3 moveDirection = Vector3.zero;
+    private float movementSpeed = 4f;
     public float mouseSensitivity = 100f;
     private Camera cam;
     // Start is called before the first frame update
@@ -21,9 +20,9 @@ public class free_cam_control : MonoBehaviour
         {
             float h = 2 * Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             transform.Rotate(0, h, 0);
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= speed;
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            transform.Translate(horizontalInput * movementSpeed * Time.deltaTime, 0, verticalInput * movementSpeed * Time.deltaTime);
         }
 
     }
