@@ -166,7 +166,8 @@ public class radar : MonoBehaviour
 						}
 						else
 						{
-							main_cam.enabled = ipy;
+							main_cam.enabled = false;
+							ipy = false;
 							for (int s = 0; s < pl_List.Count; s++)
 							{
 								if (pl_List[s].Icao == _id)
@@ -178,7 +179,7 @@ public class radar : MonoBehaviour
 									now_use_cam_id = s;
 									pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
 
-									Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
+									Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy+" w ");
 								}
 							}
 							ipy = !ipy;
