@@ -8,6 +8,13 @@ public class jsonDataclass{
 	public string src;
 }
 [Serializable]
+public class jsonDataImg
+{
+	public List<img_plane_api_hold> img;
+	public string data;
+}
+
+[Serializable]
 public class IdList{
 	public string Id;
 	public string Reg;
@@ -23,5 +30,14 @@ public class IdList{
 	public float  Spd; //km/h
 	public float  Lat; //cor
 	public float  Long;//cor
-	public GameObject plane; //test laikinas
+	public GameObject plane; //plane 
+}
+[Serializable]
+public class img_plane_api_hold
+{
+	public string status;
+	public string count;
+	public string image;
+	public string link;
+	public GameObject main_img; //img
 }

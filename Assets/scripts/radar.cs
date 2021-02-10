@@ -32,6 +32,13 @@ public class radar : MonoBehaviour
 	[Header("lektuvai")]
 	public List<IdList> pl_List, tempory_plane;
 
+	//const
+
+	public const string api_img_link = "https://www.airport-data.com/api/ac_thumb.json&";
+	public const string api_img_back = "&n=1";
+	
+
+
 
 	void Start()
     {

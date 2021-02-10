@@ -32,6 +32,8 @@ public class plane_info : MonoBehaviour
     public float Lat; //cor
     public float Long;//cor
     public float Trak; //direction
+    public string api_img_mid = Icao;
+    bool first = false;
     [Header("create by info")]
     public string _by;
 
@@ -39,24 +41,36 @@ public class plane_info : MonoBehaviour
     {
         AbstractMap[] tmp = FindObjectsOfType<AbstractMap>();
         _map = tmp[0];
-      
+        api_img_mid = Icao;
     }
 
     void Update()
     {
         convertor();
+        if (first == false&&Icao!="")
+        {
+        img_get();
+            first = true;
+        }
+       
     }
     void convertor()
     {
+        api_img_mid = Icao;
         _locations = new Mapbox.Utils.Vector2d(Lat, Long);
        gameObject.transform.localPosition = _map.GeoToWorldPosition(_locations, true);
         float a=transform.position.y +  Alt;
         transform.position = new Vector3(transform.position.x, a, transform.position.z);
-        transform.rotation = Quaternion.Euler(0, -Trak, 0);//-track
+        transform.rotation = Quaternion.Euler(0, Trak, 0);//-track
         if(Lat==0 && Long == 0)
         {
             transform.position = new Vector3(transform.position.x, -100, transform.position.z);
         }
     }
-   
+    void img_get()
+    {
+        string full_link = radar.instance.api_img_link + api_img_mid + radar.instance.api_img_back;
+
+    }
+
 }
