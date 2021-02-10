@@ -111,9 +111,7 @@ public class radar : MonoBehaviour
     {
 		main_cam.enabled = true;
 		Debug.Log("main cam: " + main_cam.enabled);
-		if (pl_List.Count != 0)
-			
-		{
+		
 			for(int i = 0; i < pl_List.Count; i++)
             {
                 if (pl_List[i].Icao==_now_plane)
@@ -123,7 +121,7 @@ public class radar : MonoBehaviour
 					now_use_cam_id = -1;
 					break;
                 }
-		}
+		
         }
 		now_use_cam_id = -1;
 	}
