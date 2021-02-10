@@ -35,6 +35,8 @@ public class plane_info : MonoBehaviour
     public string api_img_mid;
     bool first = false;
     public List<img_plane_api_hold> img_ups;
+    public string link_img;
+
 
     [Header("create by info")]
     public string _by;
@@ -51,31 +53,32 @@ public class plane_info : MonoBehaviour
     void Update()
     {
         convertor();
-        if (first == false&&Icao!="")
+        if (first == false && Icao != "")
         {
-        img_get();
+            img_get();
             first = true;
         }
-       
+
     }
     void convertor()
     {
         api_img_mid = Icao;
         _locations = new Mapbox.Utils.Vector2d(Lat, Long);
-       gameObject.transform.localPosition = _map.GeoToWorldPosition(_locations, true);
-        float a=transform.position.y +  Alt;
+        gameObject.transform.localPosition = _map.GeoToWorldPosition(_locations, true);
+        float a = transform.position.y + Alt;
         transform.position = new Vector3(transform.position.x, a, transform.position.z);
         transform.rotation = Quaternion.Euler(0, Trak, 0);//-track
-        if(Lat==0 && Long == 0)
+        if (Lat == 0 && Long == 0)
         {
             transform.position = new Vector3(transform.position.x, -100, transform.position.z);
         }
     }
     void img_get()
     {
-        string full_link = radar.instance.api_img_link + api_img_mid + radar.instance.api_img_back;
+        string full_link = radar.instance.api_img_link + "m=" + api_img_mid + radar.instance.api_img_back;
+        Debug.Log(full_link);
         StartCoroutine(getDate(full_link));
-          
+
     }
     IEnumerator getDate(string u)
     {
@@ -90,25 +93,23 @@ public class plane_info : MonoBehaviour
         {
             Debug.Log("some img error");
         }
-        Debug.Log("stop img gain"); 
+        Debug.Log("stop img gain");
     }
     private void ProcessJsonDate(string _url)
     {
         img_data jsnData = JsonUtility.FromJson<img_data>(_url);
-
-        Debug.Log("status: "+ jsnData.status+ " "+jsnData.img_url.Count+"< img");
-        if (jsnData.img_url.Count != 0)
+        if (jsnData.img_url != null)
         {
-            if (jsnData.img_url.Count == 0)
+            if (jsnData.img_url == null)
             {
-                Debug.Log("status: " + jsnData.status+ " img get fail");
+                Debug.Log("status: " + jsnData.status + " img get fail");
             }
             else
             {
                 Debug.Log("____________________________");
-                Debug.Log("kodas: " + jsnData.status + " img vnt: " + jsnData.img_url.Count);
+                Debug.Log("kodas: " + jsnData.status + " img vnt: " + jsnData.image);
                 Debug.Log("____________________________");
-                img_ups = jsnData.img_url;
+                link_img = jsnData.img_url.image;
 
             }
         }

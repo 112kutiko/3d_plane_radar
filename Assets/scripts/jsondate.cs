@@ -12,7 +12,9 @@ public class img_data
 {
 	public string status;
 	public string count;
-	public List<img_plane_api_hold> img_url;
+	public string data;
+	public string image;
+	public img_plane_api_hold img_url;
 }
 
 [Serializable]
