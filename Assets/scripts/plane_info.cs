@@ -34,6 +34,8 @@ public class plane_info : MonoBehaviour
     public float Trak; //direction
     public string api_img_mid;
     bool first = false;
+    public List<img_plane_api_hold> img_ups;
+
     [Header("create by info")]
     public string _by;
 
@@ -106,7 +108,7 @@ public class plane_info : MonoBehaviour
                 Debug.Log("____________________________");
                 Debug.Log("kodas: " + jsnData.status + " img vnt: " + jsnData.img_url.Count);
                 Debug.Log("____________________________");
-               
+                img_ups = jsnData.img_url;
 
             }
         }
