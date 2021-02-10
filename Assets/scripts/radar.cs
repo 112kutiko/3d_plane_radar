@@ -16,7 +16,7 @@ public class radar : MonoBehaviour
 	public Text list_ac;
 	[Header("-----change cam-----")]
 	public int now_use_cam_id=-1;
-	public bool ipy = false; // main off/on
+	public bool ipy = true; // main off/on
 	public Camera main_cam;
 	public InputField searc_plane;
 	public string _now_plane="";
@@ -111,8 +111,8 @@ public class radar : MonoBehaviour
     {
 		main_cam.enabled = true;
 		Debug.Log("main cam: " + main_cam.enabled);
-		
-			for(int i = 0; i < pl_List.Count; i++)
+		ipy = true;
+			for (int i = 0; i < pl_List.Count; i++)
             {
                 if (pl_List[i].Icao==_now_plane)
                 {Debug.Log("off cam");
@@ -144,6 +144,7 @@ public class radar : MonoBehaviour
 					{
 						if (main_cam.enabled == false)
 						{
+						ipy = false;
 							for (int s = 0; s < pl_List.Count; s++)
 							{
 								if (pl_List[s].Icao == _id)
@@ -179,8 +180,7 @@ public class radar : MonoBehaviour
 
 									Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy+" w ");
 								}
-							}
-							ipy = !ipy;
+							}  
 						}
 						break;
 					}
