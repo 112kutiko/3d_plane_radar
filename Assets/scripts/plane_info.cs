@@ -96,12 +96,12 @@ public class plane_info : MonoBehaviour
     {
         img_data jsnData = JsonUtility.FromJson<img_data>(_url);
 
-        Debug.Log(jsnData.img_url.Count);
+        Debug.Log("status: "+ jsnData.status+ " "+jsnData.img_url.Count+"< img");
         if (jsnData.img_url.Count != 0)
         {
             if (jsnData.img_url.Count == 0)
             {
-                Debug.Log("img get fail");
+                Debug.Log("status: " + jsnData.status+ " img get fail");
             }
             else
             {
