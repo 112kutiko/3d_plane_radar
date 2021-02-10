@@ -8,10 +8,11 @@ public class jsonDataclass{
 	public string src;
 }
 [Serializable]
-public class jsonDataImg
+public class img_data
 {
-	public List<img_plane_api_hold> img;
-	public string data;
+	public string status;
+	public string count;
+	public List<img_plane_api_hold> img_url;
 }
 
 [Serializable]
@@ -35,8 +36,6 @@ public class IdList{
 [Serializable]
 public class img_plane_api_hold
 {
-	public string status;
-	public string count;
 	public string image;
 	public string link;
 	public GameObject main_img; //img

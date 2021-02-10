@@ -32,10 +32,12 @@ public class plane_info : MonoBehaviour
     public float Lat; //cor
     public float Long;//cor
     public float Trak; //direction
-    public string api_img_mid = Icao;
+    public string api_img_mid;
     bool first = false;
     [Header("create by info")]
     public string _by;
+
+    private img_data jsnData;
 
     void Start()
     {
@@ -70,7 +72,45 @@ public class plane_info : MonoBehaviour
     void img_get()
     {
         string full_link = radar.instance.api_img_link + api_img_mid + radar.instance.api_img_back;
+        StartCoroutine(getDate(full_link));
+          
+    }
+    IEnumerator getDate(string u)
+    {
+        Debug.Log("start img gain");
+        WWW _www = new WWW(u);
+        yield return _www;
+        if (_www.error == null)
+        {
+            ProcessJsonDate(_www.text);
+        }
+        else
+        {
+            Debug.Log("some img error");
+        }
+        Debug.Log("stop img gain"); 
+    }
+    private void ProcessJsonDate(string _url)
+    {
+        img_data jsnData = JsonUtility.FromJson<img_data>(_url);
 
+        Debug.Log(jsnData.img_url.Count);
+        if (jsnData.img_url.Count != 0)
+        {
+            if (jsnData.img_url.Count == 0)
+            {
+                Debug.Log("img get fail");
+            }
+            else
+            {
+                Debug.Log("____________________________");
+                Debug.Log("kodas: " + jsnData.status + " img vnt: " + jsnData.img_url.Count);
+                Debug.Log("____________________________");
+               
+
+            }
+        }
+        else { }
     }
 
 }
