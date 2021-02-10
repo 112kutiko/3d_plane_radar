@@ -52,7 +52,7 @@ public class plane_info : MonoBehaviour
        gameObject.transform.localPosition = _map.GeoToWorldPosition(_locations, true);
         float a=transform.position.y +  Alt;
         transform.position = new Vector3(transform.position.x, a, transform.position.z);
-        transform.rotation = Quaternion.Euler(0, -Trak, 0);//-track
+        transform.rotation = Quaternion.Euler(0, Trak, 0);//-track
         if(Lat==0 && Long == 0)
         {
             transform.position = new Vector3(transform.position.x, -100, transform.position.z);
