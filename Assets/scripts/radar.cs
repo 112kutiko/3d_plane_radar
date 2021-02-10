@@ -119,7 +119,7 @@ public class radar : MonoBehaviour
                 if (pl_List[i].Icao==_now_plane)
                 {Debug.Log("off cam");
 					pl_List[i].plane.GetComponent<plane_cam_hold>().plane_cam.enabled = false;
-					_now_plane = string.Empty;
+					_now_plane = "";
 					now_use_cam_id = -1;
 					break;
                 }
@@ -255,7 +255,7 @@ public class radar : MonoBehaviour
 	{
 		list_ac.text = "";
 		list_ac.text = a;
-		tmp_ac = string.Empty;
+		tmp_ac = "";
 	}
 	public void dell_checked_plane(List<IdList> s, IdList a)
     {
