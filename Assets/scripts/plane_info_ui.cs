@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class plane_info_ui : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class plane_info_ui : MonoBehaviour
     public Text plane_id, plane_reg,plane_Icao,plane_call,plane_type,plane_mdl,plane_from,plane_to,plane_op,plane_alt,plane_spd,plane_lat,plane_long,plane_track;
     public bool on_off = false;
     public string _tmp_plane = string.Empty;
+    public Image plane_main_image;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,17 +52,33 @@ public class plane_info_ui : MonoBehaviour
                 plane_track.text = "Direction: " + radar.instance.pl_List[i].Trak;
                 if (radar.instance.pl_List[i].plane.GetComponent<plane_info>().ats == "200")//
                 {
-
+                    string url = radar.instance.pl_List[i].plane.GetComponent<plane_info>().link_img;
+                    GetImageFromWeb(url);
+                 //
                 }
                 else
                 {
-
+                   // plane_main_image
                 }
 
                 break;
             }
         }
-
-
     }
+    IEnumerator GetImageFromWeb(string x)
+    {
+        UnityWebRequest reg = UnityWebRequestTexture.GetTexture(x);
+        yield return reg.SendWebRequest();
+        if (reg.error == null)
+        {
+             Texture2D img =  ((DownloadHandlerTexture)reg.downloadHandler).texture;
+            plane_main_image.sprite = Sprite.Create(img, new Rect(0, 0, 203.78f  , 120.9619f),Vector2.zero);
+        }
+        else
+        { Debug.Log("fail");
+          
+        }
+    }
+
+
 }
