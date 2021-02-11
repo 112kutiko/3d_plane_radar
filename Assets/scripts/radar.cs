@@ -35,7 +35,7 @@ public class radar : MonoBehaviour
 	//const
 
 	public  string api_img_link = "https://www.airport-data.com/api/ac_thumb.json?";
-	public string api_img_back = "&n=1";
+	public string api_img_back = "&n=N";
 	
 
 

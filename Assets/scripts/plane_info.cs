@@ -34,7 +34,9 @@ public class plane_info : MonoBehaviour
     public float Trak; //direction
     public string api_img_mid;
     bool first = false;
-    public img_plane_api_hold img_ups;
+    [Header("plane img info")]
+    public string ats;
+    public List<img_list> img_ups;// nuotrauku kiekis
     public string link_img;
 
 
@@ -98,16 +100,26 @@ public class plane_info : MonoBehaviour
     private void ProcessJsonDate(string _url)
     {
         img_data jsnData = JsonUtility.FromJson<img_data>(_url);
-        if (jsnData.datas != null)
+        if (jsnData.data != null)
         {
+            if (jsnData.status == "200")
+            {
                 Debug.Log("____________________________");
-                Debug.Log("kodas: " + jsnData.status + " img vnt: " + jsnData.datas.image);
+                Debug.Log("kodas: " + jsnData.status + " img vnt: " + jsnData.data.Count);
                 Debug.Log("____________________________");
-                link_img = jsnData.datas.image;
-                img_ups = jsnData.datas;
+               link_img = jsnData.data[0].image;
+                img_ups = jsnData.data;
+                ats = jsnData.status;
+            }
+            else
+            {
+                ats = jsnData.status;
+            }
+
         }
         else {   
         Debug.Log("status: " + jsnData.status + " img get fail");
+            ats = jsnData.status;
         }
     }
 
