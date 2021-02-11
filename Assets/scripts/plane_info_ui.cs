@@ -53,8 +53,9 @@ public class plane_info_ui : MonoBehaviour
                 if (radar.instance.pl_List[i].plane.GetComponent<plane_info>().ats == "200")//
                 {
                     string url = radar.instance.pl_List[i].plane.GetComponent<plane_info>().link_img;
-                    GetImageFromWeb(url);
-                 //
+                    StartCoroutine(GetImageFromWeb(url));
+                      //DownloadImage(url)
+                  
                 }
                 else
                 {
@@ -72,7 +73,7 @@ public class plane_info_ui : MonoBehaviour
         if (reg.error == null)
         {
              Texture2D img =  ((DownloadHandlerTexture)reg.downloadHandler).texture;
-            plane_main_image.sprite = Sprite.Create(img, new Rect(0, 0, 203.78f  , 82.3704f),Vector2.zero);
+            plane_main_image.sprite = Sprite.Create(img, new Rect(0f, 0f, img.width, img.height),Vector2.zero);
         }
         else
         { Debug.Log("fail");
