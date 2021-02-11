@@ -69,19 +69,14 @@ public class radar : MonoBehaviour
 		Debug.Log("_______________");
 	}
 	private void ProcessJsonDate(string _url){
-		bool fg = false;
+ 
 		jsonDataclass jsnData = JsonUtility.FromJson<jsonDataclass>(_url);
 
 		lektuvu_zonoje = jsnData.acList.Count;
-		if(jsnData.acList.Count!=0 && jsnData.acList.Count != null)
+		if(jsnData.acList.Count!=0)
         {
 			tempory_plane=jsnData.acList;
-            if (jsnData.acList.Count == 0)
-            {
-				Debug.Log("data get fail");
-			}
-            else
-            {
+          
 				Debug.Log("____________________________");
 				Debug.Log("ðaltinis: " + jsnData.src + " lektuvu zonoje: " + jsnData.acList.Count);
 				Debug.Log("____________________________");
@@ -105,7 +100,6 @@ public class radar : MonoBehaviour
 					tmpi = pl_List.Count;
 				}
 
-				}
         }else{  }
 	}
 	IEnumerator update_plane()
