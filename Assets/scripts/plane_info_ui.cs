@@ -47,6 +47,15 @@ public class plane_info_ui : MonoBehaviour
                 plane_lat.text="Lat: "+ radar.instance.pl_List[i].Lat;
                 plane_long.text="Long: " + radar.instance.pl_List[i].Long;
                 plane_track.text = "Direction: " + radar.instance.pl_List[i].Trak;
+                if (radar.instance.pl_List[i].ats == "200")
+                {
+
+                }
+                else
+                {
+
+                }
+
                 break;
             }
         }
