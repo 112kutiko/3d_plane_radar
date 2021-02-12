@@ -17,14 +17,16 @@ public class free_cam_control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (radar.instance._now_plane == "" || radar.instance._now_plane == string.Empty)
+        if (other_function.stats.is_on_area)
         {
-            float h = 2 * Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-            transform.Rotate(0, h, 0);
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
-            transform.Translate(horizontalInput * movementSpeed * Time.deltaTime, 0, verticalInput * movementSpeed * Time.deltaTime);
+            if (radar.instance._now_plane == "" || radar.instance._now_plane == string.Empty)
+            {
+                float h = 2 * Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+                transform.Rotate(0, h, 0);
+                float horizontalInput = Input.GetAxis("Horizontal");
+                float verticalInput = Input.GetAxis("Vertical");
+                transform.Translate(horizontalInput * movementSpeed * Time.deltaTime, 0, verticalInput * movementSpeed * Time.deltaTime);
+            }
         }
-
     }
 }
