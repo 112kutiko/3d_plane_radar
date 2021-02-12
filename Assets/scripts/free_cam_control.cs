@@ -11,6 +11,7 @@ public class free_cam_control : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
