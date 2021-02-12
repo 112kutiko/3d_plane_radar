@@ -1102,6 +1102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 953642600}
+  img_full: {fileID: 307339728}
   plane_id: {fileID: 1675832931}
   plane_reg: {fileID: 1133052781}
   plane_Icao: {fileID: 185184723}

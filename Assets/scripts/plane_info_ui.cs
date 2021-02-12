@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 public class plane_info_ui : MonoBehaviour
 {
     public static plane_info_ui instance;
-    public GameObject panel;
+    public GameObject panel,img_full;
     public Text plane_id, plane_reg,plane_Icao,plane_call,plane_type,plane_mdl,plane_from,plane_to,plane_op,plane_alt,plane_spd,plane_lat,plane_long,plane_track;
     public bool on_off = false;
     public string _tmp_plane = string.Empty;
@@ -52,6 +52,7 @@ public class plane_info_ui : MonoBehaviour
                 plane_track.text = "Direction: " + radar.instance.pl_List[i].Trak;
                 if (radar.instance.pl_List[i].plane.GetComponent<plane_info>().ats == "200")//
                 {
+                    img_full.SetActive(true);
                     string url = radar.instance.pl_List[i].plane.GetComponent<plane_info>().link_img;
                     StartCoroutine(GetImageFromWeb(url));
                       //DownloadImage(url)
@@ -59,7 +60,8 @@ public class plane_info_ui : MonoBehaviour
                 }
                 else
                 {
-                   // plane_main_image
+                    img_full.SetActive(false);
+                    // plane_main_image
                 }
 
                 break;
