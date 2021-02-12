@@ -59,6 +59,7 @@ public class plane_info : MonoBehaviour
         {
             img_get();
             first = true;
+            img_picker(img_ups.Count);
         }
 
     }
@@ -80,7 +81,6 @@ public class plane_info : MonoBehaviour
         string full_link = radar.instance.api_img_link + "m=" + api_img_mid + radar.instance.api_img_back;
         Debug.Log(full_link);
         StartCoroutine(getDate(full_link));
-
     }
     IEnumerator getDate(string u)
     {
@@ -123,4 +123,12 @@ public class plane_info : MonoBehaviour
         }
     }
  
+    void img_picker(int zero)
+    {
+        if (zero > 1)
+        {
+            int a = Random.Range(0, zero);
+            link_img = img_ups[a].image;
+        }
+    }
 }
