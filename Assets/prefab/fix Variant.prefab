@@ -28,6 +28,10 @@ MonoBehaviour:
   Lat: 0
   Long: 0
   Trak: 0
+  api_img_mid: 
+  ats: 
+  img_ups: []
+  link_img: 
   _by: 
 --- !u!114 &7248989874034226983
 MonoBehaviour:
@@ -99,7 +103,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 999.86
+  far clip plane: 600
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -111,7 +115,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
