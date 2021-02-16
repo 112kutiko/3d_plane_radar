@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plane_cam: {fileID: 748966984395023608}
-  main_plane: {fileID: 0}
+  main_plane: {fileID: 5830420566078153106}
 --- !u!1 &8013720299835945113
 GameObject:
   m_ObjectHideFlags: 0
