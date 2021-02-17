@@ -232,7 +232,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jsonUrl: http://127.0.0.1/VirtualRadar/AircraftList.json
-  plane_pl: {fileID: 5830420566078153106, guid: 95caf92f30ae92448bbb2abc15a95111, type: 3}
+  plane_pl:
+  - {fileID: 5830420566078153106, guid: 95caf92f30ae92448bbb2abc15a95111, type: 3}
   main_cam_gb: {fileID: 698534334}
   parent: {fileID: 322249478}
   list_ac: {fileID: 1358736719}
@@ -2791,6 +2792,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 60
+  climbSpeed: 4
+  n_speed: 10
+  slow_move_factor: 0.25
+  fast_move_factor: 3
 --- !u!1 &1187020150
 GameObject:
   m_ObjectHideFlags: 0

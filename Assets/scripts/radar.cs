@@ -128,8 +128,7 @@ public class radar : MonoBehaviour
 		now_use_cam_id = -1;
 	}
 	public void change_cam()
-    {
-		//searc_plane.text = searc_plane.text.toUpper();
+    { 
 		string _id = searc_plane.text;
 	 
 
@@ -275,7 +274,7 @@ public class radar : MonoBehaviour
 			spawn_position.z = a.Long;
 			spawn_position.x = a.Lat;
 			spawn_position.y = (int)(a.Alt * 0.0003048f);
-			GameObject se = Instantiate(plane_pl, spawn_position, Quaternion.identity, parent);
+			GameObject se = Instantiate(this_plane(a.Mil), spawn_position, Quaternion.identity, parent);
 			se.GetComponent<plane_info>().Id = a.Id;
 			se.GetComponent<plane_info>().Reg = a.Reg;
 			se.GetComponent<plane_info>().Icao = a.Icao;
@@ -290,7 +289,8 @@ public class radar : MonoBehaviour
 			se.GetComponent<plane_info>().Lat = a.Lat;
 			se.GetComponent<plane_info>().Long = a.Long;
 			se.GetComponent<plane_info>().Trak = a.Trak;
-			se.name = a.Icao;
+			se.GetComponent<plane_info>().Mil = a.Mil;
+		se.name = a.Icao;
 			se.GetComponent<plane_info>()._by = then;
 			a.plane = se;
 			pl_List.Add(a);
@@ -335,4 +335,24 @@ public class radar : MonoBehaviour
 	
         }	text_box_update(tmp_ac);
 	}
+	public GameObject this_plane(string i)
+    {
+		GameObject o= plane_pl[0];
+        if (i == "")
+        {
+			o = plane_pl[0];
+        }else if (i == "true")
+        {
+			o = plane_pl[1];
+		}
+		else if (i == "false")
+        {
+			o = plane_pl[0];
+		}
+
+		return o;
+    }
+
+
+
 	}
