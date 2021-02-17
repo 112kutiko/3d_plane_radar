@@ -8,7 +8,7 @@ public class plane_info_ui : MonoBehaviour
 {
     public static plane_info_ui instance;
     public GameObject panel,img_full,plane_is;
-    public Text plane_id, plane_reg,plane_Icao,plane_call,plane_type,plane_mdl,plane_from,plane_to,plane_op,plane_alt,plane_spd,plane_lat,plane_long,plane_track;
+    public Text plane_id, plane_reg,plane_Icao,plane_call,plane_type,plane_mdl,plane_from,plane_to,plane_op,plane_alt,plane_spd,plane_lat,plane_long,plane_track,plane_mill;
     public bool on_off = false;
     public string _tmp_plane = string.Empty;
     public Image plane_main_image;
@@ -51,6 +51,7 @@ public class plane_info_ui : MonoBehaviour
             plane_lat.text="Lat: "+ in_plane.Lat;           
             plane_long.text="Long: " + in_plane.Long;            
             plane_track.text = "Direction: " + in_plane.Trak;
+            plane_mill.text= "military: " + in_plane.Mil;
             if (in_plane.ats == "200")
             {
                 img_full.SetActive(true);
