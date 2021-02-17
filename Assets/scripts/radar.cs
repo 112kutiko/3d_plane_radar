@@ -11,7 +11,8 @@ public class radar : MonoBehaviour
 	
 	[Header("vieða info")]
 	public string jsonUrl="http://127.0.0.1/VirtualRadar/AircraftList.json";
-	public GameObject plane_pl,main_cam_gb;
+	public List<GameObject> plane_pl;
+	public GameObject  main_cam_gb;
 	public Transform parent;
 	public Text list_ac;
 	[Header("-----change cam-----")]

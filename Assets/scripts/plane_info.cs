@@ -33,6 +33,7 @@ public class plane_info : MonoBehaviour
     public float Long;//cor
     public float Trak; //direction
     public string api_img_mid;
+    public string Mil; //military
     bool first = false;
     [Header("plane img info")]
     public string ats;

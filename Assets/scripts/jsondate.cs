@@ -26,6 +26,7 @@ public class IdList{
 	public string From; //ið
 	public string To; //i
 	public string Op;//operatorius
+	public string Mil;
 	public int  Alt; // feet
 	public float Trak; //direction
 	public float  Spd; //km/h
