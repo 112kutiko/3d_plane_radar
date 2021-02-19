@@ -35,8 +35,18 @@ public class free_cam_control : MonoBehaviour
                 transform.Rotate(0, h, 0);
                 #region move
 
-                if (Input.GetKey(KeyCode.Q)) { transform.position += transform.up * climbSpeed * Time.deltaTime; }
-                if (Input.GetKey(KeyCode.E)) { transform.position -= transform.up * climbSpeed * Time.deltaTime; }
+                if (Input.GetKey(KeyCode.Q))
+                {
+                    if(transform.position.y != 16 && transform.position.y > 16)
+                    { transform.position += transform.up * climbSpeed * Time.deltaTime;
+                }
+            }
+                if (Input.GetKey(KeyCode.E))
+                {
+                    if(transform.position.y!=2&& transform.position.y > 2)
+                    { 
+                    transform.position -= transform.up * climbSpeed * Time.deltaTime;
+                } }
                 float horizontalInput = Input.GetAxis("Horizontal");
                 float verticalInput = Input.GetAxis("Vertical");
                 transform.Translate(horizontalInput * movementSpeed * Time.deltaTime, 0, verticalInput * movementSpeed * Time.deltaTime);
