@@ -1356,7 +1356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ddc005010c1e44c8d72059f8f31ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 60
+  mouseSensitivity: 40
 --- !u!1 &720949834
 GameObject:
   m_ObjectHideFlags: 0
@@ -2680,7 +2680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd7f9c6836823a43bd0c091a86620ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 60
+  mouseSensitivity: 40
   climbSpeed: 4
   n_speed: 10
   slow_move_factor: 0.25
