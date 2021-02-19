@@ -121,6 +121,7 @@ public class radar : MonoBehaviour
 					pl_List[i].plane.GetComponent<plane_cam_hold>().plane_cam.enabled = false;
 					_now_plane = "";
 					now_use_cam_id = -1;
+				Mapbox.Unity.Map.ExtentOptions.SetOptions(main_cam, 1000, 1200);
 					break;
                 }
 		
