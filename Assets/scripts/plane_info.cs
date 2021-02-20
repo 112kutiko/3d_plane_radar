@@ -123,7 +123,6 @@ public class plane_info : MonoBehaviour
             ats = jsnData.status;
         }
     }
- 
     void img_picker(int zero)
     {
         if (zero > 1)

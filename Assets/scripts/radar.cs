@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-
+using Mapbox.Utils;
+using Mapbox.Unity.Map;
+using Mapbox.Unity.MeshGeneration.Factories;
+using Mapbox.Unity.Utilities;
 
 public class radar : MonoBehaviour
 {
@@ -15,6 +18,12 @@ public class radar : MonoBehaviour
 	public GameObject  main_cam_gb;
 	public Transform parent;
 	public Text list_ac;
+	[Header("map info")]
+	[SerializeField]
+	AbstractMap _map;
+	[SerializeField]
+	AbstractMap main_script;
+
 	[Header("-----change cam-----")]
 	public int now_use_cam_id=-1;
 	public bool ipy = true; // main off/on
@@ -44,10 +53,14 @@ public class radar : MonoBehaviour
 	void Start()
     {
 		instance = this;
+		AbstractMap[] tmp = FindObjectsOfType<AbstractMap>();
+		_map = tmp[0];
+		main_script = _map.GetComponent<AbstractMap>();
 		if (PlayerPrefs.HasKey("url_1")){jsonUrl=PlayerPrefs.GetString("url_1");}
 		else{jsonUrl = "http://127.0.0.1/VirtualRadar/AircraftList.json";}
 		 StartCoroutine(getDate());
-    }
+	//	Debug.Log("is: " + main_script.CurrentExtent);
+	}
     void Update()
     {
 		if (s_host == null)
@@ -121,8 +134,11 @@ public class radar : MonoBehaviour
 					pl_List[i].plane.GetComponent<plane_cam_hold>().plane_cam.enabled = false;
 					_now_plane = "";
 					now_use_cam_id = -1;
-				Mapbox.Unity.Map.ExtentOptions.SetOptions(main_cam, 1000, 1200);
-					break;
+
+				main_script.SetExtentOptions(CameraBoundsTileProviderOptions.SetOptions(main_cam,3,6));
+				//	_map.MapExtentOptions(MapExtentType.CameraBounds);
+				// CameraBoundsTileProviderOptions.SetOptions(main_cam, 3,6);///test
+				break;
                 }
 		
         }
@@ -276,23 +292,24 @@ public class radar : MonoBehaviour
 			spawn_position.x = a.Lat;
 			spawn_position.y = (int)(a.Alt * 0.0003048f);
 			GameObject se = Instantiate(this_plane(a.Mil), spawn_position, Quaternion.identity, parent);
-			se.GetComponent<plane_info>().Id = a.Id;
-			se.GetComponent<plane_info>().Reg = a.Reg;
-			se.GetComponent<plane_info>().Icao = a.Icao;
-			se.GetComponent<plane_info>().Call = a.Call;
-			se.GetComponent<plane_info>().Type = a.Type;
-			se.GetComponent<plane_info>().Mdl = a.Mdl;
-			se.GetComponent<plane_info>().From = a.From;
-			se.GetComponent<plane_info>().To = a.To;
-			se.GetComponent<plane_info>().Op = a.Op;
-			se.GetComponent<plane_info>().Alt = (int)(a.Alt * 0.0003048f);
-			se.GetComponent<plane_info>().Spd = a.Spd;
-			se.GetComponent<plane_info>().Lat = a.Lat;
-			se.GetComponent<plane_info>().Long = a.Long;
-			se.GetComponent<plane_info>().Trak = a.Trak;
-			se.GetComponent<plane_info>().Mil = a.Mil;
+			plane_info plane_tmp = se.GetComponent<plane_info>();
+			plane_tmp.Id = a.Id;
+			plane_tmp.Reg = a.Reg;
+			plane_tmp.Icao = a.Icao;
+			plane_tmp.Call = a.Call;
+			plane_tmp.Type = a.Type;
+			plane_tmp.Mdl = a.Mdl;
+			plane_tmp.From = a.From;
+			plane_tmp.To = a.To;
+			plane_tmp.Op = a.Op;
+			plane_tmp.Alt = (int)(a.Alt * 0.0003048f);
+			plane_tmp.Spd = a.Spd;
+			plane_tmp.Lat = a.Lat;
+			plane_tmp.Long = a.Long;
+			plane_tmp.Trak = a.Trak;
+			plane_tmp.Mil = a.Mil;
 		se.name = a.Icao;
-			se.GetComponent<plane_info>()._by = then;
+			plane_tmp._by = then;
 			a.plane = se;
 			pl_List.Add(a);
 			text_reload();
