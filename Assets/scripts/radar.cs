@@ -23,7 +23,8 @@ public class radar : MonoBehaviour
 	AbstractMap _map;
 	[SerializeField]
 	AbstractMap main_script;
-
+	public int max_view_all=900;
+	public int min_view_all = 0;
 	[Header("-----change cam-----")]
 	public int now_use_cam_id=-1;
 	public bool ipy = true; // main off/on
@@ -124,7 +125,7 @@ public class radar : MonoBehaviour
 	}
 	public void main_cam_activator()
     {
-		main_script.SetExtentOptions(now_cam_by(main_cam));
+		main_script.SetExtentOptions(now_cam_by(main_cam, min_view_all, max_view_all));
 		main_cam.enabled = true;
 		Debug.Log("main cam: " + main_cam.enabled);
 		ipy = true;
@@ -136,8 +137,7 @@ public class radar : MonoBehaviour
 					_now_plane = "";
 					now_use_cam_id = -1;
 
-				
-				//CameraBoundsTileProviderOptions.SetOptions(main_cam, 3,6);///test
+				 
 				break;
                 }
 		
@@ -175,7 +175,7 @@ public class radar : MonoBehaviour
 									}
 									now_use_cam_id = s;
 									pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-									main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().plane_cam));
+									main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().plane_cam,min_view_all,max_view_all));
 								Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
 									break;
 								}
@@ -196,7 +196,7 @@ public class radar : MonoBehaviour
 									}
 									now_use_cam_id = s;
 									pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-								main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().plane_cam));
+								main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().plane_cam, min_view_all, max_view_all));
 								Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy+" w ");
 								}
 							}  
@@ -371,7 +371,7 @@ public class radar : MonoBehaviour
 
 		return o;
     }
-	public ExtentOptions now_cam_by(Camera zip_is_cam,int i=0,int u=2000) {
+	public ExtentOptions now_cam_by(Camera zip_is_cam,int i= 0, int u= 2000) {
 
 		CameraBoundsTileProviderOptions zipo =new CameraBoundsTileProviderOptions();
 		zipo.camera = zip_is_cam;

@@ -343,6 +343,8 @@ MonoBehaviour:
   list_ac: {fileID: 1358736719}
   _map: {fileID: 0}
   main_script: {fileID: 0}
+  max_view_all: 900
+  min_view_all: 0
   now_use_cam_id: -1
   ipy: 0
   main_cam: {fileID: 698534336}
@@ -1553,11 +1555,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114196496685157712, guid: 5bb46bae81bf04608ac699be504c5e66, type: 3}
       propertyPath: _options.scalingOptions.unityTileSize
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114196496685157712, guid: 5bb46bae81bf04608ac699be504c5e66, type: 3}
       propertyPath: _options.placementOptions.placementType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114196496685157712, guid: 5bb46bae81bf04608ac699be504c5e66, type: 3}
+      propertyPath: _terrain._layerProperty.elevationLayerType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114196496685157712, guid: 5bb46bae81bf04608ac699be504c5e66, type: 3}
       propertyPath: _vectorData._layerProperty.useOptimizedStyle
