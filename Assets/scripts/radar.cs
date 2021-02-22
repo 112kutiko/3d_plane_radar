@@ -371,7 +371,7 @@ public class radar : MonoBehaviour
 
 		return o;
     }
-	public ExtentOptions now_cam_by(Camera zip_is_cam,int i=0,int u=600) {
+	public ExtentOptions now_cam_by(Camera zip_is_cam,int i=3,int u=1200) {
 
 		CameraBoundsTileProviderOptions zipo =new CameraBoundsTileProviderOptions();
 		zipo.camera = zip_is_cam;

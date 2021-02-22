@@ -440,6 +440,7 @@ MonoBehaviour:
   Long: 0
   Trak: 0
   api_img_mid: 
+  Mil: 
   ats: 
   img_ups: []
   link_img: 
@@ -547,7 +548,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.02
-  far clip plane: 600
+  far clip plane: 900
   field of view: 60
   orthographic: 0
   orthographic size: 5
