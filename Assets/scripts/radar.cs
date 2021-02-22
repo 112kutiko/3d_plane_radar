@@ -124,7 +124,7 @@ public class radar : MonoBehaviour
 	}
 	public void main_cam_activator()
     {
-		Debug.Log(main_script.Options.extentOptions.extentType);
+		now_cam_by();
 		main_cam.enabled = true;
 		Debug.Log("main cam: " + main_cam.enabled);
 		ipy = true;
@@ -376,7 +376,7 @@ public class radar : MonoBehaviour
 		ExtentOptions test;
 		test.SetOptions(CameraBoundsTileProviderOptions.SetOptions(s_cam_a, i, u))
 
-
+			Debug.Log(test.extentType);
 	}
 
 }
