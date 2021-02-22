@@ -374,9 +374,12 @@ public class radar : MonoBehaviour
 	public ExtentOptions now_cam_by(Camera zip_is_cam,int i=3,int u=6) {
 
 		ExtentOptions test;
-		test.SetOptions(CameraBoundsTileProviderOptions.SetOptions(zip_is_cam, i, u));
+		CameraBoundsTileProviderOptions zipo;
+		zipo.SetOptions(zip_is_cam, i, u)
+		test.SetOptions(zipo);
 
 			Debug.Log(test.extentType);
+		return test;
 	}
 
 }
