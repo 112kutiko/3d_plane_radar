@@ -124,7 +124,7 @@ public class radar : MonoBehaviour
 	}
 	public void main_cam_activator()
     {
-		now_cam_by(main_cam);
+		main_script.SetExtentOptions(now_cam_by(main_cam));
 		main_cam.enabled = true;
 		Debug.Log("main cam: " + main_cam.enabled);
 		ipy = true;
@@ -175,7 +175,8 @@ public class radar : MonoBehaviour
 									}
 									now_use_cam_id = s;
 									pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-									Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
+									main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().plane_cam));
+								Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
 									break;
 								}
 							}
@@ -195,8 +196,8 @@ public class radar : MonoBehaviour
 									}
 									now_use_cam_id = s;
 									pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-
-									Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy+" w ");
+								main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().plane_cam));
+								Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy+" w ");
 								}
 							}  
 						}
@@ -371,13 +372,13 @@ public class radar : MonoBehaviour
 		return o;
     }
 
-	public ExtentOptions now_cam_by(Camera zip_is_cam,int i=3,int u=6) {
+	public ExtentOptions now_cam_by(Camera zip_is_cam,int i=0,int u=600) {
 
-		
-		CameraBoundsTileProviderOptions zipo;
-		zipo.SetOptions(zip_is_cam, i, u);
-
-			Debug.Log(zipo.extentType);
+		CameraBoundsTileProviderOptions zipo =new CameraBoundsTileProviderOptions();
+		zipo.camera = zip_is_cam;
+		zipo.visibleBuffer =i;
+		zipo.disposeBuffer = u;
+		//	Debug.Log(zipo.extentType);
 		return zipo;
 	}
 
