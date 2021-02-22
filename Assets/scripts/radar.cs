@@ -371,6 +371,12 @@ public class radar : MonoBehaviour
 		return o;
     }
 
+	public ExtentOptions now_cam_by(Camera is_cam_a=main_cam,int i=3,int u=6) {
+
+		ExtentOptions test;
+		test.SetOptions(CameraBoundsTileProviderOptions.SetOptions(s_cam_a, i, u))
 
 
 	}
+
+}
