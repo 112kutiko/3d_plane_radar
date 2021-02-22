@@ -375,7 +375,7 @@ public class radar : MonoBehaviour
 
 		ExtentOptions test;
 		CameraBoundsTileProviderOptions zipo;
-		zipo.SetOptions(zip_is_cam, i, u)
+		zipo.SetOptions(zip_is_cam, i, u);
 		test.SetOptions(zipo);
 
 			Debug.Log(test.extentType);
