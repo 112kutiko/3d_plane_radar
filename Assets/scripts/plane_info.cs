@@ -69,7 +69,7 @@ public class plane_info : MonoBehaviour
         api_img_mid = Icao;
         _locations = new Mapbox.Utils.Vector2d(Lat, Long);
         gameObject.transform.localPosition = _map.GeoToWorldPosition(_locations, true);
-        float a = transform.position.y + Alt;
+        float a = Alt;//transform.position.y + Alt;
         transform.position = new Vector3(transform.position.x, a, transform.position.z);
         transform.rotation = Quaternion.Euler(0, Trak+180, 0);// comp_end(Trak)
         if (Lat == 0 && Long == 0)

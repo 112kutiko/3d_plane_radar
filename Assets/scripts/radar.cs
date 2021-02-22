@@ -303,7 +303,7 @@ public class radar : MonoBehaviour
 			plane_tmp.From = a.From;
 			plane_tmp.To = a.To;
 			plane_tmp.Op = a.Op;
-			plane_tmp.Alt = (int)(a.Alt * 0.0003048f);
+			plane_tmp.Alt = (int)spawn_position.y;
 			plane_tmp.Spd = a.Spd;
 			plane_tmp.Lat = a.Lat;
 			plane_tmp.Long = a.Long;
