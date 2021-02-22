@@ -124,6 +124,7 @@ public class radar : MonoBehaviour
 	}
 	public void main_cam_activator()
     {
+		Debug.Log(main_script.Options.extentOptions.extentType);
 		main_cam.enabled = true;
 		Debug.Log("main cam: " + main_cam.enabled);
 		ipy = true;
@@ -134,10 +135,9 @@ public class radar : MonoBehaviour
 					pl_List[i].plane.GetComponent<plane_cam_hold>().plane_cam.enabled = false;
 					_now_plane = "";
 					now_use_cam_id = -1;
-				//main_script.CameraBoundsTileProviderOptions.SetOptions(Camera.main, 3, 6);
-				main_script.SetExtentOptions(SetOptions(main_cam, 3, 6));
-				//	_map.MapExtentOptions(MapExtentType.CameraBounds);
-				// CameraBoundsTileProviderOptions.SetOptions(main_cam, 3,6);///test
+
+				
+				//CameraBoundsTileProviderOptions.SetOptions(main_cam, 3,6);///test
 				break;
                 }
 		
