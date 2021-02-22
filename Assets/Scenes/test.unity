@@ -238,6 +238,8 @@ MonoBehaviour:
   main_cam_gb: {fileID: 698534334}
   parent: {fileID: 322249478}
   list_ac: {fileID: 1358736719}
+  _map: {fileID: 0}
+  main_script: {fileID: 0}
   now_use_cam_id: -1
   ipy: 0
   main_cam: {fileID: 698534336}
@@ -1688,10 +1690,6 @@ PrefabInstance:
     - target: {fileID: 114196496685157712, guid: 5bb46bae81bf04608ac699be504c5e66, type: 3}
       propertyPath: _tileProvider
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114196496685157712, guid: 5bb46bae81bf04608ac699be504c5e66, type: 3}
-      propertyPath: _options.locationOptions.zoom
-      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 114196496685157712, guid: 5bb46bae81bf04608ac699be504c5e66, type: 3}
       propertyPath: _previewOptions.isPreviewEnabled
