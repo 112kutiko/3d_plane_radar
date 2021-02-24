@@ -19,10 +19,10 @@ public class free_cam_view : MonoBehaviour
         {
         if (radar.instance._now_plane==""|| radar.instance._now_plane == string.Empty)
                 {
-                 // float y = 2 * Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-                 // xr_1 -= y;
-            //    xr_1 = Mathf.Clamp(xr_1, -90f, 63f);
-               //   transform.localRotation = Quaternion.Euler(xr_1, 0f, 0f);
+            float y = 2 * Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+               xr_1 -= y;
+              xr_1 = Mathf.Clamp(xr_1, -90f, 63f);
+            transform.localRotation = Quaternion.Euler(xr_1, 0f, 0f);
                 }
         }
         
