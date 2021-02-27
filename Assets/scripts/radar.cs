@@ -115,7 +115,10 @@ public class radar : MonoBehaviour
 					tmpi = pl_List.Count;
 				}
 
-        }else{  }
+        }else{
+			dell_all();
+		
+		}
 	}
 	IEnumerator update_plane()
 	{
@@ -367,6 +370,10 @@ public class radar : MonoBehaviour
 		else if (i == "false")
         {
 			o = plane_pl[0];
+        }
+        else
+        {
+			o = plane_pl[0];
 		}
 
 		return o;
@@ -381,4 +388,20 @@ public class radar : MonoBehaviour
 		return zipo;
 	}
 
+	public void dell_all() {
+        if (pl_List.Count != 0)
+        {
+		for(int o=0;o< pl_List.Count; o++)
+				{
+					Destroy(pl_List[o].plane);
+                if (tempory_plane.Count != 0) {
+					Destroy(tempory_plane[o].plane);
+				}
+				}
+				plane_pl.Clear();
+			tempory_plane.Clear();
+
+		}
+		text_reload();
+	}
 }
