@@ -240,7 +240,7 @@ MonoBehaviour:
   list_ac: {fileID: 1358736719}
   _map: {fileID: 0}
   main_script: {fileID: 0}
-  max_view_all: 21
+  max_view_all: 19
   max_plane_view: 20
   min_view_all: 19
   min_plane_view: 18
