@@ -16,6 +16,7 @@ public class radar : MonoBehaviour
 	public string jsonUrl="http://127.0.0.1/VirtualRadar/AircraftList.json";
 	public List<GameObject> plane_pl;
 	public GameObject  main_cam_gb;
+	public GameObject fog;
 	public Transform parent;
 	public Text list_ac;
 	[Header("map info")]
@@ -69,7 +70,7 @@ public class radar : MonoBehaviour
 	}
 	IEnumerator getDate()
     {
-		Debug.Log("_______________");
+ 
 		Debug.Log("start Data gain");
 		WWW _www = new WWW(jsonUrl);
 		yield return _www;
@@ -96,8 +97,7 @@ public class radar : MonoBehaviour
 				Debug.Log("ðaltinis: " + jsnData.src + " lektuvu zonoje: " + jsnData.acList.Count);
 				Debug.Log("____________________________");
 				if (first_time_b == false)
-               {
-					Debug.Log("first time");
+               { 
 					first_time(jsnData.acList);
 			     	first_time_b = true;
 					tmpi=pl_List.Count;
@@ -128,6 +128,7 @@ public class radar : MonoBehaviour
 	}
 	public void main_cam_activator()
     {
+		fog.SetActive(true);
 		main_script.SetExtentOptions(now_cam_by(main_cam_gb, min_view_all, max_view_all));
 		main_cam.enabled = true;
 		Debug.Log("main cam: " + main_cam.enabled);
@@ -162,8 +163,8 @@ public class radar : MonoBehaviour
 		for(int c = 0; c < pl_List.Count; c++)
 				{
 					if (pl_List[c].Icao == _id)
-					{
-						if (main_cam.enabled == false)
+					{fog.SetActive(false);
+					if (main_cam.enabled == false)
 						{
 						ipy = false;
 							for (int s = 0; s < pl_List.Count; s++)
@@ -295,6 +296,7 @@ public class radar : MonoBehaviour
 			spawn_position.z = a.Long;
 			spawn_position.x = a.Lat;
 			spawn_position.y = (int)(a.Alt * 0.0003048f);
+			Debug.Log("plane type: "+ a.Mil);
 		    GameObject plo = this_plane(a.Mil);
 			GameObject se = Instantiate(plo, spawn_position, Quaternion.identity, parent);
 			plane_info plane_tmp = se.GetComponent<plane_info>();
@@ -362,8 +364,13 @@ public class radar : MonoBehaviour
     {
 		GameObject o= plane_pl[0];
         if (i == "true")
-        {
+		{
+			Debug.Log("military");
 			o = plane_pl[1];
+        }
+        else
+        {
+			Debug.Log("civil");
 		}
 		return o;
     }
@@ -387,7 +394,7 @@ public class radar : MonoBehaviour
 					Destroy(tempory_plane[o].plane);
 				}
 				}
-				plane_pl.Clear();
+				pl_List.Clear();
 			tempory_plane.Clear();
 
 		}
