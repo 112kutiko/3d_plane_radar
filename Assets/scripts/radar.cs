@@ -295,7 +295,8 @@ public class radar : MonoBehaviour
 			spawn_position.z = a.Long;
 			spawn_position.x = a.Lat;
 			spawn_position.y = (int)(a.Alt * 0.0003048f);
-			GameObject se = Instantiate(this_plane(a.Mil), spawn_position, Quaternion.identity, parent);
+		    GameObject plo = this_plane(a.Mil);
+			GameObject se = Instantiate(plo, spawn_position, Quaternion.identity, parent);
 			plane_info plane_tmp = se.GetComponent<plane_info>();
 			plane_tmp.Id = a.Id;
 			plane_tmp.Reg = a.Reg;
@@ -360,22 +361,10 @@ public class radar : MonoBehaviour
 	public GameObject this_plane(string i)
     {
 		GameObject o= plane_pl[0];
-        if (i == "")
-        {
-			o = plane_pl[0];
-        }else if (i == "true")
+        if (i == "true")
         {
 			o = plane_pl[1];
 		}
-		else if (i == "false")
-        {
-			o = plane_pl[0];
-        }
-        else
-        {
-			o = plane_pl[0];
-		}
-
 		return o;
     }
 	public ExtentOptions now_cam_by(GameObject zip_is_cam,int i= 0, int u= 2000) {
