@@ -379,7 +379,7 @@ public class radar : MonoBehaviour
 		RangeAroundTransformTileProviderOptions zipo = new RangeAroundTransformTileProviderOptions();
 		zipo.visibleBuffer =i;
 		zipo.disposeBuffer = u;
-        if (zip_is_cam.name != "Main Camera")
+        if (zip_is_cam.name != "Main_Camera")
         {
 
 	        Transform  ma= zip_is_cam.transform.Find("foward");
@@ -387,7 +387,7 @@ public class radar : MonoBehaviour
 			zipo.targetTransform = zip_is_cam.transform; 
 			Debug.Log("plane");
         }
-        else if(zip_is_cam.name == "Main Camera")
+        else if(zip_is_cam.name == "Main_Camera")
         {
 			zipo.targetTransform = zip_is_cam.transform; Debug.Log("cam");
 		}
