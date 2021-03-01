@@ -235,7 +235,7 @@ MonoBehaviour:
   plane_pl:
   - {fileID: 3721562186254205936, guid: b5aaa36ba1744664eb69821e4afe55a5, type: 3}
   - {fileID: 3436474456442166014, guid: 9b632edd816466d49a6dfd54ef492e24, type: 3}
-  main_cam_gb: {fileID: 698534334}
+  main_cam_gb: {fileID: 1156199919}
   fog: {fileID: 1894956414}
   parent: {fileID: 322249478}
   list_ac: {fileID: 1358736719}
@@ -1576,7 +1576,7 @@ PrefabInstance:
     - target: {fileID: 114196496685157712, guid: 5bb46bae81bf04608ac699be504c5e66, type: 3}
       propertyPath: _options.extentOptions.defaultExtents.rangeAroundTransformOptions.targetTransform
       value: 
-      objectReference: {fileID: 698534337}
+      objectReference: {fileID: 1156199923}
     - target: {fileID: 114196496685157712, guid: 5bb46bae81bf04608ac699be504c5e66, type: 3}
       propertyPath: _vectorData._layerProperty.vectorSubLayers.Array.data[0].coreOptions.combineMeshes
       value: 1
