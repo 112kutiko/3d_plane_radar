@@ -383,8 +383,8 @@ public class radar : MonoBehaviour
         {
 
 	        Transform  ma= zip_is_cam.transform.Find("foward");
-		    zipo.targetTransform = zip_is_cam.transform;
-			zipo.targetTransform.position = ma.position;
+			zip_is_cam.transform.position= ma.position;
+			zipo.targetTransform = zip_is_cam.transform; 
 			Debug.Log("plane");
         }
         else if(zip_is_cam.name == "Main Camera")
