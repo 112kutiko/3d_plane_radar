@@ -26,14 +26,14 @@ public class plane_info_ui : MonoBehaviour
             on_off = true; 
             on_info(on_off);
             _tmp_plane = radar.instance._now_plane;
-            if (radar.instance.now_use_cam_id != -1) { set_info(); }
+            if (radar.instance.now_use_cam_id != -1) { set_info(); img_full.SetActive(true); }
         } else { 
             on_off = false; 
             on_info(on_off);
         }
         if (on_off)
         {
-            if (radar.instance.now_use_cam_id != -1) { set_info(); }
+            if (radar.instance.now_use_cam_id != -1) { set_info(); img_full.SetActive(true); }
         }
     }
     public void on_info(bool i) { panel.SetActive(i); }

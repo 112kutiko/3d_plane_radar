@@ -379,7 +379,15 @@ public class radar : MonoBehaviour
 		RangeAroundTransformTileProviderOptions zipo = new RangeAroundTransformTileProviderOptions();
 		zipo.visibleBuffer =i;
 		zipo.disposeBuffer = u;
-		zipo.targetTransform = zip_is_cam.transform;
+        if (zip_is_cam.name != "Main Camera")
+        {
+		zipo.targetTransform = zip_is_cam.transform.Find("foward");
+        }
+        else
+        {
+			zipo.targetTransform = zip_is_cam.transform;
+		}
+
 	
 		return zipo;
 	}
