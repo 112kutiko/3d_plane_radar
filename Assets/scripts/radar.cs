@@ -381,14 +381,21 @@ public class radar : MonoBehaviour
 		zipo.disposeBuffer = u;
         if (zip_is_cam.name != "Main Camera")
         {
-		zipo.targetTransform = zip_is_cam.transform.Find("foward");
+
+	        Transform  ma= zip_is_cam.transform.Find("foward");
+		    zipo.targetTransform = zip_is_cam.transform;
+			zipo.targetTransform.position = ma.position;
+			Debug.Log("plane");
         }
-        else
+        else if(zip_is_cam.name == "Main Camera")
         {
+			zipo.targetTransform = zip_is_cam.transform; Debug.Log("cam");
+		}
+		else  
+		{
 			zipo.targetTransform = zip_is_cam.transform;
 		}
 
-	
 		return zipo;
 	}
 
@@ -396,8 +403,10 @@ public class radar : MonoBehaviour
         if (pl_List.Count != 0)
         {
 		for(int o=0;o< pl_List.Count; o++)
-				{
-					Destroy(pl_List[o].plane);
+			{
+
+				pl_List[o].plane.GetComponent<plane_cam_hold>().cam_back();
+				Destroy(pl_List[o].plane);
                 if (tempory_plane.Count != 0) {
 					Destroy(tempory_plane[o].plane);
 				}
