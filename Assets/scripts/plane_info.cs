@@ -105,9 +105,7 @@ public class plane_info : MonoBehaviour
         {
             if (jsnData.status == "200")
             {
-                Debug.Log("____________________________");
-                Debug.Log("kodas: " + jsnData.status + " img vnt: " + jsnData.data.Count);
-                Debug.Log("____________________________");
+     
                link_img = jsnData.data[0].image;
                 img_ups = jsnData.data;
                 ats = jsnData.status;
