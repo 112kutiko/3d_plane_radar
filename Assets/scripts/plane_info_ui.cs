@@ -22,10 +22,18 @@ public class plane_info_ui : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(radar.instance._now_plane!="" && radar.instance.now_use_cam_id != -1) { on_off = true; on_info(on_off); _tmp_plane = radar.instance._now_plane; set_info(); } else { on_off = false; on_info(on_off); }
+        if(radar.instance._now_plane!="" && radar.instance.now_use_cam_id != -1) { 
+            on_off = true; 
+            on_info(on_off);
+            _tmp_plane = radar.instance._now_plane;
+            if (radar.instance.now_use_cam_id != -1) { set_info(); }
+        } else { 
+            on_off = false; 
+            on_info(on_off);
+        }
         if (on_off)
         {
-            set_info();
+            if (radar.instance.now_use_cam_id != -1) { set_info(); }
         }
     }
     public void on_info(bool i) { panel.SetActive(i); }
@@ -74,7 +82,7 @@ public class plane_info_ui : MonoBehaviour
             plane_main_image.sprite = Sprite.Create(img, new Rect(0f, 0f, img.width, img.height),Vector2.zero);
         }
         else
-        { Debug.Log("fail");
+        { Debug.Log("fail  plane id:"+ plane_is.GetComponent<plane_info>().Icao);
           
         }
     }

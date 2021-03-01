@@ -242,9 +242,9 @@ MonoBehaviour:
   _map: {fileID: 0}
   main_script: {fileID: 0}
   max_view_all: 18
-  max_plane_view: 18
+  max_plane_view: 16
   min_view_all: 18
-  min_plane_view: 18
+  min_plane_view: 16
   now_use_cam_id: -1
   ipy: 0
   main_cam: {fileID: 698534336}
