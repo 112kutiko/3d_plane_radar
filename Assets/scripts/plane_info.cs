@@ -35,6 +35,7 @@ public class plane_info : MonoBehaviour
     public string api_img_mid;
     public string Mil; //military
     bool first = false;
+    public GameObject front_show;
     [Header("plane img info")]
     public string ats;
     public List<img_list> img_ups;// nuotrauku kiekis
@@ -62,7 +63,7 @@ public class plane_info : MonoBehaviour
             first = true;
             img_picker(img_ups.Count);
         }
-
+        front_sh();
     }
     void convertor()
     {
@@ -129,4 +130,23 @@ public class plane_info : MonoBehaviour
             link_img = img_ups[a].image;
         }
     }
+
+    void front_sh() {
+        GameObject fpg = radar.instance.front_plane_go;
+        if (front_show == null)
+        {
+            GameObject front_show = Instantiate(fpg,gameObject.transform.position, Quaternion.Euler(0, Trak + 180, 0));
+            front_show.transform.position += transform.forward * 50;
+            front_show.name = "front_" + Icao;
+        }
+        else
+        {
+            front_show.transform.rotation = Quaternion.Euler(0, Trak + 180, 0);
+            front_show.transform.position = gameObject.transform.position+transform.forward * 50;
+            front_show.name = "front_" + Icao;
+        }
+
+    }
+
+
 }

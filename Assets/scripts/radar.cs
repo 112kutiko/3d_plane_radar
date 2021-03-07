@@ -10,11 +10,13 @@ using Mapbox.Unity.Utilities;
 
 public class radar : MonoBehaviour
 {
+
+	#region kintamieji
 	public static radar  instance;
-	
 	[Header("vieða info")]
 	public string jsonUrl="http://127.0.0.1/VirtualRadar/AircraftList.json";
 	public List<GameObject> plane_pl;
+	public GameObject front_plane_go;
 	public GameObject  main_cam_gb;
 	public GameObject fog;
 	public Transform parent;
@@ -43,14 +45,9 @@ public class radar : MonoBehaviour
     [SerializeField] private int lektuvu_zonoje;
 	[Header("lektuvai")]
 	public List<IdList> pl_List, tempory_plane;
-
-	//const
-
 	public  string api_img_link = "https://www.airport-data.com/api/ac_thumb.json?";
 	public string api_img_back = "&n=N";
-	
-
-
+	#endregion
 
 	void Start()
     {
@@ -126,7 +123,9 @@ public class radar : MonoBehaviour
 		StartCoroutine(getDate());
 		s_host = null;
 	}
-	public void main_cam_activator()
+
+    #region cameros
+    public void main_cam_activator()
     {
 		fog.SetActive(true);
 		main_script.SetExtentOptions(now_cam_by(main_cam_gb, min_view_all, max_view_all));
@@ -213,6 +212,10 @@ public class radar : MonoBehaviour
 		
 
 	}
+
+#endregion
+
+
 	public void first_time(List<IdList> a)
     {
 		
