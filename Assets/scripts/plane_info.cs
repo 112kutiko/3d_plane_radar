@@ -135,7 +135,7 @@ public class plane_info : MonoBehaviour
         GameObject fpg = radar.instance.front_plane_go;
         if (front_show == null)
         {
-            GameObject front_show = Instantiate(fpg,gameObject.transform.position, Quaternion.Euler(0, Trak + 180, 0));
+            front_show = Instantiate(fpg,gameObject.transform.position, Quaternion.Euler(0, Trak + 180, 0));
             front_show.transform.position += transform.forward * 50;
             front_show.name = "front_" + Icao;
         }
