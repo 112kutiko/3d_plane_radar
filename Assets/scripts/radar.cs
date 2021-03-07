@@ -178,7 +178,7 @@ public class radar : MonoBehaviour
 									}
 									now_use_cam_id = s;
 									pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-									main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].plane, min_view_all,max_view_all));
+									main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].front_show, min_view_all,max_view_all));
 								Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
 									break;
 								}
@@ -199,7 +199,7 @@ public class radar : MonoBehaviour
 									}
 									now_use_cam_id = s;
 									pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-								main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].plane, min_view_all, max_view_all));
+								main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].front_show, min_view_all, max_view_all));
 								Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy+" w ");
 								}
 							}  
@@ -289,6 +289,7 @@ public class radar : MonoBehaviour
 			a.plane.GetComponent<plane_cam_hold>().cam_back();
 
 		}
+		Destroy(a.front_show);
 		Destroy(a.plane);
 		s.Remove(a);
 		text_reload();
@@ -318,9 +319,11 @@ public class radar : MonoBehaviour
 			plane_tmp.Long = a.Long;
 			plane_tmp.Trak = a.Trak;
 			plane_tmp.Mil = a.Mil;
-		se.name = a.Icao;
+			se.name = a.Icao;
+			plane_tmp.front_show = plane_tmp.frGo();
 			plane_tmp._by = then;
 			a.plane = se;
+		    a.front_show = plane_tmp.front_show;
 			pl_List.Add(a);
 			text_reload();
 	}
@@ -382,18 +385,10 @@ public class radar : MonoBehaviour
 		RangeAroundTransformTileProviderOptions zipo = new RangeAroundTransformTileProviderOptions();
 		zipo.visibleBuffer =i;
 		zipo.disposeBuffer = u;
-        if (zip_is_cam.name != "free_cam")
-        {
 
-	        Transform  ma= zip_is_cam.transform.Find("foward");
-			zip_is_cam.transform.position= ma.position;
-			zipo.targetTransform = zip_is_cam.transform; 
-			Debug.Log("plane");
-        }
-		else  
-		{
-			zipo.targetTransform = zip_is_cam.transform;
-		}
+		zipo.targetTransform = zip_is_cam.transform;
+
+
 
 		return zipo;
 	}
@@ -407,7 +402,7 @@ public class radar : MonoBehaviour
                 {
 				pl_List[o].plane.GetComponent<plane_cam_hold>().cam_back();
                 }
-			
+				Destroy(pl_List[o].front_show);
 				Destroy(pl_List[o].plane);
                 if (tempory_plane.Count != 0) {
 					if (pl_List[o].Icao == _now_plane)

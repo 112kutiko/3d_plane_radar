@@ -33,6 +33,7 @@ public class IdList{
 	public float  Lat; //cor
 	public float  Long;//cor
 	public GameObject plane; //plane 
+	public GameObject front_show;
 }
 [Serializable]
 public class img_list
