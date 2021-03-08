@@ -178,7 +178,7 @@ public class radar : MonoBehaviour
 									}
 									now_use_cam_id = s;
 									pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-									main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].front_show, min_view_all,max_view_all));
+									main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].front_show, min_plane_view, max_plane_view));
 								Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
 									break;
 								}
@@ -199,7 +199,7 @@ public class radar : MonoBehaviour
 									}
 									now_use_cam_id = s;
 									pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
-								main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].front_show, min_view_all, max_view_all));
+								main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].front_show, min_plane_view, max_plane_view));
 								Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy+" w ");
 								}
 							}  
