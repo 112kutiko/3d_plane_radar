@@ -8,7 +8,7 @@
 - [required programs](#required-programs)
 - [How To Use](#how-to-use)
 - [References](#references)
-- [Author Info](#author-info)
+- [aircraftlist.json](#aircraftlist.json)
 - [Author Info](#author-info)
 
 ## Description
