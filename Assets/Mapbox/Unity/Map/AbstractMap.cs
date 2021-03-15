@@ -16,6 +16,7 @@ namespace Mapbox.Unity.Map
 	using Mapbox.Unity.MeshGeneration.Factories;
 	using Mapbox.Unity.MeshGeneration.Data;
 	using System.Globalization;
+	using UnityEngine.SceneManagement;
 
 	/// <summary>
 	/// Abstract map.
@@ -723,8 +724,18 @@ namespace Mapbox.Unity.Map
 			Mapbox.Utils.Vector2d tp_locations = new Mapbox.Utils.Vector2d(p_lat, p_long);
 			Debug.Log("set cord: " + tp_locations);
 			//
-			//_centerLatitudeLongitude = Conversions.StringToLatLon(options.locationOptions.latitudeLongitude);
+			Scene sceneLoaded = SceneManager.GetActiveScene();
+            if (sceneLoaded.buildIndex == 0)
+			{
+				Debug.Log("main: "+ sceneLoaded.buildIndex);
+			_centerLatitudeLongitude = Conversions.StringToLatLon(options.locationOptions.latitudeLongitude);
+            }
+            else
+            {
 			_centerLatitudeLongitude = tp_locations;
+            }
+			//
+
 			_initialZoom = (int)options.locationOptions.zoom;
 
 			options.scalingOptions.scalingStrategy.SetUpScaling(this);
