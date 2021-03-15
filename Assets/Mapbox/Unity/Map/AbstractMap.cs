@@ -337,6 +337,7 @@ namespace Mapbox.Unity.Map
 
 		public virtual void UpdateMap()
 		{
+		
 			UpdateMap(Conversions.StringToLatLon(_options.locationOptions.latitudeLongitude), Zoom);
 		}
 
@@ -724,16 +725,10 @@ namespace Mapbox.Unity.Map
 			Mapbox.Utils.Vector2d tp_locations = new Mapbox.Utils.Vector2d(p_lat, p_long);
 			Debug.Log("set cord: " + tp_locations);
 			//
-			Scene sceneLoaded = SceneManager.GetActiveScene();
-            if (sceneLoaded.buildIndex == 0)
-			{
-				Debug.Log("main: "+ sceneLoaded.buildIndex);
-			_centerLatitudeLongitude = Conversions.StringToLatLon(options.locationOptions.latitudeLongitude);
-            }
-            else
-            {
+		 //_centerLatitudeLongitude = Conversions.StringToLatLon(options.locationOptions.latitudeLongitude);
+            
 			_centerLatitudeLongitude = tp_locations;
-            }
+          
 			//
 
 			_initialZoom = (int)options.locationOptions.zoom;

@@ -351,9 +351,9 @@ MonoBehaviour:
   list_ac: {fileID: 1522036395}
   _map: {fileID: 0}
   main_script: {fileID: 0}
-  max_view_all: 18
+  max_view_all: 17
   max_plane_view: 12
-  min_view_all: 18
+  min_view_all: 17
   min_plane_view: 12
   now_use_cam_id: -1
   ipy: 0
@@ -2064,11 +2064,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114196496685157712, guid: 5bb46bae81bf04608ac699be504c5e66, type: 3}
       propertyPath: _options.extentOptions.defaultExtents.rangeAroundTransformOptions.disposeBuffer
-      value: 18
+      value: 117
       objectReference: {fileID: 0}
     - target: {fileID: 114196496685157712, guid: 5bb46bae81bf04608ac699be504c5e66, type: 3}
       propertyPath: _options.extentOptions.defaultExtents.rangeAroundTransformOptions.visibleBuffer
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 114196496685157712, guid: 5bb46bae81bf04608ac699be504c5e66, type: 3}
       propertyPath: _vectorData._layerProperty.vectorSubLayers.Array.data[0].buildingsWithUniqueIds
