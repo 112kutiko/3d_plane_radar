@@ -61,7 +61,10 @@ public class plane_info : MonoBehaviour
         {
             img_get();
             first = true;
-            img_picker(img_ups.Count);
+            if (img_ups.Count != 0)
+            {
+            link_img = img_ups[img_ups.Count].image;
+            }
         }
         front_sh();
     }

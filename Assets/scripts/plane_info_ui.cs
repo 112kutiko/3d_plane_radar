@@ -30,6 +30,7 @@ public class plane_info_ui : MonoBehaviour
         } else { 
             on_off = false; 
             on_info(on_off);
+            _tmp_plane = "";
         }
         if (on_off)
         {

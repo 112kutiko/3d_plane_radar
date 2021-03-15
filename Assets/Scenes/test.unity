@@ -366,7 +366,7 @@ MonoBehaviour:
   pl_List: []
   tempory_plane: []
   api_img_link: https://www.airport-data.com/api/ac_thumb.json?
-  api_img_back: '&n=N'
+  api_img_back: '&n=1'
 --- !u!4 &170352807
 Transform:
   m_ObjectHideFlags: 0
