@@ -11,7 +11,7 @@ public class meniu_hl : MonoBehaviour
     public Text Username_field, _long, _lat;
     public string url_link;
     public float _c_long=0f, _c_lat = 0f;
-
+    public GameObject m_ui, s_ui;
     private int cop = 0;
     // Start is called before the first frame update
     void Start()
@@ -83,8 +83,20 @@ public class meniu_hl : MonoBehaviour
                 Debug.Log("fail");
             }
         }
-
-
-
     }
+    public void change_ui()
+    {
+        if (m_ui.activeSelf)
+        {
+            m_ui.setActive(false);
+            s_ui.setActive(true);
+        }
+        else
+        {
+            m_ui.setActive(true);
+            s_ui.setActive(false);
+        }
+    }
+
+
 }
