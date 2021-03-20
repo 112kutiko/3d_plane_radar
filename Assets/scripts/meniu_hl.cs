@@ -88,13 +88,13 @@ public class meniu_hl : MonoBehaviour
     {
         if (m_ui.activeSelf)
         {
-            m_ui.setActive(false);
-            s_ui.setActive(true);
+            m_ui.SetActive(false);
+            s_ui.SetActive(true);
         }
         else
         {
-            m_ui.setActive(true);
-            s_ui.setActive(false);
+            m_ui.SetActive(true);
+            s_ui.SetActive(false);
         }
     }
 
