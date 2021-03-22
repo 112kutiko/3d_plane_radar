@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3206f12f5243741880bfe7cb3901f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonUrl: https://raw.githubusercontent.com/112kutiko/3d_plane_radar/main/Assets/test_files_aircraft/AircraftList.json
+  jsonUrl: 
   plane_pl:
   - {fileID: 3721562186254205936, guid: b5aaa36ba1744664eb69821e4afe55a5, type: 3}
   - {fileID: 3436474456442166014, guid: 9b632edd816466d49a6dfd54ef492e24, type: 3}

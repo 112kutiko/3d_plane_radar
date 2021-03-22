@@ -84,7 +84,7 @@ public class plane_info : MonoBehaviour
     void img_get()
     {
         string full_link = radar.instance.api_img_link + "m=" + api_img_mid + radar.instance.api_img_back;
-        Debug.Log(full_link);
+        debug_ss.dms.debug_send(full_link);
         StartCoroutine(getDate(full_link));
     }
     IEnumerator getDate(string u)
@@ -97,10 +97,10 @@ public class plane_info : MonoBehaviour
             ProcessJsonDate(_www.text);
         }
         else
-        {
-            Debug.Log("some img error");
+        { 
+            debug_ss.dms.debug_send("some img error");
         }
-        Debug.Log("stop img gain");
+        debug_ss.dms.debug_send("stop img gain");  
     }
     private void ProcessJsonDate(string _url)
     {
@@ -120,8 +120,8 @@ public class plane_info : MonoBehaviour
             }
 
         }
-        else {   
-        Debug.Log("status: " + jsnData.status + " img get fail");
+        else {
+            debug_ss.dms.debug_send("status: " + jsnData.status + " img get fail"); 
             ats = jsnData.status;
         }
     }

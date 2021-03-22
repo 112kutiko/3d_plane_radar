@@ -67,19 +67,18 @@ public class radar : MonoBehaviour
 	}
 	IEnumerator getDate()
     {
- 
-		Debug.Log("start Data gain");
+		//debug_ss.dms.debug_send("start Data gain");
 		WWW _www = new WWW(jsonUrl);
 		yield return _www;
 		if (_www.error == null) 
         {
 			ProcessJsonDate(_www.text);
         }else
-		{
-			Debug.Log("some error");
+		{ 
+			debug_ss.dms.debug_send("some error"); 
 		}
-		Debug.Log("stop Data gain");
-		Debug.Log("_______________");
+		debug_ss.dms.debug_send("stop Data gain");
+		debug_ss.dms.debug_send("_______________");
 	}
 	private void ProcessJsonDate(string _url){
  
@@ -89,10 +88,10 @@ public class radar : MonoBehaviour
 		if(jsnData.acList.Count!=0)
         {
 			tempory_plane=jsnData.acList;
-          
-				Debug.Log("____________________________");
-				Debug.Log("ðaltinis: " + jsnData.src + " lektuvu zonoje: " + jsnData.acList.Count);
-				Debug.Log("____________________________");
+
+			debug_ss.dms.debug_send("____________________________");
+			debug_ss.dms.debug_send("ðaltinis: " + jsnData.src + " lektuvu zonoje: " + jsnData.acList.Count);
+			debug_ss.dms.debug_send("____________________________");
 				if (first_time_b == false)
                { 
 					first_time(jsnData.acList);
@@ -130,12 +129,13 @@ public class radar : MonoBehaviour
 		fog.SetActive(true);
 		main_script.SetExtentOptions(now_cam_by(main_cam_gb, min_view_all, max_view_all));
 		main_cam.enabled = true;
-		Debug.Log("main cam: " + main_cam.enabled);
+		debug_ss.dms.debug_send("main cam: " + main_cam.enabled);
 		ipy = true;
 			for (int i = 0; i < pl_List.Count; i++)
             {
                 if (pl_List[i].Icao==_now_plane)
-                {Debug.Log("off cam");
+                {
+				debug_ss.dms.debug_send("off cam");
 					pl_List[i].plane.GetComponent<plane_cam_hold>().plane_cam.enabled = false;
 					_now_plane = "";
 					now_use_cam_id = -1;
@@ -154,7 +154,7 @@ public class radar : MonoBehaviour
 
 		if (pl_List.Count == 0)
         {
-			Debug.Log("bug plane:"+_id+ "now "+now_use_cam_id);
+			debug_ss.dms.debug_send("bug plane:" +_id+ "now "+now_use_cam_id);
 
 		}
         else
@@ -179,7 +179,7 @@ public class radar : MonoBehaviour
 									now_use_cam_id = s;
 									pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
 									main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].front_show, min_plane_view, max_plane_view));
-								Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy);
+								debug_ss.dms.debug_send("cam  id: " + now_use_cam_id + "main cam: " + ipy);
 									break;
 								}
 							}
@@ -200,13 +200,13 @@ public class radar : MonoBehaviour
 									now_use_cam_id = s;
 									pl_List[now_use_cam_id].plane.GetComponent<plane_cam_hold>().cam_play();
 								main_script.SetExtentOptions(now_cam_by(pl_List[now_use_cam_id].front_show, min_plane_view, max_plane_view));
-								Debug.Log("cam  id: " + now_use_cam_id + "main cam: " + ipy+" w ");
+								debug_ss.dms.debug_send("cam  id: " + now_use_cam_id + "main cam: " + ipy+" w ");
 								}
 							}  
 						}
 						break;
 					}
-					if (c== pl_List.Count) {Debug.Log("cam  not exsit ");  }
+					if (c== pl_List.Count) { debug_ss.dms.debug_send("cam  not exsit ");  }
 				}
         }
 		
@@ -218,9 +218,10 @@ public class radar : MonoBehaviour
 
 	public void first_time(List<IdList> a)
     {
-		
-			Debug.Log("start first data create");
-			foreach (IdList x in a)
+
+		debug_ss.dms.debug_send("start first data create"); 
+
+		foreach (IdList x in a)
 			{
 				plane_spawner(x, "first time");
 			}	
@@ -296,11 +297,12 @@ public class radar : MonoBehaviour
 	}
 	public void plane_spawner(IdList a,string then)
 	{
-			Debug.Log("plane id: "+a.Icao);
-			spawn_position.z = a.Long;
+		debug_ss.dms.debug_send("plane id: " +a.Icao); 
+
+		spawn_position.z = a.Long;
 			spawn_position.x = a.Lat;
 			spawn_position.y = (int)(a.Alt * 0.0003048f);
-			Debug.Log("plane type: "+ a.Mil);
+		debug_ss.dms.debug_send("plane type: " + a.Mil);
 		    GameObject plo = this_plane(a.Mil);
 			GameObject se = Instantiate(plo, spawn_position, Quaternion.identity, parent);
 			plane_info plane_tmp = se.GetComponent<plane_info>();
@@ -371,12 +373,12 @@ public class radar : MonoBehaviour
 		GameObject o= plane_pl[0];
         if (i == "true")
 		{
-			Debug.Log("military");
+			debug_ss.dms.debug_send("military");
 			o = plane_pl[1];
         }
         else
         {
-			Debug.Log("civil");
+			debug_ss.dms.debug_send("civil");
 		}
 		return o;
     }
