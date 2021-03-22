@@ -43,6 +43,7 @@
 ## aircraftlist.json
 
   - uk - [uk rec 1](https://radar.freedar.uk/VirtualRadar/AircraftList.json)
+  - test file - [test rec](https://stats-int.000webhostapp.com/AircraftList.json)
   
 ## author info
 
