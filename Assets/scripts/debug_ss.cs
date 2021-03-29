@@ -24,7 +24,8 @@ public class debug_ss : MonoBehaviour
        
         if (tmp!= output)
         {
-        hh +=output ;
+        hh +=output;
+        output = string.Empty;
         con.text = hh;  
         tmp = output;
         }
