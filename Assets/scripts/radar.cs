@@ -67,18 +67,18 @@ public class radar : MonoBehaviour
 	}
 	IEnumerator getDate()
     {
-		//debug_ss.dms.debug_send("start Data gain");
+		Debug.Log("start Data gain");
 		WWW _www = new WWW(jsonUrl);
 		yield return _www;
 		if (_www.error == null) 
         {
 			ProcessJsonDate(_www.text);
         }else
-		{ 
-			debug_ss.dms.debug_send("some error"); 
+		{
+			Debug.Log("some error"); 
 		}
-		debug_ss.dms.debug_send("stop Data gain");
-		debug_ss.dms.debug_send("_______________");
+		Debug.Log("stop Data gain");
+		Debug.Log("_______________");
 	}
 	private void ProcessJsonDate(string _url){
  
@@ -89,7 +89,7 @@ public class radar : MonoBehaviour
         {
 			tempory_plane=jsnData.acList;
 
-			debug_ss.dms.debug_send("____________________________");
+			Debug.Log("____________________________");
 			debug_ss.dms.debug_send("ðaltinis: " + jsnData.src + " lektuvu zonoje: " + jsnData.acList.Count);
 			debug_ss.dms.debug_send("____________________________");
 				if (first_time_b == false)

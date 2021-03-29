@@ -38,12 +38,12 @@ public class debug_ss : MonoBehaviour
     
     void OnEnable()
     {
-        Application.logMessageReceived += HandleLog;
+        Application.logMessageReceivedThreaded += HandleLog;
     }
 
     void OnDisable()
     {
-     Application.logMessageReceived -= HandleLog;
+        Application.logMessageReceivedThreaded -= HandleLog;
     }
 
     void HandleLog(string logString, string stackTrace, LogType type)
