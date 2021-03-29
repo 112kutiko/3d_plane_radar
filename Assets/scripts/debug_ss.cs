@@ -24,7 +24,7 @@ public class debug_ss : MonoBehaviour
        
         if (tmp!= output)
         {
-        hh +=output + "\n";
+        hh +=output ;
         con.text = hh;  
         tmp = output;
         }
@@ -48,8 +48,8 @@ public class debug_ss : MonoBehaviour
 
     void HandleLog(string logString, string stackTrace, LogType type)
     {
-        output = logString;
-        stack = stackTrace;
+        output += logString + "\n";
+        stack += stackTrace;
     }
 
     public void debug_send(string y)
