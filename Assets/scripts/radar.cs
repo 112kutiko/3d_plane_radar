@@ -75,7 +75,8 @@ public class radar : MonoBehaviour
 			ProcessJsonDate(_www.text);
         }else
 		{
-			Debug.Log("some error"); 
+			Debug.Log("some error");
+			Debug.Log(_www.error);
 		}
 		Debug.Log("stop Data gain");
 		Debug.Log("_______________");
@@ -297,7 +298,7 @@ public class radar : MonoBehaviour
 	}
 	public void plane_spawner(IdList a,string then)
 	{
-		debug_ss.dms.debug_send("plane id: " +a.Icao); 
+		Debug.Log("plane id: " +a.Icao); 
 
 		spawn_position.z = a.Long;
 			spawn_position.x = a.Lat;
@@ -373,12 +374,12 @@ public class radar : MonoBehaviour
 		GameObject o= plane_pl[0];
         if (i == "true")
 		{
-			debug_ss.dms.debug_send("military");
+			Debug.Log("military");
 			o = plane_pl[1];
         }
         else
         {
-			debug_ss.dms.debug_send("civil");
+			Debug.Log("civil");
 		}
 		return o;
     }

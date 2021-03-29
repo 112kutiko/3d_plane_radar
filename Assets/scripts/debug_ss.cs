@@ -9,8 +9,7 @@ public class debug_ss : MonoBehaviour
     public static debug_ss dms;
 
     public string output = "";
-    public string stack = "";
-    string hh,tmp="";
+    public string hh,tmp="";
     public Text con;
     // Start is called before the first frame update
     void Start()
@@ -28,29 +27,28 @@ public class debug_ss : MonoBehaviour
         output = string.Empty;
         con.text = hh;  
         tmp = output;
-        }
-        else
-        {
-            tmp = output;
-        }
-
+         }
+         else
+       {
+           tmp = output;
+         }
     }
 
     
     void OnEnable()
     {
-        Application.logMessageReceivedThreaded += HandleLog;
+        Application.logMessageReceived += HandleLog;
     }
 
     void OnDisable()
     {
-        Application.logMessageReceivedThreaded -= HandleLog;
+        Application.logMessageReceived -= HandleLog;
     }
 
     void HandleLog(string logString, string stackTrace, LogType type)
     {
         output += logString + "\n";
-        stack += stackTrace;
+   
     }
 
     public void debug_send(string y)
