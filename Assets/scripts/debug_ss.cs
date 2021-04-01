@@ -8,11 +8,13 @@ using System.Text;
 public class debug_ss : MonoBehaviour
 {
     public static debug_ss dms;
-
+    public ScrollRect myScrollRect;
     public string output = "";
-    public string hh,tmp="";
+    public List<string> saved_text;
+    public string tmp="",tmp2;
     public Text con;
     public InputField searc;
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -26,16 +28,23 @@ public class debug_ss : MonoBehaviour
        
         if (tmp!= output)
         {
-        hh +=output;
+        saved_text.Add(output);
         output = string.Empty;
-        con.text = hh;  
+            tmp2 = string.Empty;
+            for (int u = 0; u < saved_text.Count; u++)
+            {
+                tmp2 += saved_text[u];
+            }
+        con.text =tmp2;  
         tmp = output;
          }
          else
        {
            tmp = output;
          }
-    }
+    //if(saved_text.Count%4 ==0)
+   //     myScrollRect.verticalNormalizedPosition = 0.98f;
+  //  }
 
     
     void OnEnable()

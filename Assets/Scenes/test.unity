@@ -1372,9 +1372,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039b615b8ec6791479b7d21a4a30d622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myScrollRect: {fileID: 870722667}
   output: 
-  hh: 
+  saved_text: []
   tmp: 
+  tmp2: 
   con: {fileID: 1384459459}
   searc: {fileID: 1046120194}
 --- !u!1 &460777958
