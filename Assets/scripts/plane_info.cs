@@ -84,12 +84,11 @@ public class plane_info : MonoBehaviour
     void img_get()
     {
         string full_link = radar.instance.api_img_link + "m=" + api_img_mid + radar.instance.api_img_back;
-        debug_ss.dms.debug_send(full_link);
+     
         StartCoroutine(getDate(full_link));
     }
     IEnumerator getDate(string u)
-    {
-        Debug.Log("start img gain");
+    { 
         WWW _www = new WWW(u);
         yield return _www;
         if (_www.error == null)
@@ -100,7 +99,7 @@ public class plane_info : MonoBehaviour
         { 
             debug_ss.dms.debug_send("some img error");
         }
-        debug_ss.dms.debug_send("stop img gain");  
+       
     }
     private void ProcessJsonDate(string _url)
     {

@@ -67,7 +67,7 @@ public class radar : MonoBehaviour
 	}
 	IEnumerator getDate()
     {
-		Debug.Log("start Data gain");
+ 
 		WWW _www = new WWW(jsonUrl);
 		yield return _www;
 		if (_www.error == null) 
@@ -78,8 +78,7 @@ public class radar : MonoBehaviour
 			Debug.Log("some error");
 			Debug.Log(_www.error);
 		}
-		Debug.Log("stop Data gain");
-		Debug.Log("_______________");
+  
 	}
 	private void ProcessJsonDate(string _url){
  
@@ -220,7 +219,7 @@ public class radar : MonoBehaviour
 	public void first_time(List<IdList> a)
     {
 
-		debug_ss.dms.debug_send("start first data create"); 
+	 
 
 		foreach (IdList x in a)
 			{
@@ -298,12 +297,11 @@ public class radar : MonoBehaviour
 	}
 	public void plane_spawner(IdList a,string then)
 	{
-		Debug.Log("plane id: " +a.Icao); 
+	 
 
 		spawn_position.z = a.Long;
 			spawn_position.x = a.Lat;
-			spawn_position.y = (int)(a.Alt * 0.0003048f);
-		debug_ss.dms.debug_send("plane type: " + a.Mil);
+			spawn_position.y = (int)(a.Alt * 0.0003048f); 
 		    GameObject plo = this_plane(a.Mil);
 			GameObject se = Instantiate(plo, spawn_position, Quaternion.identity, parent);
 			plane_info plane_tmp = se.GetComponent<plane_info>();
@@ -374,12 +372,12 @@ public class radar : MonoBehaviour
 		GameObject o= plane_pl[0];
         if (i == "true")
 		{
-			Debug.Log("military");
+			 
 			o = plane_pl[1];
         }
         else
         {
-			Debug.Log("civil");
+			 
 		}
 		return o;
     }
