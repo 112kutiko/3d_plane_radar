@@ -24,14 +24,14 @@
 
 1. dump1090
 2. virtual radar
-3. unity (tempory)
+3. unity (if want modification)
 
 ## How To Use
 
 - on dump1090.
 - on virtual radar.
 - open virtual radar add dump1090 source.
-- open unity project play and paste virtual radar link with AircraftList.json file.
+- open program and paste virtual radar link with AircraftList.json file.
 - enter.
 
 ## references
