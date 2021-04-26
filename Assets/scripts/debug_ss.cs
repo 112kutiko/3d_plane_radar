@@ -10,11 +10,15 @@ public class debug_ss : MonoBehaviour
     public static debug_ss dms;
     public ScrollRect myScrollRect;
     public string output = "";
-    public List<string> saved_text;
+    public List<string> saved_text,tempo;
     public string tmp="",tmp2;
     public Text con;
     public InputField searc;
- 
+    public float scrollSpeed =  4f;
+    public RectTransform m_ContentRectTransform;
+    public GameObject sc;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,16 +29,29 @@ public class debug_ss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (tmp != output)
+        if (Input.GetKeyDown(KeyCode.BackQuote))
         {
-            saved_text.Add(output);
-            output = string.Empty;
-            tmp2 = string.Empty;
-            for (int u = 0; u < saved_text.Count; u++)
+            sc.SetActive(!sc.activeSelf);
+        }
+        if (sc.activeSelf == true)
+        {
+            if (tmp != output)
+        {
+            if ((saved_text.Count % 6) == 0)
             {
-                tmp2 += saved_text[u];
+                tmp2 = string.Empty;
+                debug_send("clear");
+
             }
+            saved_text.Add(output);
+            tempo.Add(output);
+            output = string.Empty;
+ 
+            for (int u = 0; u < tempo.Count; u++)
+            {
+                tmp2 += tempo[u];
+            }
+            tempo.Clear();
             con.text = tmp2;
             tmp = output;
         }
@@ -42,9 +59,8 @@ public class debug_ss : MonoBehaviour
         {
             tmp = output;
         }
-        //if(saved_text.Count%4 ==0)
-        //     myScrollRect.verticalNormalizedPosition = 0.98f;
-        //  }
+        }
+      
     }
 
         void OnEnable()
@@ -90,6 +106,4 @@ public class debug_ss : MonoBehaviour
             searc.text = " ";
 
         }
-
-
     }

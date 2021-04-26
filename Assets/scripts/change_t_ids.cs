@@ -11,7 +11,7 @@ public class change_t_ids : MonoBehaviour
     void Start()
     {
             
-        GetComponent<TextMesh>().text = "Registracija: " + tt.GetComponent<plane_info>().Reg + "\n ICAO: " + tt.GetComponent<plane_info>().Icao;
+        GetComponent<TextMesh>().text = "Reg: " + tt.GetComponent<plane_info>().Reg + "\n ICAO: " + tt.GetComponent<plane_info>().Icao;
     }
 
     // Update is called once per frame

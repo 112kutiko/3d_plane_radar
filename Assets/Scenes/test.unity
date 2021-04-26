@@ -1379,6 +1379,8 @@ MonoBehaviour:
   tmp2: 
   con: {fileID: 1384459459}
   searc: {fileID: 1046120194}
+  scrollSpeed: 4
+  m_ContentRectTransform: {fileID: 1716785586}
 --- !u!1 &460777958
 GameObject:
   m_ObjectHideFlags: 0
@@ -4004,7 +4006,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 1965.126}
+  m_SizeDelta: {x: 0, y: 95.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!21 &1397562679
 Material:
@@ -4247,8 +4249,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1062726276}
   m_HandleRect: {fileID: 1062726275}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.04872985
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
