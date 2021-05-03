@@ -39,6 +39,7 @@
 - unity api - [api link](https://docs.unity3d.com/ScriptReference/)
 - rtl sdr  - [site](https://www.rtl-sdr.com/)
 - dump1090 - [github](github.com/antirez/dump1090)
+- command list - [command file](https://github.com/112kutiko/3d_plane_radar/blob/main/command_list.md)
 
 ## aircraftlist.json
 
