@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Globalization;
+using UnityEngine.SceneManagement;
 
 public class other_function : MonoBehaviour
 {
     public static other_function stats;
     public  Vector3 mp;
     public bool is_on_area;
+
+    public GameObject pause_ui;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +25,10 @@ public class other_function : MonoBehaviour
         Vector3 mousePos_get = Input.mousePosition;
         mp = mousePos_get;
         check(mp);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pause_ui.SetActive(!pause_ui.activeSelf);
+        }
     }
     void check(Vector3 mousePos)
     {
@@ -30,10 +40,18 @@ public class other_function : MonoBehaviour
             is_on_area = false;
         }
         else
-        {
-            is_on_area = true;
+        { 
+            if(pause_ui.activeSelf==false)
+            
+            {is_on_area = true; }
         }
     }
-
-
+    public void change_ps()
+    {
+        pause_ui.SetActive(!pause_ui.activeSelf);
+    }
+    public void back_m()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
