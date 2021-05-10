@@ -37,7 +37,7 @@ public class free_cam_control : MonoBehaviour
 
                 if (Input.GetKey(KeyCode.Q))
                 {
-                    if(transform.position.y != 16 && transform.position.y < 16)
+                    if(transform.position.y != 18 && transform.position.y < 18)
                     { transform.position += transform.up * climbSpeed * Time.deltaTime;
                 }
             }
