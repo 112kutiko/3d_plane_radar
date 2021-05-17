@@ -55,7 +55,7 @@ public class plane_info_ui : MonoBehaviour
             plane_from.text="from: "+ in_plane.From;
             plane_to.text="To: "+ in_plane.To;
             plane_op.text="Operator: " + in_plane.Op;
-            plane_alt.text= "Alt (km): "+ in_plane.Alt;
+            plane_alt.text= "Alt (km): "+ in_plane.Alt*10;
             plane_spd.text = "speed: " + in_plane.Spd;
             plane_lat.text="Lat: "+ in_plane.Lat;           
             plane_long.text="Long: " + in_plane.Long;            
