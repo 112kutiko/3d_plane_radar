@@ -99,6 +99,9 @@ public class debug_ss : MonoBehaviour
                     Debug.Log("url: " + words[1]);
                     radar.instance.jsonUrl = words[1];
                     break;
+                case "stopWatch":
+                     Application.Quit();
+                break;
                 default:
                     Debug.Log("not found");
                     break;
