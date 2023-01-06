@@ -12,46 +12,21 @@ public class other_function : MonoBehaviour
 
     public GameObject pause_ui;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        stats = this;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+    void Start(){ stats = this;}
+    void Update(){
         Vector3 mousePos_get = Input.mousePosition;
         mp = mousePos_get;
         check(mp);
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
+        if (Input.GetKeyDown(KeyCode.Escape)){
             pause_ui.SetActive(!pause_ui.activeSelf);
         }
     }
-    void check(Vector3 mousePos)
-    {
-        if(mousePos.x<0|| mousePos.y<0||mousePos.x > Screen.width || mousePos.y > Screen.height)
-        {
-           // Debug.Log("______________________________________");
-           // Debug.Log("mouse x: "+mousePos.x +" y: "+mousePos.y);
-           // Debug.Log("______________________________________");
-            is_on_area = false;
-        }
-        else
-        { 
-            if(pause_ui.activeSelf==false)
-            
-            {is_on_area = true; }
+    void check(Vector3 mousePos) {
+        if(mousePos.x<0|| mousePos.y<0||mousePos.x > Screen.width || mousePos.y > Screen.height) {
+            is_on_area = false;   }  else    { 
+            if(pause_ui.activeSelf==false){is_on_area = true; }
         }
     }
-    public void change_ps()
-    {
-        pause_ui.SetActive(!pause_ui.activeSelf);
-    }
-    public void back_m()
-    {
-        SceneManager.LoadScene(0);
-    }
+    public void change_ps(){pause_ui.SetActive(!pause_ui.activeSelf);}
+    public void back_m() {SceneManager.LoadScene(0);}
 }

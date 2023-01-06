@@ -31,37 +31,41 @@ public class plane_info_ui : MonoBehaviour{
     }
     public void on_info(bool i) { panel.SetActive(i); }
 
-    public void set_info()  {
-        IdList obj = radar.instance.pl_List.Find(o => o.Icao == _tmp_plane);
-        if (obj != null)  {  plane_is = obj;  }
-        else{
-            Debug.Log("[ERROR] PLANE not found");   }
+public void set_info()  {
+    IdList obj = radar.instance.pl_List.Find(o => o.Icao == _tmp_plane);
+    if (obj != null)  {  
+        plane_is = obj;  
+    }
+    else{
+        Debug.Log("[ERROR] PLANE not found");   
+    }
 
-        if (plane_is != null) {
-            plane_id.text = "id: " + plane_is.Id;
-            plane_reg.text = "registration: " + plane_is.Reg;
-            plane_Icao.text = "ICao: " + plane_is.Icao;
-            plane_call.text = "Call: " + plane_is.Call;
-            plane_type.text = "plane type: " + plane_is.Type;
-            plane_mdl.text="plane full model name: "+ plane_is.Mdl;
-            plane_from.text="from: "+ plane_is.From;
-            plane_to.text="To: "+ plane_is.To;
-            plane_op.text="Operator: " + plane_is.Op;
-            plane_alt.text= "Alt (km): "+ plane_is.Alt*10;
-            plane_spd.text = "speed: " + plane_is.Spd;
-            plane_lat.text="Lat: "+ plane_is.Lat;           
-            plane_long.text="Long: " + plane_is.Long;            
-            plane_track.text = "Direction: " + plane_is.Trak;
-            plane_mill.text= "military: " + plane_is.Mil;
-            if (plane_is.plane.GetComponent<plane_info>().ats == "200") {
-                img_full.SetActive(true);
-                string url = plane_is.plane.GetComponent<plane_info>().link_img;
-                StartCoroutine(GetImageFromWeb(url));
-            } else{
-                img_full.SetActive(false);
-            }
+    if (plane_is != null) {
+        plane_id.text = "id: " + plane_is.Id;
+        plane_reg.text = "registration: " + plane_is.Reg;
+        plane_Icao.text = "ICao: " + plane_is.Icao;
+        plane_call.text = "Call: " + plane_is.Call;
+        plane_type.text = "plane type: " + plane_is.Type;
+        plane_mdl.text="plane full model name: "+ plane_is.Mdl;
+        plane_from.text="from: "+ plane_is.From;
+        plane_to.text="To: "+ plane_is.To;
+        plane_op.text="Operator: " + plane_is.Op;
+        plane_alt.text= "Alt (km): "+ plane_is.Alt*10;
+        plane_spd.text = "speed: " + plane_is.Spd;
+        plane_lat.text="Lat: "+ plane_is.Lat;           
+        plane_long.text="Long: " + plane_is.Long;            
+        plane_track.text = "Direction: " + plane_is.Trak;
+        plane_mill.text= "military: " + plane_is.Mil;
+        if (plane_is.plane.GetComponent<plane_info>().ats == "200") {
+            img_full.SetActive(true);
+            string url = plane_is.plane.GetComponent<plane_info>().link_img;
+            StartCoroutine(GetImageFromWeb(url));
+        } else{
+            img_full.SetActive(false);
         }
     }
+}
+
     IEnumerator GetImageFromWeb(string x){
         UnityWebRequest reg = UnityWebRequestTexture.GetTexture(x);
         yield return reg.SendWebRequest();

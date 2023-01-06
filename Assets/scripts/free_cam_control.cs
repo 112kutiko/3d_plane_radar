@@ -12,19 +12,11 @@ public class free_cam_control : MonoBehaviour
     public float n_speed = 10f;
     public float slow_move_factor = 0.25f;
     public float fast_move_factor = 3f;
-
-    ///private float rotationX=0f, rotationY=0f;
-
-
-    // Start is called before the first frame update
+ 
     void Start()
     {
-        cam = Camera.main;
-      //  Screen.lockCursor = true;
-      //Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    // Update is called once per frame
+        cam = Camera.main; 
+    } 
     void Update()
     {
         if (other_function.stats.is_on_area)

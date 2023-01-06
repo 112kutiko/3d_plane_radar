@@ -6,13 +6,7 @@ public class free_cam_view : MonoBehaviour
 {
     public float mouseSensitivity = 100f;
     float xr_1 = 0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if (other_function.stats.is_on_area)
@@ -25,10 +19,5 @@ public class free_cam_view : MonoBehaviour
             transform.localRotation = Quaternion.Euler(xr_1, 0f, 0f);
                 }
         }
-        
-
     }
-
-    
-
 }
