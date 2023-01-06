@@ -4,22 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
-public class plane_info_ui : MonoBehaviour
-{
+public class plane_info_ui : MonoBehaviour{
     public static plane_info_ui instance;
-    public GameObject panel,img_full,plane_is;
+    public GameObject panel,img_full;
+    public IdList plane_is;
     public Text plane_id, plane_reg,plane_Icao,plane_call,plane_type,plane_mdl,plane_from,plane_to,plane_op,plane_alt,plane_spd,plane_lat,plane_long,plane_track,plane_mill;
     public bool on_off = false;
     public string _tmp_plane = string.Empty;
     public Image plane_main_image;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        instance = this;
-    }
+    void Start() { instance = this; }
 
-    // Update is called once per frame
     void Update()
     {
         if(radar.instance._now_plane!="" && radar.instance.now_use_cam_id != -1) { 
@@ -32,61 +27,47 @@ public class plane_info_ui : MonoBehaviour
             on_info(on_off);
             _tmp_plane = "";
         }
-        if (on_off)
-        {
-            if (radar.instance.now_use_cam_id != -1) { set_info(); img_full.SetActive(true); }
-        }
+        if (on_off){if (radar.instance.now_use_cam_id != -1) { set_info(); img_full.SetActive(true); }}
     }
     public void on_info(bool i) { panel.SetActive(i); }
 
-    public void set_info()
-    {
-        plane_is= GameObject.Find("CitySimulatorMap/"+ _tmp_plane);
-        plane_info in_plane = plane_is.GetComponent<plane_info>();
+    public void set_info()  {
+        IdList obj = radar.instance.pl_List.Find(o => o.Icao == _tmp_plane);
+        if (obj != null)  {  plane_is = obj;  }
+        else{
+            Debug.Log("[ERROR] PLANE not found");   }
 
-        if (plane_is != null)
-        {
-            plane_id.text = "id: " + in_plane.Id;
-            plane_reg.text = "registration: " + in_plane.Reg;
-            plane_Icao.text = "ICao: " + in_plane.Icao;
-            plane_call.text = "Call: " + in_plane.Call;
-            plane_type.text = "plane type: " + in_plane.Type;
-            plane_mdl.text="plane full model name: "+ in_plane.Mdl;
-            plane_from.text="from: "+ in_plane.From;
-            plane_to.text="To: "+ in_plane.To;
-            plane_op.text="Operator: " + in_plane.Op;
-            plane_alt.text= "Alt (km): "+ in_plane.Alt*10;
-            plane_spd.text = "speed: " + in_plane.Spd;
-            plane_lat.text="Lat: "+ in_plane.Lat;           
-            plane_long.text="Long: " + in_plane.Long;            
-            plane_track.text = "Direction: " + in_plane.Trak;
-            plane_mill.text= "military: " + in_plane.Mil;
-            if (in_plane.ats == "200")
-            {
+        if (plane_is != null) {
+            plane_id.text = "id: " + plane_is.Id;
+            plane_reg.text = "registration: " + plane_is.Reg;
+            plane_Icao.text = "ICao: " + plane_is.Icao;
+            plane_call.text = "Call: " + plane_is.Call;
+            plane_type.text = "plane type: " + plane_is.Type;
+            plane_mdl.text="plane full model name: "+ plane_is.Mdl;
+            plane_from.text="from: "+ plane_is.From;
+            plane_to.text="To: "+ plane_is.To;
+            plane_op.text="Operator: " + plane_is.Op;
+            plane_alt.text= "Alt (km): "+ plane_is.Alt*10;
+            plane_spd.text = "speed: " + plane_is.Spd;
+            plane_lat.text="Lat: "+ plane_is.Lat;           
+            plane_long.text="Long: " + plane_is.Long;            
+            plane_track.text = "Direction: " + plane_is.Trak;
+            plane_mill.text= "military: " + plane_is.Mil;
+            if (plane_is.plane.GetComponent<plane_info>().ats == "200") {
                 img_full.SetActive(true);
-                string url = in_plane.link_img;
+                string url = plane_is.plane.GetComponent<plane_info>().link_img;
                 StartCoroutine(GetImageFromWeb(url));
-            }
-            else
-            {
+            } else{
                 img_full.SetActive(false);
             }
         }
     }
-    IEnumerator GetImageFromWeb(string x)
-    {
+    IEnumerator GetImageFromWeb(string x){
         UnityWebRequest reg = UnityWebRequestTexture.GetTexture(x);
         yield return reg.SendWebRequest();
-        if (reg.error == null)
-        {
+        if (reg.error == null) {
              Texture2D img =  ((DownloadHandlerTexture)reg.downloadHandler).texture;
             plane_main_image.sprite = Sprite.Create(img, new Rect(0f, 0f, img.width, img.height),Vector2.zero);
-        }
-        else
-        { Debug.Log("fail  plane id:"+ plane_is.GetComponent<plane_info>().Icao);
-          
-        }
+        }  else { Debug.Log("fail  plane id:"+ plane_is.Icao);   }
     }
-
-
 }

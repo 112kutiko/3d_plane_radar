@@ -18,75 +18,40 @@ public class debug_ss : MonoBehaviour
     public RectTransform m_ContentRectTransform;
     public GameObject sc;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        dms = this;
-      
-    }
-
-    // Update is called once per frame
+    void Start()  {dms = this;    }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.BackQuote))
-        {
+        if (Input.GetKeyDown(KeyCode.BackQuote)){
             sc.SetActive(!sc.activeSelf);
         }
-        if (sc.activeSelf == true)
-        {
-            if (tmp != output)
-        {
-            if ((saved_text.Count % 6) == 0)
-            {
+        if (sc.activeSelf == true){
+            if (tmp != output){
+            if ((saved_text.Count % 6) == 0){
                 tmp2 = string.Empty;
-                debug_send("clear");
-
-            }
+                debug_send("clear"); }
             saved_text.Add(output);
             tempo.Add(output);
             output = string.Empty;
  
-            for (int u = 0; u < tempo.Count; u++)
-            {
+            for (int u = 0; u < tempo.Count; u++) {
                 tmp2 += tempo[u];
             }
             tempo.Clear();
             con.text = tmp2;
             tmp = output;
-        }
-        else
-        {
+        }else{
             tmp = output;
         }
         }
-      
     }
 
-        void OnEnable()
-        {
-            Application.logMessageReceived += HandleLog;
-        }
+        void OnEnable() {Application.logMessageReceived += HandleLog;}
 
-        void OnDisable()
-        {
-            Application.logMessageReceived -= HandleLog;
-        }
+        void OnDisable(){ Application.logMessageReceived -= HandleLog;}
 
-        void HandleLog(string logString, string stackTrace, LogType type)
-        {
-            output += logString + "\n";
-
-        }
-
-        public void debug_send(string y)
-        {
-
-            Debug.Log(y);
-
-        }
-        public void check_command()
-        {
+        void HandleLog(string logString, string stackTrace, LogType type){ output += logString + "\n"; }
+        public void debug_send(string y) {Debug.Log(y); }
+        public void check_command()   {
             string txh = searc.text.ToString();
             char sq = ' ';
             string[] words = txh.Split(sq);
