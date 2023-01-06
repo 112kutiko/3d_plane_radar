@@ -13,12 +13,7 @@ public class meniu_hl : MonoBehaviour
     public float _c_long=0f, _c_lat = 0f;
     public GameObject m_ui, s_ui;
     private int cop = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
-    // Update is called once per frame
     void Update()
     {
       
