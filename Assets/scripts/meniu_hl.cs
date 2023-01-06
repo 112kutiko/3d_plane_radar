@@ -55,7 +55,7 @@ public class meniu_hl : MonoBehaviour{
 
     public void ParseLongitude(string lon)  {
         float tmp_c_m;
-        if (float.TryParse(lon, out float tmp_c_m))
+        if (float.TryParse(lon, out  tmp_c_m))
         {
             _c_long=tmp_c_m;
             Debug.Log("long: " + _c_long);
