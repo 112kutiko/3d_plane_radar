@@ -76,10 +76,11 @@ public class radar : MonoBehaviour
 		lektuvu_zonoje = jsnData.acList.Count;
 		if(jsnData.acList.Count!=0){
 			tempory_plane=jsnData.acList;
-			Debug.Log("____________________________");
-			debug_ss.dms.debug_send("ðaltinis: " + jsnData.src + " lektuvu zonoje: " + jsnData.acList.Count);
-			debug_ss.dms.debug_send("____________________________");
-				if (first_time_b == false){ 
+            Debug.Log("____________________________\n" +
+                      "ðaltinis: " + jsnData.src +   " lektuvu zonoje: " + jsnData.acList.Count + "\n" +
+                      "____________________________");
+
+            if (first_time_b == false){ 
 					first_time(jsnData.acList);
 			     	first_time_b = true;
 					tmpi=pl_List.Count;
