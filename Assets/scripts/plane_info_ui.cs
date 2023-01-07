@@ -13,7 +13,7 @@ public class plane_info_ui : MonoBehaviour{
     public string _tmp_plane = string.Empty;
     public Image plane_main_image;
     private bool flag = false;
-
+    private bool imageM = false;
 
     void Start() { instance = this; }
 
@@ -24,8 +24,7 @@ public class plane_info_ui : MonoBehaviour{
             on_off = true;
             on_info(on_off);
             _tmp_plane = radar.instance._now_plane;
-            plane_main_image = null;
-            if (radar.instance.now_use_cam_id != -1) { set_info(); img_full.SetActive(true); }
+             if (radar.instance.now_use_cam_id != -1) { set_info(); img_full.SetActive(true); }
         }
         else
         {
@@ -56,6 +55,7 @@ public void set_info()  {
     }
 
     if (plane_is != null) {
+            imageM = false;
         plane_id.text = "id: " + plane_is.Id;
         plane_reg.text = "registration: " + plane_is.Reg;
         plane_Icao.text = "ICao: " + plane_is.Icao;
@@ -71,15 +71,28 @@ public void set_info()  {
         plane_long.text="Long: " + plane_is.Long;            
         plane_track.text = "Direction: " + plane_is.Trak;
         plane_mill.text= "military: " + plane_is.Mil;
-        if (plane_is.plane.GetComponent<plane_info>().ats == "200" && plane_main_image==null) {
-            img_full.SetActive(true);
-            string url = plane_is.plane.GetComponent<plane_info>().link_img;
-            StartCoroutine(GetImageFromWeb(url));
-        } else{
-            img_full.SetActive(false);
-        }
+            imageChecker();
+       
     }
 }
+    public void imageChecker() {
+        int a = plane_is.plane.GetComponent<plane_info>().img_ups.Count;
+        if (a == 0)  {
+            Invoke("imageChecker", 15); // call the function again after 15 seconds
+        } else  {
+            if (plane_is.plane.GetComponent<plane_info>().ats == "200")  {
+                img_full.SetActive(true);
+                string url = plane_is.plane.GetComponent<plane_info>().link_img;
+                StartCoroutine(GetImageFromWeb(url));
+                
+            }  else {
+                img_full.SetActive(false);
+            }
+            imageM = true;
+        }
+    }
+
+
 
     IEnumerator GetImageFromWeb(string x){
         UnityWebRequest reg = UnityWebRequestTexture.GetTexture(x);
