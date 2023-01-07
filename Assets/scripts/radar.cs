@@ -95,7 +95,7 @@ public class radar : MonoBehaviour
 }
         }else{dell_all();}}
 	IEnumerator update_plane(){
-		yield return new WaitForSeconds(5f); 
+		yield return new WaitForSeconds(15f); 
 		StartCoroutine(getDate());
 		s_host = null;
 	}
@@ -202,13 +202,8 @@ public class radar : MonoBehaviour
 			plane_tmp.Id = a.Id;
 			plane_tmp.Reg = a.Reg;
 			plane_tmp.Icao = a.Icao;
-			plane_tmp.Call = a.Call;
-			plane_tmp.Type = a.Type;
-			plane_tmp.Mdl = a.Mdl;
-			plane_tmp.From = a.From;
-			plane_tmp.To = a.To;
-			plane_tmp.Op = a.Op;
-			plane_tmp.Alt =  (int)spawn_position.y;
+			plane_tmp.Call = a.Call; 
+		    plane_tmp.Alt =  (int)spawn_position.y;
 			plane_tmp.Spd = a.Spd;
 			plane_tmp.Lat = a.Lat;
 			plane_tmp.Long = a.Long;
@@ -230,12 +225,7 @@ public class radar : MonoBehaviour
 		p_tmp.Alt = (int)(a.Alt * 0.0003048f);
 	    p_tmp.Id = a.Id;
 		p_tmp.Reg = a.Reg;
-		p_tmp.Call = a.Call;
-		p_tmp.Type = a.Type;
-		p_tmp.Mdl = a.Mdl;
-		p_tmp.From = a.From;
-		p_tmp.To = a.To;
-		p_tmp.Op = a.Op; 
+		p_tmp.Call = a.Call; 
 		p_tmp.Spd = a.Spd;
 		p_tmp.Trak = a.Trak;
 		text_reload();

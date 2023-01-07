@@ -20,12 +20,7 @@ public class plane_info : MonoBehaviour
     public string Id;
     public string Reg;
     public string Icao;
-    public string Call;
-    public string Type;//typas
-    public string Mdl; //detalus typas
-    public string From; //ið
-    public string To; //i
-    public string Op;//operatorius
+    public string Call;  
     public int Alt; //km
     public float Spd; //km/h
     public float Lat; //cor
@@ -52,7 +47,8 @@ public class plane_info : MonoBehaviour
     void Update()
     {
         convertor();
-        if (_imgGetCalled == false && Icao != "")
+        
+        if (_imgGetCalled == false && Icao != "" && radar.instance._now_plane == Icao)
         {
             img_get();
             _imgGetCalled = true;

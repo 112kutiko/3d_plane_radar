@@ -12,23 +12,38 @@ public class plane_info_ui : MonoBehaviour{
     public bool on_off = false;
     public string _tmp_plane = string.Empty;
     public Image plane_main_image;
+    private bool flag = false;
+
 
     void Start() { instance = this; }
 
     void Update()
     {
-        if(radar.instance._now_plane!="" && radar.instance.now_use_cam_id != -1) { 
-            on_off = true; 
+        if (radar.instance._now_plane != "" && radar.instance.now_use_cam_id != -1)
+        {
+            on_off = true;
             on_info(on_off);
             _tmp_plane = radar.instance._now_plane;
+            plane_main_image = null;
             if (radar.instance.now_use_cam_id != -1) { set_info(); img_full.SetActive(true); }
-        } else { 
-            on_off = false; 
+        }
+        else
+        {
+            on_off = false;
             on_info(on_off);
             _tmp_plane = "";
         }
-        if (on_off){if (radar.instance.now_use_cam_id != -1) { set_info(); img_full.SetActive(true); }}
+        if (on_off && !flag && radar.instance._now_plane != "")
+        {
+            flag = true;
+            if (radar.instance.now_use_cam_id != -1) { set_info(); img_full.SetActive(true); }
+        }
+        if (on_off && flag && radar.instance._now_plane == "")
+        {
+            flag = false;
+        }
     }
+
     public void on_info(bool i) { panel.SetActive(i); }
 
 public void set_info()  {
@@ -56,7 +71,7 @@ public void set_info()  {
         plane_long.text="Long: " + plane_is.Long;            
         plane_track.text = "Direction: " + plane_is.Trak;
         plane_mill.text= "military: " + plane_is.Mil;
-        if (plane_is.plane.GetComponent<plane_info>().ats == "200") {
+        if (plane_is.plane.GetComponent<plane_info>().ats == "200" && plane_main_image==null) {
             img_full.SetActive(true);
             string url = plane_is.plane.GetComponent<plane_info>().link_img;
             StartCoroutine(GetImageFromWeb(url));
