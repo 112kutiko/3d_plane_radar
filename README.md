@@ -44,7 +44,7 @@
 ## aircraftlist.json
 
   - test file - [test rec](https://stats-int.000webhostapp.com/Air_test/AircraftList.json)
-  - virtualradar.nl - [virtualradar.nl](http://www.virtualradar.nl/virtualradar/AircraftList.json)
+  - virtualradar.nl not recomend big load time - [virtualradar.nl](http://www.virtualradar.nl/virtualradar/AircraftList.json)
   - radar.freedar.uk - [radar.freedar.uk](https://radar.freedar.uk/VirtualRadar/AircraftList.json)
   - 37.251.31.215 - [37.251.31.215](http://37.251.31.215/VirtualRadar/AircraftList.json)
   
