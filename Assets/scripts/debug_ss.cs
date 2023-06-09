@@ -67,7 +67,14 @@ public class debug_ss : MonoBehaviour
                 case "stopWatch":
                      Application.Quit();
                 break;
-                default:
+                case "cords":
+                float lat = PlayerPrefs.GetFloat("_lat_c");
+                float longi = PlayerPrefs.GetFloat("_long_c");
+                Debug.Log("cords: " + lat + " " + " "+ longi);
+
+                break;
+
+            default:
                     Debug.Log("not found");
                     break;
             }
