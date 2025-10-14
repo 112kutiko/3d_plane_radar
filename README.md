@@ -46,9 +46,8 @@
   - test file - [test rec](https://stats-int.000webhostapp.com/Air_test/AircraftList.json)
   - virtualradar.nl not recomend big load time - [virtualradar.nl](http://www.virtualradar.nl/virtualradar/AircraftList.json)
   - radar.freedar.uk - [radar.freedar.uk](https://radar.freedar.uk/VirtualRadar/AircraftList.json)
-  - 37.251.31.215 - [37.251.31.215](http://37.251.31.215/VirtualRadar/AircraftList.json)
   
 ## author info
 
 - Twitter - [@cll_112kutiko](https://twitter.com/cll_112kutiko)
-- youtube - [112kutiko](https://www.youtube.com/channel/UCmU-gov-jZi2XkXw1qMko7g)
+- youtube - [Kryganas](https://www.youtube.com/channel/UCmU-gov-jZi2XkXw1qMko7g)
